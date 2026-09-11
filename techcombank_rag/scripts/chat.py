@@ -24,7 +24,14 @@ def main() -> None:
             break
         if not question:
             continue
-        response = bot.ask(question, history)
+        try:
+            response = bot.ask(question, history)
+        except Exception as exc:
+            print(
+                "Assistant: Không thể xử lý lượt chat này. "
+                f"Vui lòng thử lại. ({type(exc).__name__})"
+            )
+            continue
         print(f"Assistant: {response['answer']}")
         history.extend(
             [
@@ -36,4 +43,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

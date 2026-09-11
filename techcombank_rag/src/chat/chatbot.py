@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from src.chat.query_rewriter import rewrite_query
+from src.chat.text_safety import normalize_history, normalize_utf8_text
 from src.config import Settings, get_settings
 from src.llm.base import GenerationResult, aggregate_calls, coerce_generation_result
 from src.llm.provider import create_llm_client
@@ -206,7 +207,8 @@ class Chatbot:
         self, question: str, conversation_history: list[dict[str, str]] | None = None
     ) -> dict[str, Any]:
         started = time.perf_counter()
-        history = conversation_history or []
+        question = normalize_utf8_text(question)
+        history = normalize_history(conversation_history or [])
         llm_calls: list[GenerationResult] = []
         standalone = rewrite_query(
             question,

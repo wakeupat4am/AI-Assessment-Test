@@ -15,6 +15,7 @@ from src.chat.chatbot import (
     validate_numeric_support,
 )
 from src.chat.query_rewriter import rewrite_query
+from src.chat.text_safety import normalize_history, normalize_utf8_text
 from src.config import Settings
 from src.evaluation.evaluator import evaluate_questions
 from src.ingestion.chunker import chunk_pages
@@ -93,6 +94,32 @@ def test_best_evidence_is_closest_to_question() -> None:
 
 def test_standalone_question_returns_text_without_llm() -> None:
     assert rewrite_query("CASA năm 2025 là bao nhiêu?", []) == "CASA năm 2025 là bao nhiêu?"
+
+
+def test_terminal_surrogates_are_utf8_safe() -> None:
+    damaged = "tóm tắt \udcc6 báo cáo"
+    normalized = normalize_utf8_text(damaged)
+    assert "\udcc6" not in normalized
+    normalized.encode("utf-8")
+
+
+def test_second_turn_rewriter_sanitizes_question_and_history() -> None:
+    class EncodingCheckingLLM:
+        def generate(self, messages, temperature=0, purpose="answer", model=None):
+            for message in messages:
+                message["content"].encode("utf-8")
+            return GenerationResult(text="tóm tắt báo cáo lưu chuyển tiền tệ", purpose=purpose)
+
+    history = [
+        {"role": "user", "content": "Câu đầu \udcc6"},
+        {"role": "assistant", "content": "Không đủ thông tin"},
+    ]
+    rewritten = rewrite_query(
+        "câu thứ hai \udced",
+        normalize_history(history),
+        client=EncodingCheckingLLM(),
+    )
+    assert rewritten == "tóm tắt báo cáo lưu chuyển tiền tệ"
 
 
 def test_retriever_returns_top_k(tmp_path: Path) -> None:

@@ -4,6 +4,7 @@ import json
 from typing import Protocol
 
 from src.llm.base import GenerationResult, coerce_generation_result
+from src.chat.text_safety import normalize_history, normalize_utf8_text
 
 
 class Generator(Protocol):
@@ -24,7 +25,7 @@ def rewrite_query(
     trace_sink: list[GenerationResult] | None = None,
 ) -> str:
     """Use the configured LLM to resolve references without answering."""
-    question = current_question.strip()
+    question = normalize_utf8_text(current_question).strip()
     if not question:
         raise ValueError("Question cannot be empty")
     if not conversation_history:
@@ -32,7 +33,7 @@ def rewrite_query(
     if client is None:
         raise ValueError("An LLM client is required when conversation history is present")
 
-    recent = conversation_history[-(max_history_turns * 2) :]
+    recent = normalize_history(conversation_history[-(max_history_turns * 2) :])
     prompt = (
         "Lịch sử hội thoại (JSON):\n"
         f"{json.dumps(recent, ensure_ascii=False)}\n\n"
