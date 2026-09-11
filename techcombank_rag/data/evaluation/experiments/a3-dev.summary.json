@@ -1,0 +1,119 @@
+{
+  "run_name": "a3-dev",
+  "created_at_utc": "2026-09-10T02:41:12.267629+00:00",
+  "evaluation_method": {
+    "retrieval": "printed-page recall and hit rate against manually verified gold pages",
+    "answer_automatic": "deterministic token-F1>=0.45 plus exact numeric coverage; refusal exactness for unanswerable questions",
+    "answer_primary": "manual review when provided, otherwise automatic heuristic",
+    "warning": "Automatic answer correctness is diagnostic, not a substitute for human review."
+  },
+  "environment": {
+    "python": "3.11.5",
+    "platform": "Linux-5.15.0-190-generic-x86_64-with-glibc2.31",
+    "llm_provider": "openai_compatible",
+    "llm_model": "Qwen/Qwen3.5-9B",
+    "embedding_model": "intfloat/multilingual-e5-small",
+    "top_k_evidence": 5,
+    "retrieval_k_evaluated": 10,
+    "index_dir": "techcombank_rag/data/index/a3_paddleocr_vl_1_6_multigranularity"
+  },
+  "artifacts": {
+    "questions": "/home/ubuntu/TCB_Test/techcombank_rag/data/evaluation/dev.json",
+    "questions_sha256": "599c1b226f6fde06eacaac4e4ef58f7d725834195afb824118d68f593868155d",
+    "index_metadata": {
+      "artifact_schema_version": 1,
+      "experiment": "A3",
+      "pipeline": "a3-paddleocr-row-block-page+dense-e5-flatip",
+      "document_parser": "PaddleOCR-VL-1.6",
+      "representation": "a3",
+      "strategy": "paddleocr-row-block-page",
+      "source_pdf": "techcombank-bao-cao-thuong-nien-2025-vie-update.pdf",
+      "source_pdf_sha256": "2db3dfe6e7a05f889ec2e93bf16dda4b6a7f3334df440b7cb0761df2e89344d9",
+      "raw_fragment_count": 393,
+      "raw_manifest_sha256": "873faa472f4fc8e23d4cb4fa69a08d3730fe7c78d8e190d595cb62eb0ec56e27",
+      "embedding_model": "intfloat/multilingual-e5-small",
+      "embedding_device": "cpu",
+      "pdf_sheet_count": 197,
+      "printed_fragment_count": 393,
+      "chunk_count": 3462,
+      "vector_dimension": 384,
+      "granularity_counts": {
+        "block": 1111,
+        "page": 377,
+        "row": 1974
+      },
+      "block_type_counts": {
+        "fallback_page": 4,
+        "narrative": 833,
+        "page_signature": 377,
+        "table": 274,
+        "table_row": 1974
+      },
+      "index_build_seconds": 458.199,
+      "created_at_utc": "2026-09-10T02:29:49.153748+00:00",
+      "chunks_sha256": "599792385c6dff6b87e8da40475bda7c2f03ac0cbfbe5ef4be37e83149d27101",
+      "index_sha256": "505620e01a3fa54b53c8338af4855de879698e0cf0a6c51f309735224ac5ba75",
+      "page_signature_character_limit": 3200
+    }
+  },
+  "counts": {
+    "questions": 20,
+    "answerable": 18,
+    "unanswerable": 2,
+    "runtime_errors": 0,
+    "manually_reviewed": 0
+  },
+  "metrics": {
+    "retrieval_recall_at_1": 0.166667,
+    "retrieval_recall_at_5": 0.777778,
+    "retrieval_recall_at_10": 0.777778,
+    "retrieval_hit_at_1": 0.166667,
+    "retrieval_hit_at_5": 0.777778,
+    "retrieval_hit_at_10": 0.777778,
+    "answer_accuracy": 0.2,
+    "manual_answer_accuracy": null,
+    "citation_precision": 0.444444,
+    "citation_recall": 0.444444,
+    "citation_validator_pass_rate": 0.95,
+    "refusal_accuracy": 0.7,
+    "latency_seconds_mean": 5.3496,
+    "latency_seconds_p50": 4.7665,
+    "latency_seconds_p95": 8.74085,
+    "llm_calls_total": 21,
+    "tokens": {
+      "uncached_input_tokens": 60060,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 756,
+      "reasoning_tokens": 0,
+      "source": "client_tokenizer",
+      "total_input_tokens": 60060,
+      "total_tokens": 60816
+    },
+    "calls_by_purpose": {
+      "answer": 20,
+      "repair": 1
+    },
+    "calls_by_provider_model": {
+      "openai_compatible::Qwen/Qwen3.5-9B": 21
+    },
+    "cost_usd_total": 0.0,
+    "cost_usd_mean": 0.0,
+    "cost_projection_same_tokens_usd": {
+      "gpt-5.6-sol": 0.25536,
+      "gpt-5.6": 0.25536,
+      "gpt-5.6-terra": 0.129192,
+      "gpt-5.6-luna": 0.0129192,
+      "claude-sonnet-5": 0.19152,
+      "claude-opus-5": 0.3192,
+      "claude-fable-5": 0.6384
+    }
+  },
+  "failure_taxonomy": {
+    "answer_error": 6,
+    "citation_error": 2,
+    "false_refusal": 4,
+    "none": 4,
+    "retrieval_miss": 4
+  }
+}

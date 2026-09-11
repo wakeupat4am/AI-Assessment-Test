@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "experiment": "B1a",
+  "confidence_threshold": 0.62,
+  "fallback_route": "multi_repr",
+  "route_priority": ["multi_hop", "structured", "narrative", "multi_repr"],
+  "features": {
+    "number_regex": "(?<![\\w])\\d+(?:[.,]\\d+)?",
+    "year_regex": "(?<!\\d)(?:19|20)\\d{2}(?!\\d)",
+    "financial_terms": [
+      "lợi nhuận", "doanh thu", "thu nhập", "tổng tài sản", "dư nợ",
+      "tín dụng", "tiền gửi", "casa", "nợ xấu", "npl", "roe", "roa",
+      "nim", "vốn", "chi phí", "cổ tức", "xếp hạng tín nhiệm",
+      "thu nhập lãi", "thu nhập phí", "tỷ suất", "tỷ lệ"
+    ],
+    "comparison_terms": [
+      "so với", "so sánh", "giữa", "chênh lệch", "thay đổi", "cao hơn", "thấp hơn",
+      "năm trước", "cùng kỳ", "qua các năm", "từ năm", "giai đoạn"
+    ],
+    "ratio_or_growth_terms": [
+      "tỷ lệ", "tỷ suất", "phần trăm", "%", "tăng trưởng", "tăng bao nhiêu",
+      "tăng", "giảm", "cagr", "biên", "roe", "roa", "nim", "casa", "npl"
+    ],
+    "table_lookup_terms": [
+      "bao nhiêu", "số liệu", "mức nào", "tại ngày", "tính đến", "tổng",
+      "tỷ lệ", "xếp hạng", "viết tắt", "chỉ tiêu", "năm 20", "quý"
+    ],
+    "explanatory_terms": [
+      "tại sao", "vì sao", "như thế nào", "thế nào", "mô tả", "giải thích",
+      "nguyên nhân", "chiến lược", "chính sách", "ý nghĩa", "vai trò",
+      "tác động", "định hướng", "làm thế nào", "quan trọng"
+    ],
+    "followup_terms": [
+      "còn", "vậy", "thế còn", "chỉ tiêu này", "con số này", "nó",
+      "năm trước thì", "trường hợp đó", "điều này"
+    ],
+    "entity_terms": [
+      "tcbs", "tcc", "s&p", "fitch", "moody", "rbg",
+      "cibg", "bb", "bb-", "khách hàng cá nhân", "khách hàng doanh nghiệp"
+    ],
+    "followup_max_tokens": 6
+  },
+  "routes": {
+    "structured": {
+      "base_score": 0.08,
+      "rules": [
+        {"all": ["has_number"], "add": 0.18, "reason": "query contains a numeric value"},
+        {"all": ["has_year"], "add": 0.15, "reason": "query targets a specific year"},
+        {"all": ["has_financial_term"], "add": 0.22, "reason": "query contains a financial metric"},
+        {"all": ["has_table_lookup_pattern"], "add": 0.34, "reason": "query matches a table/value lookup pattern"},
+        {"min_counts": {"entity_terms": 1}, "add": 0.22, "reason": "query targets a named report entity or abbreviation"},
+        {"all": ["has_ratio_or_growth"], "add": 0.12, "reason": "query asks about a ratio or growth value"},
+        {"all": ["is_explanatory"], "add": -0.28, "reason": "explanatory intent weakens a pure structured lookup"},
+        {"all": ["has_comparison"], "add": -0.25, "reason": "comparison may require more than one lookup"}
+      ]
+    },
+    "narrative": {
+      "base_score": 0.10,
+      "rules": [
+        {"all": ["is_explanatory"], "add": 0.62, "reason": "query asks for explanation or description"},
+        {"all": ["has_financial_term"], "add": 0.04, "reason": "financial concept may have narrative context"},
+        {"all": ["has_table_lookup_pattern"], "add": -0.18, "reason": "exact lookup pattern weakens narrative retrieval"},
+        {"all": ["has_comparison"], "add": -0.08, "reason": "comparison weakens a single narrative lookup"}
+      ]
+    },
+    "multi_repr": {
+      "base_score": 0.28,
+      "rules": [
+        {"all": ["is_followup"], "add": 0.30, "reason": "follow-up may need precise evidence and surrounding context"},
+        {"all": ["has_financial_term"], "add": 0.08, "reason": "financial query may benefit from multiple representations"},
+        {"all": ["has_table_lookup_pattern", "is_explanatory"], "add": 0.28, "reason": "mixed fact and explanation intent benefits from multiple representations"}
+      ]
+    },
+    "multi_hop": {
+      "base_score": 0.05,
+      "rules": [
+        {"all": ["has_comparison", "has_ratio_or_growth"], "add": 0.62, "reason": "comparison plus ratio/growth requires multiple lookups"},
+        {"all": ["has_table_lookup_pattern", "is_explanatory"], "add": 0.58, "reason": "query combines exact evidence lookup with explanation"},
+        {"all": ["has_comparison", "has_year"], "add": 0.28, "reason": "year comparison requires evidence from more than one period"},
+        {"min_counts": {"entity_terms": 2}, "add": 0.95, "reason": "query mentions multiple named entities"},
+        {"min_counts": {"financial_terms": 2}, "add": 0.35, "reason": "query requests multiple financial metrics"}
+      ]
+    }
+  },
+  "retrieval": {
+    "route_indexes": {
+      "narrative": ["narrative"],
+      "structured": ["structured"],
+      "multi_repr": ["multi_repr"],
+      "multi_hop": ["structured", "narrative"]
+    },
+    "rrf_k": 60
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "criteria": "Semantic correctness for the exact user question; concise answers are not penalized for omitting unasked gold-answer detail. Alternative report pages are accepted when they directly support the answer.",
+  "reviewer": "manual",
+  "arms": {
+    "B0_one_shot": {
+      "accuracy": 1.0,
+      "incorrect_ids": [],
+      "notes": "All ten answers are semantically correct, including the required refusal for sq-10."
+    },
+    "B4a_bm25": {
+      "accuracy": 0.9,
+      "incorrect_ids": ["sq-03"],
+      "notes": "sq-03 falsely refuses because the gold total-assets page is absent from top 10."
+    },
+    "B4b_hybrid_rrf": {
+      "accuracy": 0.9,
+      "incorrect_ids": ["sq-01"],
+      "notes": "sq-01 retrieves the evidence but citation repair ends in a false refusal."
+    },
+    "B4c_finance_rerank": {
+      "accuracy": 0.8,
+      "incorrect_ids": ["sq-01", "sq-03"],
+      "notes": "sq-01 falsely refuses; sq-03 selects a different total-assets value from page 379."
+    },
+    "B4d_cross_encoder": {
+      "accuracy": 0.9,
+      "incorrect_ids": ["sq-01"],
+      "notes": "sq-01 falsely refuses. sq-03 is semantically correct and cites an alternative supporting page."
+    }
+  }
+}

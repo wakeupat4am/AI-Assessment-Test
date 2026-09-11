@@ -1,0 +1,182 @@
+[
+  {
+    "id": "dev-01",
+    "question": "Dư nợ tín dụng xanh của Techcombank năm 2025 đạt mức nào?",
+    "gold_answer": "Hơn 18,7 nghìn tỷ đồng.",
+    "gold_printed_pages": [20],
+    "answerable": true,
+    "question_type": "single_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-02",
+    "question": "Hơn một triệu thẻ Techcombank Eco đã góp phần giảm bao nhiêu tấn CO2?",
+    "gold_answer": "201,9 tấn CO2.",
+    "gold_printed_pages": [20],
+    "answerable": true,
+    "question_type": "single_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-03",
+    "question": "Ba tham vọng của Techcombank đến năm 2030 về khách hàng, thị phần và tổng thu nhập hoạt động là gì?",
+    "gold_answer": "Gấp đôi số lượng khách hàng, gấp đôi thị phần và gấp bốn lần tổng thu nhập hoạt động.",
+    "gold_printed_pages": [21],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-04",
+    "question": "Tiền gửi của Khối Ngân hàng Bán lẻ năm 2025 đạt bao nhiêu và tăng bao nhiêu so với cùng kỳ?",
+    "gold_answer": "475,8 nghìn tỷ đồng, tăng 15,7% so với cùng kỳ.",
+    "gold_printed_pages": [59],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-05",
+    "question": "Tổng thu nhập hoạt động của Khối Ngân hàng Bán lẻ năm 2025 đạt bao nhiêu và tăng trưởng bao nhiêu?",
+    "gold_answer": "28,3 nghìn tỷ đồng, tăng 12,8%.",
+    "gold_printed_pages": [59],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-06",
+    "question": "Trong năm 2025, Techcombank mở mới và nâng cấp bao nhiêu chi nhánh?",
+    "gold_answer": "Mở mới 19 chi nhánh và nâng cấp 75 chi nhánh.",
+    "gold_printed_pages": [60],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-07",
+    "question": "Hoạt động phát hành trái phiếu của Khối Ngân hàng Doanh nghiệp năm 2025 tăng trưởng bao nhiêu?",
+    "gold_answer": "Tăng trưởng 117%.",
+    "gold_printed_pages": [71],
+    "answerable": true,
+    "question_type": "single_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-08",
+    "question": "Chương trình Techcombank Rewards có bao nhiêu thành viên vào năm 2025?",
+    "gold_answer": "13,1 triệu thành viên.",
+    "gold_printed_pages": [117],
+    "answerable": true,
+    "question_type": "single_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-09",
+    "question": "Tỷ trọng chiến dịch được kích hoạt theo thời gian thực hoặc dựa trên mô hình năm 2025 là bao nhiêu, so với năm 2024?",
+    "gold_answer": "56% trong năm 2025, so với 9% trong năm 2024.",
+    "gold_printed_pages": [118],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-10",
+    "question": "Bảng thành viên Hội đồng Quản trị của Techcombank liệt kê bao nhiêu người?",
+    "gold_answer": "9 người.",
+    "gold_printed_pages": [151],
+    "answerable": true,
+    "question_type": "table_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-11",
+    "question": "Ủy ban Quản lý Rủi ro đã họp và lấy ý kiến bằng văn bản bao nhiêu lần trong năm 2025?",
+    "gold_answer": "4 cuộc họp trực tiếp và 1 lần lấy ý kiến bằng văn bản.",
+    "gold_printed_pages": [177],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-12",
+    "question": "Hệ sinh thái Techcombank được vinh danh ở hạng mục nào tại FChoice 2025?",
+    "gold_answer": "Hệ sinh thái tài chính toàn diện nổi bật của năm.",
+    "gold_printed_pages": [205],
+    "answerable": true,
+    "question_type": "single_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-13",
+    "question": "Techcombank phát hành lô trái phiếu xanh trị giá bao nhiêu vào tháng 12 năm 2025?",
+    "gold_answer": "500 tỷ đồng.",
+    "gold_printed_pages": [238],
+    "answerable": true,
+    "question_type": "single_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-14",
+    "question": "Lợi nhuận trước thuế năm 2024 và 2025 của Techcombank lần lượt là bao nhiêu?",
+    "gold_answer": "Năm 2024 là 27.538 tỷ đồng và năm 2025 là 32.538 tỷ đồng.",
+    "gold_printed_pages": [257],
+    "answerable": true,
+    "question_type": "table_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-15",
+    "question": "Lợi nhuận trước thuế của Techcombank tăng thêm bao nhiêu từ năm 2024 đến năm 2025?",
+    "gold_answer": "Tăng thêm 5.000 tỷ đồng, từ 27.538 tỷ đồng lên 32.538 tỷ đồng.",
+    "gold_printed_pages": [257],
+    "answerable": true,
+    "question_type": "calculation",
+    "requires_calculation": true
+  },
+  {
+    "id": "dev-16",
+    "question": "Tỷ lệ NIM của Techcombank năm 2025 là bao nhiêu?",
+    "gold_answer": "3,67%.",
+    "gold_printed_pages": [257],
+    "answerable": true,
+    "question_type": "table_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-17",
+    "question": "Tỷ lệ CIR của Techcombank năm 2025 là bao nhiêu?",
+    "gold_answer": "30,8%.",
+    "gold_printed_pages": [257],
+    "answerable": true,
+    "question_type": "table_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-18",
+    "question": "Bộ Quy tắc Đạo đức của Techcombank gồm bao nhiêu chuẩn mực và áp dụng cho bao nhiêu nhóm bên liên quan?",
+    "gold_answer": "16 chuẩn mực đạo đức, áp dụng cho 4 nhóm bên liên quan.",
+    "gold_printed_pages": [286],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-19",
+    "question": "Techcombank dự báo tỷ lệ nợ xấu năm 2028 là bao nhiêu?",
+    "gold_answer": "Không có trong báo cáo; hệ thống cần từ chối trả lời.",
+    "gold_printed_pages": [],
+    "answerable": false,
+    "question_type": "unanswerable",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev-20",
+    "question": "Giá đóng cửa cổ phiếu TCB ngày 31/12/2027 là bao nhiêu?",
+    "gold_answer": "Không có trong báo cáo; đây là thời điểm tương lai so với báo cáo và hệ thống cần từ chối trả lời.",
+    "gold_printed_pages": [],
+    "answerable": false,
+    "question_type": "unanswerable",
+    "requires_calculation": false
+  }
+]

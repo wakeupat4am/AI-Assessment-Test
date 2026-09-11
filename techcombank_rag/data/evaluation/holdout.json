@@ -1,0 +1,92 @@
+[
+  {
+    "id": "holdout-01",
+    "question": "Tính năng Sinh lời tự động có bao nhiêu người dùng trong năm 2025, tăng trưởng bao nhiêu và nhận bao nhiêu giải Stevie?",
+    "gold_answer": "5 triệu người dùng, tăng trưởng 137% và nhận 3 giải Stevie.",
+    "gold_printed_pages": [60],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "holdout-02",
+    "question": "Năm 2025, dư nợ tín dụng và tiền gửi của Khối Ngân hàng Doanh nghiệp tăng trưởng lần lượt bao nhiêu?",
+    "gold_answer": "Dư nợ tín dụng tăng 13% và tiền gửi tăng 24%.",
+    "gold_printed_pages": [71],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "holdout-03",
+    "question": "Số khách hàng số mới và số khách hàng SME số năm 2025 tăng bao nhiêu lần so với năm 2024?",
+    "gold_answer": "Khách hàng số mới tăng 1,5 lần và khách hàng SME số tăng 2,8 lần.",
+    "gold_printed_pages": [117],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "holdout-04",
+    "question": "Nền tảng tương tác của Techcombank năm 2025 phục vụ bao nhiêu khách hàng và gửi bao nhiêu thông điệp?",
+    "gold_answer": "Phục vụ 8 triệu khách hàng và gửi 3,8 tỷ thông điệp.",
+    "gold_printed_pages": [118],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "holdout-05",
+    "question": "Thu nhập bình quân hàng tháng của nhân viên Techcombank năm 2025 là bao nhiêu?",
+    "gold_answer": "48 triệu đồng mỗi tháng.",
+    "gold_printed_pages": [238],
+    "answerable": true,
+    "question_type": "single_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "holdout-06",
+    "question": "Chi phí nghiên cứu và phát triển năm 2025 là bao nhiêu và tăng bao nhiêu so với năm trước?",
+    "gold_answer": "1.673 tỷ đồng, tăng 40% so với năm trước.",
+    "gold_printed_pages": [238],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "holdout-07",
+    "question": "Số tiền Techcombank nộp ngân sách Nhà nước tăng thêm bao nhiêu từ năm 2024 đến năm 2025?",
+    "gold_answer": "Tăng thêm 2.570 tỷ đồng, từ 6.075 tỷ đồng lên 8.645 tỷ đồng.",
+    "gold_printed_pages": [257],
+    "answerable": true,
+    "question_type": "calculation",
+    "requires_calculation": true
+  },
+  {
+    "id": "holdout-08",
+    "question": "Số dư thuế thu nhập doanh nghiệp hoãn lại cuối năm 2025 là bao nhiêu?",
+    "gold_answer": "40.487 triệu đồng.",
+    "gold_printed_pages": [351],
+    "answerable": true,
+    "question_type": "table_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "holdout-09",
+    "question": "Tỷ lệ sở hữu của Techcombank tại Techcom Insurance thay đổi từ bao nhiêu lên bao nhiêu trong năm 2025?",
+    "gold_answer": "Tăng từ 11% lên 68%.",
+    "gold_printed_pages": [352],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "holdout-10",
+    "question": "Techcombank dự kiến tỷ lệ CASA năm 2028 sẽ đạt bao nhiêu?",
+    "gold_answer": "Không có trong báo cáo; hệ thống cần từ chối trả lời.",
+    "gold_printed_pages": [],
+    "answerable": false,
+    "question_type": "unanswerable",
+    "requires_calculation": false
+  }
+]

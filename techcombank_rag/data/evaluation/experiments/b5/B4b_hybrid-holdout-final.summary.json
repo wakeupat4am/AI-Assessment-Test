@@ -1,0 +1,145 @@
+{
+  "run_name": "b5-B4b_hybrid-holdout-final",
+  "created_at_utc": "2026-09-11T09:36:32.885382+00:00",
+  "evaluation_method": {
+    "retrieval": "printed-page recall and hit rate against manually verified gold pages",
+    "answer_automatic": "deterministic token-F1>=0.45 plus exact numeric coverage; refusal exactness for unanswerable questions",
+    "answer_primary": "manual review when provided, otherwise automatic heuristic",
+    "warning": "Automatic answer correctness is diagnostic, not a substitute for human review."
+  },
+  "environment": {
+    "python": "3.11.5",
+    "platform": "Linux-5.15.0-190-generic-x86_64-with-glibc2.31",
+    "llm_provider": "openai_compatible",
+    "llm_model": "Qwen/Qwen3.5-9B",
+    "embedding_model": "intfloat/multilingual-e5-small",
+    "top_k_evidence": 5,
+    "retrieval_k_evaluated": 10,
+    "index_dir": "techcombank_rag/data/index/a31_semantic_multirepr/all"
+  },
+  "artifacts": {
+    "questions": "data/evaluation/holdout.json",
+    "questions_sha256": "4d491f700a2f61e464d111ed0a15a0f66a8028d013d5f1223a788adae83f7d0c",
+    "index_metadata": {
+      "artifact_schema_version": 1,
+      "experiment": "A3.1",
+      "pipeline": "paddleocr-a3+semantic-metric-heading-parent+dense-e5-flatip",
+      "document_parser": "PaddleOCR-VL-1.6 (reused checkpoint; no OCR rerun)",
+      "representation": "a3.1",
+      "strategy": "row-block-page+metric-value+heading-inheritance+parent-expansion",
+      "source_pdf": "techcombank-bao-cao-thuong-nien-2025-vie-update.pdf",
+      "source_pdf_sha256": "2db3dfe6e7a05f889ec2e93bf16dda4b6a7f3334df440b7cb0761df2e89344d9",
+      "pdf_sheet_count": 197,
+      "raw_fragment_count": 393,
+      "parent_character_limit": 2400,
+      "document_entity": "Techcombank",
+      "reporting_year": 2025,
+      "embedding_model": "intfloat/multilingual-e5-small",
+      "embedding_device": "cpu",
+      "derived_a3_chunks_sha256": "599792385c6dff6b87e8da40475bda7c2f03ac0cbfbe5ef4be37e83149d27101",
+      "derived_a3_index_sha256": "505620e01a3fa54b53c8338af4855de879698e0cf0a6c51f309735224ac5ba75",
+      "raw_manifest_sha256": "873faa472f4fc8e23d4cb4fa69a08d3730fe7c78d8e190d595cb62eb0ec56e27",
+      "total_chunk_count": 3658,
+      "semantic_metric_count": 196,
+      "inherited_heading_count": 82,
+      "extraction_method_counts": {
+        "layout_nearest_label": 94,
+        "markdown_sequence_fallback": 55,
+        "structured_multiline": 47
+      },
+      "build_seconds": 483.753,
+      "created_at_utc": "2026-09-11T04:40:56.989212+00:00",
+      "route_subset": "all",
+      "chunk_count": 3658,
+      "vector_dimension": 384,
+      "granularity_counts": {
+        "block": 1111,
+        "metric": 196,
+        "page": 377,
+        "row": 1974
+      },
+      "block_type_counts": {
+        "fallback_page": 4,
+        "metric_value": 196,
+        "narrative": 833,
+        "page_signature": 377,
+        "table": 274,
+        "table_row": 1974
+      },
+      "chunks_sha256": "d72357b78e1fe69ccdee6e3d3b957a9c41cf6c948ff6066fb86aef9f9af0cbe9",
+      "index_sha256": "31f4ff58e6db646aa0f8d630faac107b1f6e699f6f22408d77a766c80827254e"
+    }
+  },
+  "counts": {
+    "questions": 10,
+    "answerable": 9,
+    "unanswerable": 1,
+    "runtime_errors": 0,
+    "manually_reviewed": 0
+  },
+  "metrics": {
+    "retrieval_recall_at_1": 0.777778,
+    "retrieval_recall_at_5": 0.777778,
+    "retrieval_recall_at_10": 0.888889,
+    "retrieval_hit_at_1": 0.777778,
+    "retrieval_hit_at_5": 0.777778,
+    "retrieval_hit_at_10": 0.888889,
+    "answer_accuracy": 0.4,
+    "manual_answer_accuracy": null,
+    "citation_precision": 0.555556,
+    "citation_recall": 0.555556,
+    "citation_validator_pass_rate": 0.9,
+    "refusal_accuracy": 0.8,
+    "latency_seconds_mean": 6.3817,
+    "latency_seconds_p50": 6.6675,
+    "latency_seconds_p95": 9.62245,
+    "llm_calls_total": 11,
+    "tokens": {
+      "uncached_input_tokens": 34513,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 470,
+      "reasoning_tokens": 0,
+      "source": "client_tokenizer",
+      "total_input_tokens": 34513,
+      "total_tokens": 34983
+    },
+    "calls_by_purpose": {
+      "answer": 10,
+      "repair": 1
+    },
+    "calls_by_provider_model": {
+      "openai_compatible::Qwen/Qwen3.5-9B": 11
+    },
+    "cost_usd_total": 0.0,
+    "cost_usd_mean": 0.0,
+    "cost_projection_same_tokens_usd": {
+      "gpt-5.6-sol": 0.147452,
+      "gpt-5.6": 0.147452,
+      "gpt-5.6-terra": 0.074666,
+      "gpt-5.6-luna": 0.0074666,
+      "claude-sonnet-5": 0.110589,
+      "claude-opus-5": 0.184315,
+      "claude-fable-5": 0.36863
+    }
+  },
+  "routing_metrics": {
+    "enabled": true,
+    "route_distribution": {},
+    "confidence_mean": null,
+    "router_latency_seconds_p50": null,
+    "router_latency_seconds_p95": null,
+    "raw_candidates_mean": null,
+    "returned_candidates_mean": null,
+    "trace_types": [
+      "b4"
+    ]
+  },
+  "failure_taxonomy": {
+    "answer_error": 3,
+    "citation_error": 1,
+    "false_refusal": 2,
+    "none": 3,
+    "retrieval_miss": 1
+  }
+}

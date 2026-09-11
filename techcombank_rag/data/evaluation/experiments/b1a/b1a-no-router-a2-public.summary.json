@@ -1,0 +1,127 @@
+{
+  "run_name": "b1a-no-router-a2-public",
+  "created_at_utc": "2026-09-10T10:20:28.700581+00:00",
+  "evaluation_method": {
+    "retrieval": "printed-page recall and hit rate against manually verified gold pages",
+    "answer_automatic": "deterministic token-F1>=0.45 plus exact numeric coverage; refusal exactness for unanswerable questions",
+    "answer_primary": "manual review when provided, otherwise automatic heuristic",
+    "warning": "Automatic answer correctness is diagnostic, not a substitute for human review."
+  },
+  "environment": {
+    "python": "3.11.5",
+    "platform": "Linux-5.15.0-190-generic-x86_64-with-glibc2.31",
+    "llm_provider": "openai_compatible",
+    "llm_model": "Qwen/Qwen3.5-9B",
+    "embedding_model": "intfloat/multilingual-e5-small",
+    "top_k_evidence": 5,
+    "retrieval_k_evaluated": 10,
+    "index_dir": "techcombank_rag/data/index/a2_paddleocr_vl_1_6_layout_aware"
+  },
+  "artifacts": {
+    "questions": "techcombank_rag/data/evaluation/public.json",
+    "questions_sha256": "3949b944dbf7033c805c347c982b74234ced60710954626b779cf2c5d39b4992",
+    "index_metadata": {
+      "artifact_schema_version": 1,
+      "experiment": "A2",
+      "pipeline": "a2-paddleocr-layout-aware-heading-table+dense-e5-flatip",
+      "document_parser": "PaddleOCR-VL-1.6",
+      "representation": "a2",
+      "strategy": "paddleocr-layout-aware-heading-table",
+      "source_pdf": "techcombank-bao-cao-thuong-nien-2025-vie-update.pdf",
+      "source_pdf_sha256": "2db3dfe6e7a05f889ec2e93bf16dda4b6a7f3334df440b7cb0761df2e89344d9",
+      "raw_fragment_count": 393,
+      "raw_manifest_sha256": "873faa472f4fc8e23d4cb4fa69a08d3730fe7c78d8e190d595cb62eb0ec56e27",
+      "embedding_model": "intfloat/multilingual-e5-small",
+      "embedding_device": "cpu",
+      "pdf_sheet_count": 197,
+      "printed_fragment_count": 393,
+      "chunk_count": 1111,
+      "vector_dimension": 384,
+      "granularity_counts": {
+        "block": 1111
+      },
+      "block_type_counts": {
+        "fallback_page": 4,
+        "narrative": 833,
+        "table": 274
+      },
+      "index_build_seconds": 215.962,
+      "created_at_utc": "2026-09-10T02:22:10.250547+00:00",
+      "chunks_sha256": "964db8a70e6b40ed2807671bb89bc1bf194b3efe1524658ce85b62afacc399c6",
+      "index_sha256": "0108eeb9edd2a1d5dc8a757a41aac5e1111c87d6d317cb78983b0945658726a9"
+    }
+  },
+  "counts": {
+    "questions": 10,
+    "answerable": 9,
+    "unanswerable": 1,
+    "runtime_errors": 0,
+    "manually_reviewed": 10
+  },
+  "metrics": {
+    "retrieval_recall_at_1": 0.333333,
+    "retrieval_recall_at_5": 0.444444,
+    "retrieval_recall_at_10": 0.666667,
+    "retrieval_hit_at_1": 0.333333,
+    "retrieval_hit_at_5": 0.444444,
+    "retrieval_hit_at_10": 0.666667,
+    "answer_accuracy": 0.7,
+    "manual_answer_accuracy": 0.7,
+    "citation_precision": 0.333333,
+    "citation_recall": 0.333333,
+    "citation_validator_pass_rate": 1.0,
+    "refusal_accuracy": 0.8,
+    "latency_seconds_mean": 6.4734,
+    "latency_seconds_p50": 5.6545,
+    "latency_seconds_p95": 10.20955,
+    "llm_calls_total": 11,
+    "tokens": {
+      "uncached_input_tokens": 33653,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 382,
+      "reasoning_tokens": 0,
+      "source": "client_tokenizer",
+      "total_input_tokens": 33653,
+      "total_tokens": 34035
+    },
+    "calls_by_purpose": {
+      "answer": 10,
+      "repair": 1
+    },
+    "calls_by_provider_model": {
+      "openai_compatible::Qwen/Qwen3.5-9B": 11
+    },
+    "cost_usd_total": 0.0,
+    "cost_usd_mean": 0.0,
+    "cost_projection_same_tokens_usd": {
+      "gpt-5.6-sol": 0.142252,
+      "gpt-5.6": 0.142252,
+      "gpt-5.6-terra": 0.07189,
+      "gpt-5.6-luna": 0.007189,
+      "claude-sonnet-5": 0.106689,
+      "claude-opus-5": 0.177815,
+      "claude-fable-5": 0.35563
+    }
+  },
+  "routing_metrics": {
+    "enabled": false,
+    "route_distribution": {},
+    "confidence_mean": null,
+    "router_latency_seconds_p50": null,
+    "router_latency_seconds_p95": null,
+    "raw_candidates_mean": null,
+    "returned_candidates_mean": null
+  },
+  "failure_taxonomy": {
+    "citation_error": 1,
+    "false_refusal": 1,
+    "none": 6,
+    "retrieval_miss": 2
+  },
+  "manual_review": {
+    "path": "data/evaluation/experiments/manual_review.a2.public.json",
+    "sha256": "77875bb6258e49fd217cce0cb4e7c950ab4897ec799490884145287424dcd22d",
+    "reviewed_questions": 10
+  }
+}

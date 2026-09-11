@@ -1,0 +1,338 @@
+{
+  "artifact_schema_version": 1,
+  "experiment": "B4 sparse-dense retrieval over frozen A3.1",
+  "created_at_utc": "2026-09-11T08:46:22.399277+00:00",
+  "run_label": "holdout",
+  "run_type": "full",
+  "questions": "techcombank_rag/data/evaluation/holdout.json",
+  "questions_sha256": "4d491f700a2f61e464d111ed0a15a0f66a8028d013d5f1223a788adae83f7d0c",
+  "index_dir": "techcombank_rag/data/index/a31_semantic_multirepr/all",
+  "chunks_sha256": "d72357b78e1fe69ccdee6e3d3b957a9c41cf6c948ff6066fb86aef9f9af0cbe9",
+  "bm25_artifact_sha256": "8408924e37369102b688c773e0d52c18ccd488273072a7d57151759b6e54ba7d",
+  "config": {
+    "artifact_schema_version": 1,
+    "tokenizer": {
+      "name": "vi_lexical_v1",
+      "unicode_form": "NFKC",
+      "lowercase": true,
+      "include_bigrams": true
+    },
+    "bm25": {
+      "k1": 1.2,
+      "b": 0.75,
+      "candidate_k": 20
+    },
+    "fusion": {
+      "method": "weighted_rrf",
+      "rrf_k": 60,
+      "dense_weight": 1.0,
+      "bm25_weight": 1.0,
+      "candidate_k": 20
+    },
+    "finance_reranker": {
+      "base_weight": 0.65,
+      "constraint_weight": 0.35,
+      "year_weight": 0.28,
+      "acronym_weight": 0.18,
+      "metric_weight": 0.34,
+      "number_weight": 0.1,
+      "granularity_weight": 0.1,
+      "financial_terms": [
+        "casa",
+        "tỷ lệ nợ xấu",
+        "nợ xấu",
+        "tổng tài sản",
+        "lợi nhuận trước thuế",
+        "tổng thu nhập hoạt động",
+        "thu nhập lãi thuần",
+        "dư nợ vay",
+        "dư nợ tín dụng",
+        "tín dụng xanh",
+        "tiền gửi",
+        "doanh thu phí",
+        "tỷ lệ an toàn vốn",
+        "roe",
+        "roa",
+        "car",
+        "nim"
+      ],
+      "explanatory_markers": [
+        "tại sao",
+        "vì sao",
+        "nguyên nhân",
+        "giải thích",
+        "mô tả",
+        "chiến lược"
+      ]
+    }
+  },
+  "config_sha256": "a6bdce3afa70af1555e21fa73e17ff5570f668c5856dad745d427eeb9b269287",
+  "controlled_variables": {
+    "document_representation": "A3.1 all index",
+    "dense_embedding_model": "intfloat/multilingual-e5-small",
+    "answer_generation": "unchanged provider/model/prompt",
+    "evaluation_retrieval_k": 10,
+    "top_k_evidence": 5,
+    "changed_variable": "one-shot dense vs BM25 vs hybrid RRF vs deterministic finance reranker vs multilingual cross-encoder"
+  },
+  "arms": {
+    "B0_one_shot": {
+      "questions": 10,
+      "runtime_errors": 0,
+      "answer_accuracy_automatic": 0.3,
+      "manual_answer_accuracy": null,
+      "retrieval_hit_at_1": 0.444444,
+      "retrieval_hit_at_5": 0.666667,
+      "retrieval_hit_at_10": 0.777778,
+      "retrieval_recall_at_5": 0.666667,
+      "retrieval_recall_at_10": 0.777778,
+      "citation_precision": 0.333333,
+      "citation_recall": 0.333333,
+      "citation_validator_pass_rate": 0.9,
+      "refusal_accuracy": 0.6,
+      "latency_p50_seconds": 4.6185,
+      "latency_p95_seconds": 8.9896,
+      "retrieval_latency_mean_seconds": 0.061246,
+      "llm_calls_total": 11,
+      "calls_by_purpose": {
+        "answer": 10,
+        "repair": 1
+      },
+      "llm_tokens": {
+        "uncached_input_tokens": 36701,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 402,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 36701,
+        "total_tokens": 37103
+      },
+      "cost_usd_total": 0.0,
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.154844,
+        "gpt-5.6": 0.154844,
+        "gpt-5.6-terra": 0.078226,
+        "gpt-5.6-luna": 0.0078226,
+        "claude-sonnet-5": 0.116133,
+        "claude-opus-5": 0.193555,
+        "claude-fable-5": 0.38711
+      },
+      "average_returned_candidates": 10.0,
+      "average_evidence_tokens": 2058.8,
+      "failure_taxonomy": {
+        "answer_error": 2,
+        "false_refusal": 4,
+        "none": 2,
+        "retrieval_miss": 2
+      }
+    },
+    "B4a_bm25": {
+      "questions": 10,
+      "runtime_errors": 0,
+      "answer_accuracy_automatic": 0.4,
+      "manual_answer_accuracy": null,
+      "retrieval_hit_at_1": 0.444444,
+      "retrieval_hit_at_5": 0.777778,
+      "retrieval_hit_at_10": 0.888889,
+      "retrieval_recall_at_5": 0.777778,
+      "retrieval_recall_at_10": 0.888889,
+      "citation_precision": 0.444444,
+      "citation_recall": 0.444444,
+      "citation_validator_pass_rate": 0.9,
+      "refusal_accuracy": 0.8,
+      "latency_p50_seconds": 5.445,
+      "latency_p95_seconds": 9.453,
+      "retrieval_latency_mean_seconds": 0.014375,
+      "llm_calls_total": 11,
+      "calls_by_purpose": {
+        "answer": 10,
+        "repair": 1
+      },
+      "llm_tokens": {
+        "uncached_input_tokens": 37970,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 478,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 37970,
+        "total_tokens": 38448
+      },
+      "cost_usd_total": 0.0,
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.16144,
+        "gpt-5.6": 0.16144,
+        "gpt-5.6-terra": 0.081676,
+        "gpt-5.6-luna": 0.0081676,
+        "claude-sonnet-5": 0.12108,
+        "claude-opus-5": 0.2018,
+        "claude-fable-5": 0.4036
+      },
+      "average_returned_candidates": 10.0,
+      "average_evidence_tokens": 2228.0,
+      "failure_taxonomy": {
+        "answer_error": 2,
+        "citation_error": 3,
+        "false_refusal": 1,
+        "none": 3,
+        "retrieval_miss": 1
+      }
+    },
+    "B4b_hybrid_rrf": {
+      "questions": 10,
+      "runtime_errors": 0,
+      "answer_accuracy_automatic": 0.4,
+      "manual_answer_accuracy": null,
+      "retrieval_hit_at_1": 0.777778,
+      "retrieval_hit_at_5": 0.777778,
+      "retrieval_hit_at_10": 0.888889,
+      "retrieval_recall_at_5": 0.777778,
+      "retrieval_recall_at_10": 0.888889,
+      "citation_precision": 0.555556,
+      "citation_recall": 0.555556,
+      "citation_validator_pass_rate": 0.9,
+      "refusal_accuracy": 0.8,
+      "latency_p50_seconds": 5.2355,
+      "latency_p95_seconds": 8.625,
+      "retrieval_latency_mean_seconds": 0.060842,
+      "llm_calls_total": 11,
+      "calls_by_purpose": {
+        "answer": 10,
+        "repair": 1
+      },
+      "llm_tokens": {
+        "uncached_input_tokens": 34513,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 470,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 34513,
+        "total_tokens": 34983
+      },
+      "cost_usd_total": 0.0,
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.147452,
+        "gpt-5.6": 0.147452,
+        "gpt-5.6-terra": 0.074666,
+        "gpt-5.6-luna": 0.0074666,
+        "claude-sonnet-5": 0.110589,
+        "claude-opus-5": 0.184315,
+        "claude-fable-5": 0.36863
+      },
+      "average_returned_candidates": 10.0,
+      "average_evidence_tokens": 2044.6,
+      "failure_taxonomy": {
+        "answer_error": 3,
+        "citation_error": 1,
+        "false_refusal": 2,
+        "none": 3,
+        "retrieval_miss": 1
+      }
+    },
+    "B4c_finance_rerank": {
+      "questions": 10,
+      "runtime_errors": 0,
+      "answer_accuracy_automatic": 0.4,
+      "manual_answer_accuracy": null,
+      "retrieval_hit_at_1": 0.777778,
+      "retrieval_hit_at_5": 0.777778,
+      "retrieval_hit_at_10": 0.888889,
+      "retrieval_recall_at_5": 0.777778,
+      "retrieval_recall_at_10": 0.888889,
+      "citation_precision": 0.555556,
+      "citation_recall": 0.555556,
+      "citation_validator_pass_rate": 0.9,
+      "refusal_accuracy": 0.8,
+      "latency_p50_seconds": 5.874,
+      "latency_p95_seconds": 9.3764,
+      "retrieval_latency_mean_seconds": 0.068116,
+      "llm_calls_total": 11,
+      "calls_by_purpose": {
+        "answer": 10,
+        "repair": 1
+      },
+      "llm_tokens": {
+        "uncached_input_tokens": 40860,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 450,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 40860,
+        "total_tokens": 41310
+      },
+      "cost_usd_total": 0.0,
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.17244,
+        "gpt-5.6": 0.17244,
+        "gpt-5.6-terra": 0.08712,
+        "gpt-5.6-luna": 0.008712,
+        "claude-sonnet-5": 0.12933,
+        "claude-opus-5": 0.21555,
+        "claude-fable-5": 0.4311
+      },
+      "average_returned_candidates": 10.0,
+      "average_evidence_tokens": 2332.6,
+      "failure_taxonomy": {
+        "answer_error": 3,
+        "citation_error": 1,
+        "false_refusal": 2,
+        "none": 3,
+        "retrieval_miss": 1
+      }
+    },
+    "B4d_cross_encoder": {
+      "questions": 10,
+      "runtime_errors": 0,
+      "answer_accuracy_automatic": 0.4,
+      "manual_answer_accuracy": null,
+      "retrieval_hit_at_1": 0.555556,
+      "retrieval_hit_at_5": 0.888889,
+      "retrieval_hit_at_10": 1.0,
+      "retrieval_recall_at_5": 0.888889,
+      "retrieval_recall_at_10": 1.0,
+      "citation_precision": 0.444444,
+      "citation_recall": 0.444444,
+      "citation_validator_pass_rate": 0.9,
+      "refusal_accuracy": 0.8,
+      "latency_p50_seconds": 16.8945,
+      "latency_p95_seconds": 22.5377,
+      "retrieval_latency_mean_seconds": 11.585799,
+      "llm_calls_total": 11,
+      "calls_by_purpose": {
+        "answer": 10,
+        "repair": 1
+      },
+      "llm_tokens": {
+        "uncached_input_tokens": 38892,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 477,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 38892,
+        "total_tokens": 39369
+      },
+      "cost_usd_total": 0.0,
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.165108,
+        "gpt-5.6": 0.165108,
+        "gpt-5.6-terra": 0.083508,
+        "gpt-5.6-luna": 0.0083508,
+        "claude-sonnet-5": 0.123831,
+        "claude-opus-5": 0.206385,
+        "claude-fable-5": 0.41277
+      },
+      "average_returned_candidates": 10.0,
+      "average_evidence_tokens": 2411.4,
+      "failure_taxonomy": {
+        "answer_error": 2,
+        "citation_error": 3,
+        "false_refusal": 2,
+        "none": 3
+      }
+    }
+  }
+}

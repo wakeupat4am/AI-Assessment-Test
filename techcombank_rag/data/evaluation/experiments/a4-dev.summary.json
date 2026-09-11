@@ -1,0 +1,128 @@
+{
+  "run_name": "a4-dev",
+  "created_at_utc": "2026-09-10T02:45:03.958172+00:00",
+  "evaluation_method": {
+    "retrieval": "printed-page recall and hit rate against manually verified gold pages",
+    "answer_automatic": "deterministic token-F1>=0.45 plus exact numeric coverage; refusal exactness for unanswerable questions",
+    "answer_primary": "manual review when provided, otherwise automatic heuristic",
+    "warning": "Automatic answer correctness is diagnostic, not a substitute for human review."
+  },
+  "environment": {
+    "python": "3.11.5",
+    "platform": "Linux-5.15.0-190-generic-x86_64-with-glibc2.31",
+    "llm_provider": "openai_compatible",
+    "llm_model": "Qwen/Qwen3.5-9B",
+    "embedding_model": "intfloat/multilingual-e5-small",
+    "top_k_evidence": 5,
+    "retrieval_k_evaluated": 10,
+    "index_dir": "techcombank_rag/data/index/a4_selective_cascade"
+  },
+  "artifacts": {
+    "questions": "/home/ubuntu/TCB_Test/techcombank_rag/data/evaluation/dev.json",
+    "questions_sha256": "599c1b226f6fde06eacaac4e4ef58f7d725834195afb824118d68f593868155d",
+    "index_metadata": {
+      "artifact_schema_version": 1,
+      "experiment": "A4",
+      "pipeline": "a4-pymupdf-narrative+paddleocr-table-chart+dense-e5-flatip",
+      "document_parser": "selective PyMuPDF + PaddleOCR-VL-1.6",
+      "representation": "a4",
+      "strategy": "pymupdf-narrative+paddleocr-table-chart",
+      "source_pdf": "techcombank-bao-cao-thuong-nien-2025-vie-update.pdf",
+      "source_pdf_sha256": "2db3dfe6e7a05f889ec2e93bf16dda4b6a7f3334df440b7cb0761df2e89344d9",
+      "raw_fragment_count": 393,
+      "raw_manifest_sha256": "873faa472f4fc8e23d4cb4fa69a08d3730fe7c78d8e190d595cb62eb0ec56e27",
+      "embedding_model": "intfloat/multilingual-e5-small",
+      "embedding_device": "cpu",
+      "pdf_sheet_count": 197,
+      "printed_fragment_count": 393,
+      "chunk_count": 2487,
+      "vector_dimension": 384,
+      "granularity_counts": {
+        "narrative": 446,
+        "structured_region": 2041
+      },
+      "block_type_counts": {
+        "display_formula": 1,
+        "figure_title": 25,
+        "narrative": 446,
+        "table": 1975,
+        "vision_footnote": 40
+      },
+      "index_build_seconds": 269.386,
+      "created_at_utc": "2026-09-10T02:34:18.781489+00:00",
+      "chunks_sha256": "c8e2d52914415daf4b22f63a41076311c737c682b82c4daaf2a33463a908c01d",
+      "index_sha256": "9fc1a049e942523f9607cf5dd544c5a81d98b86f937d973b07ad67df9d062bfe",
+      "cascade_stats": {
+        "narrative_chunk_count": 446,
+        "structured_chunk_count": 2041,
+        "selected_printed_page_count": 154,
+        "selected_label_counts": {
+          "display_formula": 1,
+          "figure_title": 25,
+          "table": 1975,
+          "vision_footnote": 40
+        }
+      }
+    }
+  },
+  "counts": {
+    "questions": 20,
+    "answerable": 18,
+    "unanswerable": 2,
+    "runtime_errors": 0,
+    "manually_reviewed": 0
+  },
+  "metrics": {
+    "retrieval_recall_at_1": 0.333333,
+    "retrieval_recall_at_5": 0.611111,
+    "retrieval_recall_at_10": 0.722222,
+    "retrieval_hit_at_1": 0.333333,
+    "retrieval_hit_at_5": 0.611111,
+    "retrieval_hit_at_10": 0.722222,
+    "answer_accuracy": 0.3,
+    "manual_answer_accuracy": null,
+    "citation_precision": 0.5,
+    "citation_recall": 0.5,
+    "citation_validator_pass_rate": 0.95,
+    "refusal_accuracy": 0.7,
+    "latency_seconds_mean": 5.65255,
+    "latency_seconds_p50": 4.6145,
+    "latency_seconds_p95": 13.2316,
+    "llm_calls_total": 23,
+    "tokens": {
+      "uncached_input_tokens": 77904,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 847,
+      "reasoning_tokens": 0,
+      "source": "client_tokenizer",
+      "total_input_tokens": 77904,
+      "total_tokens": 78751
+    },
+    "calls_by_purpose": {
+      "answer": 20,
+      "repair": 3
+    },
+    "calls_by_provider_model": {
+      "openai_compatible::Qwen/Qwen3.5-9B": 23
+    },
+    "cost_usd_total": 0.0,
+    "cost_usd_mean": 0.0,
+    "cost_projection_same_tokens_usd": {
+      "gpt-5.6-sol": 0.328556,
+      "gpt-5.6": 0.328556,
+      "gpt-5.6-terra": 0.165972,
+      "gpt-5.6-luna": 0.0165972,
+      "claude-sonnet-5": 0.246417,
+      "claude-opus-5": 0.410695,
+      "claude-fable-5": 0.82139
+    }
+  },
+  "failure_taxonomy": {
+    "answer_error": 5,
+    "citation_error": 2,
+    "false_refusal": 2,
+    "none": 6,
+    "retrieval_miss": 5
+  }
+}

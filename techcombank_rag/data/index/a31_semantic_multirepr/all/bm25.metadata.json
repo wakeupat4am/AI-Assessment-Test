@@ -1,0 +1,19 @@
+{
+  "artifact_schema_version": 1,
+  "algorithm": "okapi_bm25",
+  "created_at_utc": "2026-09-11T07:57:31.826110+00:00",
+  "source_chunks": "chunks.jsonl",
+  "source_chunks_sha256": "d72357b78e1fe69ccdee6e3d3b957a9c41cf6c948ff6066fb86aef9f9af0cbe9",
+  "document_count": 3658,
+  "average_document_length": 238.75177692728266,
+  "tokenizer": {
+    "name": "vi_lexical_v1",
+    "unicode_form": "NFKC",
+    "lowercase": true,
+    "include_bigrams": true
+  },
+  "k1": 1.2,
+  "b": 0.75,
+  "vocabulary_size": 59961,
+  "artifact_sha256": "8408924e37369102b688c773e0d52c18ccd488273072a7d57151759b6e54ba7d"
+}

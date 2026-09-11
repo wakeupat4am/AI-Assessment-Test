@@ -1,0 +1,5 @@
+# Author-only ingestion dependency. Install PaddlePaddle for the server's CUDA
+# version first, following docs/experiments/A1_PADDLEOCR_VL.md. Graders do not
+# need this file because both FAISS indexes are shipped.
+paddlex[ocr]>=3.6,<3.7
+paddleocr==3.6.0

@@ -1,0 +1,192 @@
+{
+  "artifact_schema_version": 1,
+  "experiment": "B1b",
+  "created_at_utc": "2026-09-10T16:35:24.276662+00:00",
+  "controlled_variables": {
+    "indexes": "frozen A2 narrative/structured and A3 multi_repr",
+    "retrieval": "same dense retrieval and RRF",
+    "answer_generation": "unchanged",
+    "changed_variable": "route decision: B1a rules vs B1b Qwen LLM agent"
+  },
+  "b1a": {
+    "questions": 10,
+    "runtime_errors": 0,
+    "retrieval_hit_at_1": 0.333333,
+    "retrieval_hit_at_5": 0.444444,
+    "retrieval_hit_at_10": 0.666667,
+    "retrieval_recall_at_5": 0.444444,
+    "retrieval_recall_at_10": 0.666667,
+    "answer_accuracy_automatic": 0.3,
+    "manual_answer_accuracy": null,
+    "citation_precision": 0.333333,
+    "citation_recall": 0.333333,
+    "latency_seconds_p50": 5.2225,
+    "latency_seconds_p95": 9.94865,
+    "router_latency_seconds_p50": 0.000583,
+    "router_latency_seconds_p95": 0.00085,
+    "route_distribution": {
+      "multi_hop": 3,
+      "structured": 7
+    },
+    "raw_candidates_mean": 13.0,
+    "llm_calls_total": 11,
+    "calls_by_purpose": {
+      "answer": 10,
+      "repair": 1
+    },
+    "tokens": {
+      "uncached_input_tokens": 33653,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 382,
+      "reasoning_tokens": 0,
+      "source": "client_tokenizer",
+      "total_input_tokens": 33653,
+      "total_tokens": 34035
+    },
+    "cost_usd_total": 0.0,
+    "router_decision_source": {
+      "rules": 10
+    }
+  },
+  "b1b": {
+    "questions": 10,
+    "runtime_errors": 0,
+    "retrieval_hit_at_1": 0.333333,
+    "retrieval_hit_at_5": 0.444444,
+    "retrieval_hit_at_10": 0.666667,
+    "retrieval_recall_at_5": 0.444444,
+    "retrieval_recall_at_10": 0.666667,
+    "answer_accuracy_automatic": 0.3,
+    "manual_answer_accuracy": null,
+    "citation_precision": 0.333333,
+    "citation_recall": 0.333333,
+    "latency_seconds_p50": 7.719,
+    "latency_seconds_p95": 11.35215,
+    "router_latency_seconds_p50": 2.935749,
+    "router_latency_seconds_p95": 3.900724,
+    "route_distribution": {
+      "multi_hop": 2,
+      "structured": 8
+    },
+    "raw_candidates_mean": 12.0,
+    "llm_calls_total": 21,
+    "calls_by_purpose": {
+      "answer": 10,
+      "repair": 1,
+      "route": 10
+    },
+    "tokens": {
+      "uncached_input_tokens": 36837,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 651,
+      "reasoning_tokens": 0,
+      "source": "client_tokenizer",
+      "total_input_tokens": 36837,
+      "total_tokens": 37488
+    },
+    "cost_usd_total": 0.0,
+    "router_decision_source": {
+      "llm_normalized": 10
+    }
+  },
+  "delta_b1b_minus_b1a": {
+    "retrieval_hit_at_1": 0.0,
+    "retrieval_hit_at_5": 0.0,
+    "retrieval_hit_at_10": 0.0,
+    "retrieval_recall_at_5": 0.0,
+    "retrieval_recall_at_10": 0.0,
+    "answer_accuracy_automatic": 0.0,
+    "citation_precision": 0.0,
+    "citation_recall": 0.0,
+    "latency_seconds_p50": 2.4965,
+    "latency_seconds_p95": 1.4035,
+    "router_latency_seconds_p50": 2.935166,
+    "router_latency_seconds_p95": 3.899874,
+    "raw_candidates_mean": -1.0,
+    "llm_calls_total": 10.0
+  },
+  "per_question": {
+    "sq-01": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": true,
+      "b1b_automatic_correct": true
+    },
+    "sq-02": {
+      "b1a_route": "multi_hop",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": true,
+      "b1b_automatic_correct": true
+    },
+    "sq-03": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": false,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "sq-04": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": false,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "sq-05": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": false,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "sq-06": {
+      "b1a_route": "multi_hop",
+      "b1b_route": "multi_hop",
+      "b1a_hit_at_5": false,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "sq-07": {
+      "b1a_route": "multi_hop",
+      "b1b_route": "multi_hop",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "sq-08": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": false,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "sq-09": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "sq-10": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": false,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": true,
+      "b1b_automatic_correct": true
+    }
+  }
+}

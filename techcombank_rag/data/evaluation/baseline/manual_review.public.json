@@ -1,0 +1,52 @@
+{
+  "sq-01": {
+    "correct": false,
+    "failure_category": "false_refusal",
+    "notes": "Trang 4 được retrieve ở rank 3 nhưng answer/citation repair thất bại."
+  },
+  "sq-02": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Đủ cả hai tổ chức, mức xếp hạng và triển vọng; citation đúng trang 4."
+  },
+  "sq-03": {
+    "correct": false,
+    "failure_category": "retrieval_miss",
+    "notes": "Trang vàng 5 không xuất hiện trong top 10."
+  },
+  "sq-04": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Giá trị CASA 40,4% và citation trang 5 chính xác."
+  },
+  "sq-05": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Giá trị 1,13% đúng; trang 55 là nguồn lặp lại hợp lệ dù gold canonical là trang 5."
+  },
+  "sq-06": {
+    "correct": false,
+    "failure_category": "retrieval_miss",
+    "notes": "Chỉ trả lời tổng thu nhập và thiếu CAGR 16,5%; trang vàng 5 không ở top 10."
+  },
+  "sq-07": {
+    "correct": false,
+    "failure_category": "retrieval_miss",
+    "notes": "Trang vàng 59 không ở top 10 và hệ thống từ chối."
+  },
+  "sq-08": {
+    "correct": true,
+    "failure_category": "citation_error",
+    "notes": "Nội dung mở rộng RBG đúng nhưng cite mục lục trang 2 thay vì danh mục trang 387."
+  },
+  "sq-09": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Định nghĩa CASA và citation trang 386 chính xác."
+  },
+  "sq-10": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Từ chối đúng câu hỏi dự báo ngoài phạm vi báo cáo."
+  }
+}

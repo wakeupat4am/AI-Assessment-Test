@@ -1,0 +1,52 @@
+{
+  "sq-01": {
+    "correct": false,
+    "failure_category": "false_refusal",
+    "notes": "Trang chuẩn 4 ở hạng 2 và nằm trong top-5 evidence nhưng hệ thống vẫn từ chối."
+  },
+  "sq-02": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Đúng cả hai mức xếp hạng, triển vọng và citation trang chuẩn 4."
+  },
+  "sq-03": {
+    "correct": false,
+    "failure_category": "retrieval_miss",
+    "notes": "Trang chuẩn 5 không xuất hiện trong top 10; hệ thống từ chối."
+  },
+  "sq-04": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "CASA 40,4% đúng và trang 53 là nguồn lặp lại hợp lệ; metric citation canonical vẫn chấm theo gold trang 5."
+  },
+  "sq-05": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "NPL 1,13% đúng và trang 15 là nguồn lặp lại hợp lệ; metric citation canonical vẫn chấm theo gold trang 5."
+  },
+  "sq-06": {
+    "correct": false,
+    "failure_category": "retrieval_miss",
+    "notes": "Trang chuẩn 5 vắng top 10; trả 28,3 thay vì 53,4 nghìn tỷ đồng và thiếu CAGR 16,5%."
+  },
+  "sq-07": {
+    "correct": false,
+    "failure_category": "false_refusal",
+    "notes": "Trang chuẩn 59 ở hạng 3 nhưng answer stage vẫn từ chối."
+  },
+  "sq-08": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Khai triển RBG đúng và citation đúng trang chuẩn 387."
+  },
+  "sq-09": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Khai triển CASA đúng và citation đúng trang chuẩn 386."
+  },
+  "sq-10": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Từ chối đúng câu hỏi không có căn cứ trong báo cáo."
+  }
+}

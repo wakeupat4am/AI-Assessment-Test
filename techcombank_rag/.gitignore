@@ -1,0 +1,29 @@
+.env
+.venv/
+.DS_Store
+._*
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.log
+data/raw/*.pdf
+data/processed/*.jsonl
+data/processed/debug_queries.jsonl
+data/processed/paddleocr_vl_1_6/raw/
+data/processed/paddleocr_vl_1_6/*.log
+data/processed/a1a_paddleocr_vl_1_6_plain_fixed/
+data/processed/a1b_paddleocr_vl_1_6_markdown_fixed/
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/index/.gitkeep
+# Ship only the selected deployable A3.1+B4b index. Alternative experiment
+# indexes can be rebuilt and their measured outputs remain under evaluation/.
+data/index/*
+!data/index/.gitkeep
+!data/index/chunks.jsonl
+!data/index/index.faiss
+!data/index/metadata.json
+!data/index/a31_semantic_multirepr/
+data/index/a31_semantic_multirepr/*
+!data/index/a31_semantic_multirepr/all/
+!data/index/a31_semantic_multirepr/all/**

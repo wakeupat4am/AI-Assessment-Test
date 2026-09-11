@@ -1,0 +1,590 @@
+{
+  "artifact_schema_version": 1,
+  "experiment": "B1a",
+  "created_at_utc": "2026-09-10T10:37:24.144604+00:00",
+  "hypothesis": "A deterministic query router improves retrieval over always using A2 without changing answer generation.",
+  "questions": "data/evaluation/dev.json",
+  "questions_sha256": "599c1b226f6fde06eacaac4e4ef58f7d725834195afb824118d68f593868155d",
+  "router_config": "/Users/dienmayhaituyet/Documents/TCB_Test/techcombank_rag/config/xrouter_b1a.json",
+  "router_config_sha256": "8f5014295f70a9a122c214101dd43d968dd6ccac080602a21026cd16d5f9f86f",
+  "index_mapping": {
+    "narrative": "/Users/dienmayhaituyet/Documents/TCB_Test/techcombank_rag/data/index/b1a_narrative_index",
+    "structured": "/Users/dienmayhaituyet/Documents/TCB_Test/techcombank_rag/data/index/a2_paddleocr_vl_1_6_layout_aware",
+    "multi_repr": "/Users/dienmayhaituyet/Documents/TCB_Test/techcombank_rag/data/index/a3_paddleocr_vl_1_6_multigranularity",
+    "multi_hop": [
+      "/Users/dienmayhaituyet/Documents/TCB_Test/techcombank_rag/data/index/a2_paddleocr_vl_1_6_layout_aware",
+      "/Users/dienmayhaituyet/Documents/TCB_Test/techcombank_rag/data/index/b1a_narrative_index"
+    ]
+  },
+  "answer_generation_changed": false,
+  "baseline": {
+    "questions": 20,
+    "runtime_errors": 0,
+    "retrieval_hit_at_1": 0.166667,
+    "retrieval_hit_at_5": 0.611111,
+    "retrieval_hit_at_10": 0.611111,
+    "retrieval_recall_at_1": 0.166667,
+    "retrieval_recall_at_5": 0.611111,
+    "retrieval_recall_at_10": 0.611111,
+    "answer_accuracy": 0.15,
+    "manual_answer_accuracy": null,
+    "total_latency_seconds_p50": 4.27,
+    "total_latency_seconds_p95": 8.31285,
+    "retrieval_latency_seconds_mean": 0.05389945,
+    "retrieval_latency_seconds_p50": 0.0455815,
+    "retrieval_latency_seconds_p95": 0.07700575,
+    "raw_candidates_mean": 10.0,
+    "returned_candidates_mean": 10.0,
+    "total_input_tokens": 61484,
+    "output_tokens": 625,
+    "llm_calls_total": 20,
+    "cost_projection_same_tokens_usd": {
+      "gpt-5.6-sol": 0.258436,
+      "gpt-5.6": 0.258436,
+      "gpt-5.6-terra": 0.130468,
+      "gpt-5.6-luna": 0.0130468,
+      "claude-sonnet-5": 0.193827,
+      "claude-opus-5": 0.323045,
+      "claude-fable-5": 0.64609
+    }
+  },
+  "xrouter": {
+    "questions": 20,
+    "runtime_errors": 0,
+    "retrieval_hit_at_1": 0.166667,
+    "retrieval_hit_at_5": 0.722222,
+    "retrieval_hit_at_10": 0.722222,
+    "retrieval_recall_at_1": 0.166667,
+    "retrieval_recall_at_5": 0.722222,
+    "retrieval_recall_at_10": 0.722222,
+    "answer_accuracy": 0.15,
+    "manual_answer_accuracy": null,
+    "total_latency_seconds_p50": 4.5145,
+    "total_latency_seconds_p95": 8.51225,
+    "retrieval_latency_seconds_mean": 0.0519282,
+    "retrieval_latency_seconds_p50": 0.0463475,
+    "retrieval_latency_seconds_p95": 0.0759632,
+    "raw_candidates_mean": 11.0,
+    "returned_candidates_mean": 10.0,
+    "total_input_tokens": 59736,
+    "output_tokens": 671,
+    "llm_calls_total": 20,
+    "cost_projection_same_tokens_usd": {
+      "gpt-5.6-sol": 0.252364,
+      "gpt-5.6": 0.252364,
+      "gpt-5.6-terra": 0.127524,
+      "gpt-5.6-luna": 0.0127524,
+      "claude-sonnet-5": 0.189273,
+      "claude-opus-5": 0.315455,
+      "claude-fable-5": 0.63091
+    },
+    "route_distribution": {
+      "multi_hop": 2,
+      "multi_repr": 5,
+      "structured": 13
+    },
+    "router_latency_seconds_p50": 0.000467,
+    "router_latency_seconds_p95": 0.000673
+  },
+  "delta_xrouter_minus_baseline": {
+    "retrieval_hit_at_1": 0.0,
+    "retrieval_hit_at_5": 0.111111,
+    "retrieval_hit_at_10": 0.111111,
+    "retrieval_recall_at_1": 0.0,
+    "retrieval_recall_at_5": 0.111111,
+    "retrieval_recall_at_10": 0.111111,
+    "answer_accuracy": 0.0,
+    "retrieval_latency_seconds_mean": -0.00197125,
+    "retrieval_latency_seconds_p50": 0.000766,
+    "retrieval_latency_seconds_p95": -0.00104255,
+    "raw_candidates_mean": 1.0,
+    "returned_candidates_mean": 0.0,
+    "total_input_tokens": -1748.0,
+    "output_tokens": 46.0,
+    "llm_calls_total": 0.0
+  },
+  "per_question_routes": {
+    "dev-01": {
+      "route": "structured",
+      "confidence": 0.97,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        244,
+        59,
+        209,
+        20,
+        71,
+        63,
+        49,
+        89,
+        237,
+        16
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-02": {
+      "route": "multi_repr",
+      "confidence": 0.54,
+      "selected_indexes": [
+        "multi_repr"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        246,
+        246,
+        209,
+        20,
+        243,
+        287,
+        237,
+        237,
+        209,
+        234
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-03": {
+      "route": "structured",
+      "confidence": 0.97,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        21,
+        35,
+        30,
+        4,
+        72,
+        75,
+        109,
+        15,
+        59,
+        95
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": true,
+      "effective_correct": true
+    },
+    "dev-04": {
+      "route": "multi_hop",
+      "confidence": 0.95,
+      "selected_indexes": [
+        "structured",
+        "narrative"
+      ],
+      "raw_candidate_count": 20,
+      "retrieved_pages": [
+        58,
+        11,
+        119,
+        53,
+        71,
+        19,
+        4,
+        189,
+        49,
+        293
+      ],
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-05": {
+      "route": "structured",
+      "confidence": 1.0,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        58,
+        15,
+        293,
+        59,
+        49,
+        72,
+        11,
+        4,
+        19,
+        189
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-06": {
+      "route": "structured",
+      "confidence": 0.75,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        117,
+        4,
+        59,
+        49,
+        72,
+        106,
+        12,
+        16,
+        103,
+        19
+      ],
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-07": {
+      "route": "structured",
+      "confidence": 0.87,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        79,
+        68,
+        71,
+        58,
+        293,
+        77,
+        49,
+        5,
+        72,
+        52
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-08": {
+      "route": "structured",
+      "confidence": 0.75,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        117,
+        121,
+        211,
+        35,
+        106,
+        19,
+        4,
+        41,
+        59,
+        263
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-09": {
+      "route": "multi_repr",
+      "confidence": 0.5,
+      "selected_indexes": [
+        "multi_repr"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        359,
+        356,
+        300,
+        55,
+        118,
+        355,
+        79,
+        81,
+        14,
+        356
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-10": {
+      "route": "multi_repr",
+      "confidence": 0.42,
+      "selected_indexes": [
+        "multi_repr"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        152,
+        151,
+        152,
+        152,
+        154,
+        198,
+        154,
+        185,
+        152,
+        152
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-11": {
+      "route": "structured",
+      "confidence": 0.75,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        174,
+        175,
+        177,
+        174,
+        178,
+        178,
+        217,
+        179,
+        192,
+        180
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-12": {
+      "route": "multi_repr",
+      "confidence": 0.41,
+      "selected_indexes": [
+        "multi_repr"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        43,
+        20,
+        239,
+        239,
+        237,
+        237,
+        20,
+        232,
+        43,
+        43
+      ],
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-13": {
+      "route": "structured",
+      "confidence": 0.75,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        243,
+        244,
+        20,
+        76,
+        232,
+        35,
+        167,
+        243,
+        84,
+        209
+      ],
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-14": {
+      "route": "structured",
+      "confidence": 0.97,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        35,
+        76,
+        84,
+        11,
+        257,
+        51,
+        15,
+        59,
+        77,
+        46
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-15": {
+      "route": "multi_hop",
+      "confidence": 0.95,
+      "selected_indexes": [
+        "structured",
+        "narrative"
+      ],
+      "raw_candidate_count": 20,
+      "retrieved_pages": [
+        35,
+        257,
+        15,
+        11,
+        51,
+        59,
+        76,
+        77,
+        84,
+        50
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-16": {
+      "route": "structured",
+      "confidence": 1.0,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        49,
+        59,
+        72,
+        35,
+        15,
+        71,
+        16,
+        11,
+        11,
+        50
+      ],
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-17": {
+      "route": "structured",
+      "confidence": 1.0,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        35,
+        257,
+        41,
+        174,
+        11,
+        59,
+        117,
+        11,
+        43,
+        46
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-18": {
+      "route": "multi_repr",
+      "confidence": 0.42,
+      "selected_indexes": [
+        "multi_repr"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        286,
+        286,
+        286,
+        202,
+        202,
+        286,
+        258,
+        289,
+        289,
+        185
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "dev-19": {
+      "route": "structured",
+      "confidence": 1.0,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        89,
+        35,
+        51,
+        11,
+        59,
+        15,
+        49,
+        178,
+        83,
+        95
+      ],
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "automatic_correct": true,
+      "effective_correct": true
+    },
+    "dev-20": {
+      "route": "structured",
+      "confidence": 0.75,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        38,
+        338,
+        340,
+        331,
+        84,
+        334,
+        330,
+        343,
+        331,
+        337
+      ],
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "automatic_correct": true,
+      "effective_correct": true
+    }
+  }
+}

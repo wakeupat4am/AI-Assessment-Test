@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Tỷ lệ CASA của Techcombank năm 2025 là bao nhiêu?",
+    "gold_answer": "40,4%",
+    "synthetic": true
+  },
+  {
+    "question": "Lợi nhuận trước thuế năm 2025 là bao nhiêu?",
+    "gold_answer": "32,5 nghìn tỷ đồng",
+    "synthetic": true
+  },
+  {
+    "question": "Báo cáo cho biết có bao nhiêu kỳ lân sống trên Mặt Trăng?",
+    "gold_answer": "Không có đủ thông tin trong báo cáo.",
+    "synthetic": true
+  }
+]
+

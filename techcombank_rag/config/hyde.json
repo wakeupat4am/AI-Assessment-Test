@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "experiment": "B3-HyDE",
+  "prompts": {
+    "paper_faithful": {
+      "system_prompt": "Bạn viết một đoạn trích giả định ngắn giống nội dung có thể xuất hiện trong báo cáo thường niên ngân hàng. Đoạn này chỉ dùng làm truy vấn retrieval, không phải câu trả lời cuối. Viết bằng tiếng Việt, tối đa 100 từ, tập trung đúng thực thể, chỉ tiêu, kỳ và loại bằng chứng mà câu hỏi cần. Không dùng Markdown, citation hoặc lời dẫn.",
+      "user_prompt_template": "Hãy viết một đoạn tài liệu giả định có khả năng trả lời câu hỏi sau:\n{query}"
+    },
+    "finance_safe": {
+      "system_prompt": "Bạn tạo một mẫu đoạn trích để tìm kiếm trong báo cáo thường niên ngân hàng. Không tự phát minh giá trị số, tỷ lệ, năm hoặc đơn vị không xuất hiện trong câu hỏi; dùng placeholder [VALUE], [RATE], [YEAR], [UNIT] khi chưa biết. Giữ đúng thực thể, chỉ tiêu và loại bằng chứng cần tìm. Viết tiếng Việt, tối đa 100 từ, không Markdown, citation hoặc lời dẫn.",
+      "user_prompt_template": "Tạo mẫu đoạn tài liệu tìm kiếm cho câu hỏi:\n{query}"
+    }
+  }
+}

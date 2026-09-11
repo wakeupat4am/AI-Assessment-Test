@@ -1,0 +1,350 @@
+{
+  "artifact_schema_version": 1,
+  "experiment": "B1a",
+  "created_at_utc": "2026-09-10T10:37:20.816064+00:00",
+  "hypothesis": "A deterministic query router improves retrieval over always using A2 without changing answer generation.",
+  "questions": "data/evaluation/public.json",
+  "questions_sha256": "3949b944dbf7033c805c347c982b74234ced60710954626b779cf2c5d39b4992",
+  "router_config": "/Users/dienmayhaituyet/Documents/TCB_Test/techcombank_rag/config/xrouter_b1a.json",
+  "router_config_sha256": "8f5014295f70a9a122c214101dd43d968dd6ccac080602a21026cd16d5f9f86f",
+  "index_mapping": {
+    "narrative": "/Users/dienmayhaituyet/Documents/TCB_Test/techcombank_rag/data/index/b1a_narrative_index",
+    "structured": "/Users/dienmayhaituyet/Documents/TCB_Test/techcombank_rag/data/index/a2_paddleocr_vl_1_6_layout_aware",
+    "multi_repr": "/Users/dienmayhaituyet/Documents/TCB_Test/techcombank_rag/data/index/a3_paddleocr_vl_1_6_multigranularity",
+    "multi_hop": [
+      "/Users/dienmayhaituyet/Documents/TCB_Test/techcombank_rag/data/index/a2_paddleocr_vl_1_6_layout_aware",
+      "/Users/dienmayhaituyet/Documents/TCB_Test/techcombank_rag/data/index/b1a_narrative_index"
+    ]
+  },
+  "answer_generation_changed": false,
+  "baseline": {
+    "questions": 10,
+    "runtime_errors": 0,
+    "retrieval_hit_at_1": 0.333333,
+    "retrieval_hit_at_5": 0.444444,
+    "retrieval_hit_at_10": 0.666667,
+    "retrieval_recall_at_1": 0.333333,
+    "retrieval_recall_at_5": 0.444444,
+    "retrieval_recall_at_10": 0.666667,
+    "answer_accuracy": 0.7,
+    "manual_answer_accuracy": 0.7,
+    "total_latency_seconds_p50": 5.6545,
+    "total_latency_seconds_p95": 10.20955,
+    "retrieval_latency_seconds_mean": 0.066133,
+    "retrieval_latency_seconds_p50": 0.0589615,
+    "retrieval_latency_seconds_p95": 0.1089699,
+    "raw_candidates_mean": 10.0,
+    "returned_candidates_mean": 10.0,
+    "total_input_tokens": 33653,
+    "output_tokens": 382,
+    "llm_calls_total": 11,
+    "cost_projection_same_tokens_usd": {
+      "gpt-5.6-sol": 0.142252,
+      "gpt-5.6": 0.142252,
+      "gpt-5.6-terra": 0.07189,
+      "gpt-5.6-luna": 0.007189,
+      "claude-sonnet-5": 0.106689,
+      "claude-opus-5": 0.177815,
+      "claude-fable-5": 0.35563
+    }
+  },
+  "xrouter": {
+    "questions": 10,
+    "runtime_errors": 0,
+    "retrieval_hit_at_1": 0.333333,
+    "retrieval_hit_at_5": 0.444444,
+    "retrieval_hit_at_10": 0.666667,
+    "retrieval_recall_at_1": 0.333333,
+    "retrieval_recall_at_5": 0.444444,
+    "retrieval_recall_at_10": 0.666667,
+    "answer_accuracy": 0.7,
+    "manual_answer_accuracy": 0.7,
+    "total_latency_seconds_p50": 5.414,
+    "total_latency_seconds_p95": 10.33585,
+    "retrieval_latency_seconds_mean": 0.0726793,
+    "retrieval_latency_seconds_p50": 0.0558645,
+    "retrieval_latency_seconds_p95": 0.11587475,
+    "raw_candidates_mean": 13.0,
+    "returned_candidates_mean": 10.0,
+    "total_input_tokens": 33653,
+    "output_tokens": 382,
+    "llm_calls_total": 11,
+    "cost_projection_same_tokens_usd": {
+      "gpt-5.6-sol": 0.142252,
+      "gpt-5.6": 0.142252,
+      "gpt-5.6-terra": 0.07189,
+      "gpt-5.6-luna": 0.007189,
+      "claude-sonnet-5": 0.106689,
+      "claude-opus-5": 0.177815,
+      "claude-fable-5": 0.35563
+    },
+    "route_distribution": {
+      "multi_hop": 3,
+      "structured": 7
+    },
+    "router_latency_seconds_p50": 0.000614,
+    "router_latency_seconds_p95": 0.00121
+  },
+  "delta_xrouter_minus_baseline": {
+    "retrieval_hit_at_1": 0.0,
+    "retrieval_hit_at_5": 0.0,
+    "retrieval_hit_at_10": 0.0,
+    "retrieval_recall_at_1": 0.0,
+    "retrieval_recall_at_5": 0.0,
+    "retrieval_recall_at_10": 0.0,
+    "answer_accuracy": 0.0,
+    "retrieval_latency_seconds_mean": 0.0065463,
+    "retrieval_latency_seconds_p50": -0.003097,
+    "retrieval_latency_seconds_p95": 0.00690485,
+    "raw_candidates_mean": 3.0,
+    "returned_candidates_mean": 0.0,
+    "total_input_tokens": 0.0,
+    "output_tokens": 0.0,
+    "llm_calls_total": 0.0
+  },
+  "per_question_routes": {
+    "sq-01": {
+      "route": "structured",
+      "confidence": 0.75,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        4,
+        59,
+        117,
+        12,
+        106,
+        164,
+        19,
+        64,
+        35,
+        27
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": true,
+      "effective_correct": true
+    },
+    "sq-02": {
+      "route": "multi_hop",
+      "confidence": 1.0,
+      "selected_indexes": [
+        "structured",
+        "narrative"
+      ],
+      "raw_candidate_count": 20,
+      "retrieved_pages": [
+        4,
+        43,
+        239,
+        59,
+        71,
+        33,
+        35,
+        12,
+        11,
+        43
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": true,
+      "effective_correct": true
+    },
+    "sq-03": {
+      "route": "structured",
+      "confidence": 0.97,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        84,
+        89,
+        36,
+        59,
+        257,
+        76,
+        35,
+        164,
+        4,
+        77
+      ],
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "sq-04": {
+      "route": "structured",
+      "confidence": 1.0,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        49,
+        53,
+        121,
+        16,
+        117,
+        5,
+        117,
+        19,
+        62,
+        120
+      ],
+      "hit_at_5": false,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": true
+    },
+    "sq-05": {
+      "route": "structured",
+      "confidence": 1.0,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        89,
+        35,
+        59,
+        15,
+        49,
+        11,
+        16,
+        257,
+        71,
+        76
+      ],
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "automatic_correct": false,
+      "effective_correct": true
+    },
+    "sq-06": {
+      "route": "multi_hop",
+      "confidence": 0.95,
+      "selected_indexes": [
+        "structured",
+        "narrative"
+      ],
+      "raw_candidate_count": 20,
+      "retrieved_pages": [
+        59,
+        15,
+        35,
+        12,
+        38,
+        46,
+        14,
+        72,
+        71,
+        4
+      ],
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "sq-07": {
+      "route": "multi_hop",
+      "confidence": 0.95,
+      "selected_indexes": [
+        "structured",
+        "narrative"
+      ],
+      "raw_candidate_count": 20,
+      "retrieved_pages": [
+        58,
+        71,
+        59,
+        16,
+        72,
+        15,
+        119,
+        11,
+        49,
+        14
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": false
+    },
+    "sq-08": {
+      "route": "structured",
+      "confidence": 0.64,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        2,
+        44,
+        386,
+        58,
+        388,
+        3,
+        387,
+        387,
+        389,
+        390
+      ],
+      "hit_at_5": false,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": true
+    },
+    "sq-09": {
+      "route": "structured",
+      "confidence": 0.76,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        386,
+        5,
+        53,
+        117,
+        386,
+        48,
+        387,
+        62,
+        49,
+        386
+      ],
+      "hit_at_5": true,
+      "hit_at_10": true,
+      "automatic_correct": false,
+      "effective_correct": true
+    },
+    "sq-10": {
+      "route": "structured",
+      "confidence": 0.97,
+      "selected_indexes": [
+        "structured"
+      ],
+      "raw_candidate_count": 10,
+      "retrieved_pages": [
+        35,
+        84,
+        11,
+        15,
+        51,
+        76,
+        257,
+        49,
+        46,
+        340
+      ],
+      "hit_at_5": false,
+      "hit_at_10": false,
+      "automatic_correct": true,
+      "effective_correct": true
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "artifact_schema_version": 1,
+  "agent_protocol": "provider_neutral_json_tool_calls_v1",
+  "initial_top_k": 20,
+  "followup_top_k": 12,
+  "max_tool_actions_after_initial_retrieval": 1,
+  "evidence_preview_chunks": 6,
+  "evidence_preview_characters_per_chunk": 500,
+  "trigger_patterns": [
+    "tăng thêm",
+    "chênh lệch",
+    "cao hơn",
+    "thấp hơn",
+    "so với",
+    "lần lượt",
+    "từ năm",
+    "và tăng",
+    "và giảm"
+  ],
+  "calculation_patterns": [
+    "tăng thêm",
+    "chênh lệch",
+    "giảm thêm",
+    "cao hơn bao nhiêu",
+    "thấp hơn bao nhiêu"
+  ],
+  "allowed_operations": ["subtract", "percentage_change", "cagr"],
+  "tool_names": ["hybrid_retrieve", "calculator", "finish"],
+  "log_version": 1
+}

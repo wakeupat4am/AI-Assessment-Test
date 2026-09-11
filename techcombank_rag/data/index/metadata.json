@@ -1,0 +1,22 @@
+{
+  "artifact_schema_version": 1,
+  "pipeline": "baseline-a0-pymupdf-text+dense-e5-flatip",
+  "source_pdf": "techcombank_rag/data/raw/techcombank-bao-cao-thuong-nien-2025-vie-update.pdf",
+  "source_pdf_sha256": "2db3dfe6e7a05f889ec2e93bf16dda4b6a7f3334df440b7cb0761df2e89344d9",
+  "embedding_model": "intfloat/multilingual-e5-small",
+  "embedding_device": "cpu",
+  "pdf_sheet_count": 197,
+  "printed_fragment_count": 393,
+  "chunk_count": 446,
+  "vector_dimension": 384,
+  "chunk_size_characters": 3200,
+  "overlap_characters": 480,
+  "repeated_margin_lines_removed": [
+    "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)                                               B05/TCTD-HN",
+    "tại ngày 31 tháng 12 năm 2025 và cho năm tài chính kết thúc cùng ngày"
+  ],
+  "ingestion_seconds": 35.278,
+  "created_at_utc": "2026-09-08T17:36:14.722157+00:00",
+  "chunks_sha256": "7ed9df254f771b7c76a47289c9bc31aa7a33bcc2ad50290b83f5f874f6720b67",
+  "index_sha256": "b942b6ef69209c89b42032c06714ba1de84c435eff05649d3ed2ab58591a0197"
+}

@@ -1,0 +1,250 @@
+{
+  "artifact_schema_version": 1,
+  "experiment": "A3.1 semantic multi-representation x retrieval controller",
+  "created_at_utc": "2026-09-11T04:47:24.648893+00:00",
+  "run_label": "public",
+  "questions": "techcombank_rag/data/evaluation/public.json",
+  "index_root": "/home/ubuntu/TCB_Test/techcombank_rag/data/index/a31_semantic_multirepr",
+  "controlled_variables": {
+    "document_representation": "A3.1 for all four controllers",
+    "embedding_model": "intfloat/multilingual-e5-small",
+    "answer_generation": "unchanged Qwen endpoint and prompt",
+    "top_k_evidence": 5,
+    "changed_variable": "B0 one-shot vs B1a rule routing vs B1b LLM routing vs B2 adaptive retrieval"
+  },
+  "route_indexes": {
+    "narrative": [
+      "narrative"
+    ],
+    "structured": [
+      "structured"
+    ],
+    "multi_repr": [
+      "multi_repr"
+    ],
+    "multi_hop": [
+      "structured",
+      "narrative"
+    ]
+  },
+  "parent_character_limit": 1800,
+  "controllers": {
+    "B0_one_shot": {
+      "questions": 10,
+      "runtime_errors": 0,
+      "answer_accuracy_automatic": 0.4,
+      "manual_answer_accuracy": null,
+      "retrieval_hit_at_1": 0.555556,
+      "retrieval_hit_at_5": 1.0,
+      "retrieval_hit_at_10": 1.0,
+      "retrieval_recall_at_5": 1.0,
+      "retrieval_recall_at_10": 1.0,
+      "citation_precision": 0.666667,
+      "citation_recall": 0.666667,
+      "citation_validator_pass_rate": 1.0,
+      "refusal_accuracy": 1.0,
+      "latency_p50_seconds": 5.2815,
+      "latency_p95_seconds": 7.4198,
+      "retrieval_latency_mean_seconds": 0.061999,
+      "llm_calls_total": 10,
+      "llm_tokens": {
+        "uncached_input_tokens": 35705,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 372,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 35705,
+        "total_tokens": 36077
+      },
+      "cost_usd_total": 0.0,
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.15026,
+        "gpt-5.6": 0.15026,
+        "gpt-5.6-terra": 0.075874,
+        "gpt-5.6-luna": 0.0075874,
+        "claude-sonnet-5": 0.112695,
+        "claude-opus-5": 0.187825,
+        "claude-fable-5": 0.37565
+      },
+      "average_search_rounds": 1.0,
+      "second_search_trigger_rate": 0.0,
+      "average_returned_candidates": 10.0,
+      "average_evidence_tokens": 2399.0,
+      "average_parent_expanded_chunks": 3.0,
+      "average_duplicate_page_slots": 4.5,
+      "route_distribution": {},
+      "failure_taxonomy": {
+        "answer_error": 4,
+        "citation_error": 3,
+        "none": 3
+      }
+    },
+    "B1a_rule": {
+      "questions": 10,
+      "runtime_errors": 0,
+      "answer_accuracy_automatic": 0.4,
+      "manual_answer_accuracy": null,
+      "retrieval_hit_at_1": 0.555556,
+      "retrieval_hit_at_5": 0.777778,
+      "retrieval_hit_at_10": 0.888889,
+      "retrieval_recall_at_5": 0.777778,
+      "retrieval_recall_at_10": 0.888889,
+      "citation_precision": 0.666667,
+      "citation_recall": 0.666667,
+      "citation_validator_pass_rate": 0.9,
+      "refusal_accuracy": 0.9,
+      "latency_p50_seconds": 5.3405,
+      "latency_p95_seconds": 8.34345,
+      "retrieval_latency_mean_seconds": 0.071734,
+      "llm_calls_total": 11,
+      "llm_tokens": {
+        "uncached_input_tokens": 41865,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 406,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 41865,
+        "total_tokens": 42271
+      },
+      "cost_usd_total": 0.0,
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.17558,
+        "gpt-5.6": 0.17558,
+        "gpt-5.6-terra": 0.088602,
+        "gpt-5.6-luna": 0.0088602,
+        "claude-sonnet-5": 0.131685,
+        "claude-opus-5": 0.219475,
+        "claude-fable-5": 0.43895
+      },
+      "average_search_rounds": 1.0,
+      "second_search_trigger_rate": 0.0,
+      "average_returned_candidates": 10.0,
+      "average_evidence_tokens": 2545.9,
+      "average_parent_expanded_chunks": 4.1,
+      "average_duplicate_page_slots": 4.4,
+      "route_distribution": {
+        "multi_hop": 3,
+        "structured": 7
+      },
+      "failure_taxonomy": {
+        "answer_error": 4,
+        "citation_error": 1,
+        "false_refusal": 1,
+        "none": 3,
+        "retrieval_miss": 1
+      }
+    },
+    "B1b_llm": {
+      "questions": 10,
+      "runtime_errors": 0,
+      "answer_accuracy_automatic": 0.3,
+      "manual_answer_accuracy": null,
+      "retrieval_hit_at_1": 0.555556,
+      "retrieval_hit_at_5": 0.777778,
+      "retrieval_hit_at_10": 0.777778,
+      "retrieval_recall_at_5": 0.777778,
+      "retrieval_recall_at_10": 0.777778,
+      "citation_precision": 0.666667,
+      "citation_recall": 0.666667,
+      "citation_validator_pass_rate": 0.9,
+      "refusal_accuracy": 0.8,
+      "latency_p50_seconds": 8.394,
+      "latency_p95_seconds": 10.8692,
+      "retrieval_latency_mean_seconds": 3.059911,
+      "llm_calls_total": 21,
+      "llm_tokens": {
+        "uncached_input_tokens": 45330,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 651,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 45330,
+        "total_tokens": 45981
+      },
+      "cost_usd_total": 0.0,
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.19434,
+        "gpt-5.6": 0.19434,
+        "gpt-5.6-terra": 0.098472,
+        "gpt-5.6-luna": 0.0098472,
+        "claude-sonnet-5": 0.145755,
+        "claude-opus-5": 0.242925,
+        "claude-fable-5": 0.48585
+      },
+      "average_search_rounds": 1.0,
+      "second_search_trigger_rate": 0.0,
+      "average_returned_candidates": 10.0,
+      "average_evidence_tokens": 2516.3,
+      "average_parent_expanded_chunks": 4.4,
+      "average_duplicate_page_slots": 4.6,
+      "route_distribution": {
+        "multi_hop": 2,
+        "structured": 8
+      },
+      "failure_taxonomy": {
+        "answer_error": 4,
+        "false_refusal": 1,
+        "none": 3,
+        "retrieval_miss": 2
+      }
+    },
+    "B2_adaptive": {
+      "questions": 10,
+      "runtime_errors": 0,
+      "answer_accuracy_automatic": 0.3,
+      "manual_answer_accuracy": null,
+      "retrieval_hit_at_1": 0.222222,
+      "retrieval_hit_at_5": 0.666667,
+      "retrieval_hit_at_10": 0.888889,
+      "retrieval_recall_at_5": 0.666667,
+      "retrieval_recall_at_10": 0.888889,
+      "citation_precision": 0.5,
+      "citation_recall": 0.555556,
+      "citation_validator_pass_rate": 1.0,
+      "refusal_accuracy": 0.9,
+      "latency_p50_seconds": 5.089,
+      "latency_p95_seconds": 7.48265,
+      "retrieval_latency_mean_seconds": 0.09533,
+      "llm_calls_total": 8,
+      "llm_tokens": {
+        "uncached_input_tokens": 33001,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 343,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 33001,
+        "total_tokens": 33344
+      },
+      "cost_usd_total": 0.0,
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.138864,
+        "gpt-5.6": 0.138864,
+        "gpt-5.6-terra": 0.070118,
+        "gpt-5.6-luna": 0.0070118,
+        "claude-sonnet-5": 0.104148,
+        "claude-opus-5": 0.17358,
+        "claude-fable-5": 0.34716
+      },
+      "average_search_rounds": 1.2,
+      "second_search_trigger_rate": 0.2,
+      "average_returned_candidates": 8.6,
+      "average_evidence_tokens": 2783.8,
+      "average_parent_expanded_chunks": 3.6,
+      "average_duplicate_page_slots": 0.3,
+      "route_distribution": {
+        "multi_hop": 3,
+        "structured": 7
+      },
+      "failure_taxonomy": {
+        "answer_error": 3,
+        "citation_error": 4,
+        "none": 2,
+        "retrieval_miss": 1
+      }
+    }
+  }
+}

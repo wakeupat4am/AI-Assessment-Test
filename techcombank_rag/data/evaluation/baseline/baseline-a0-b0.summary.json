@@ -1,0 +1,110 @@
+{
+  "run_name": "baseline-a0-b0",
+  "created_at_utc": "2026-09-08T18:30:39.539568+00:00",
+  "evaluation_method": {
+    "retrieval": "printed-page recall and hit rate against manually verified gold pages",
+    "answer_automatic": "deterministic token-F1>=0.45 plus exact numeric coverage; refusal exactness for unanswerable questions",
+    "answer_primary": "manual review when provided, otherwise automatic heuristic",
+    "warning": "Automatic answer correctness is diagnostic, not a substitute for human review."
+  },
+  "environment": {
+    "python": "3.11.5",
+    "platform": "Linux-5.15.0-190-generic-x86_64-with-glibc2.31",
+    "llm_provider": "openai_compatible",
+    "llm_model": "Qwen/Qwen3.5-9B",
+    "embedding_model": "intfloat/multilingual-e5-small",
+    "top_k_evidence": 5,
+    "retrieval_k_evaluated": 10,
+    "index_dir": "techcombank_rag/data/index"
+  },
+  "artifacts": {
+    "questions": "data/evaluation/public.json",
+    "questions_sha256": "3949b944dbf7033c805c347c982b74234ced60710954626b779cf2c5d39b4992",
+    "index_metadata": {
+      "artifact_schema_version": 1,
+      "pipeline": "baseline-a0-pymupdf-text+dense-e5-flatip",
+      "source_pdf": "techcombank_rag/data/raw/techcombank-bao-cao-thuong-nien-2025-vie-update.pdf",
+      "source_pdf_sha256": "2db3dfe6e7a05f889ec2e93bf16dda4b6a7f3334df440b7cb0761df2e89344d9",
+      "embedding_model": "intfloat/multilingual-e5-small",
+      "embedding_device": "cpu",
+      "pdf_sheet_count": 197,
+      "printed_fragment_count": 393,
+      "chunk_count": 446,
+      "vector_dimension": 384,
+      "chunk_size_characters": 3200,
+      "overlap_characters": 480,
+      "repeated_margin_lines_removed": [
+        "THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT (tiếp theo)                                               B05/TCTD-HN",
+        "tại ngày 31 tháng 12 năm 2025 và cho năm tài chính kết thúc cùng ngày"
+      ],
+      "ingestion_seconds": 35.278,
+      "created_at_utc": "2026-09-08T17:36:14.722157+00:00",
+      "chunks_sha256": "7ed9df254f771b7c76a47289c9bc31aa7a33bcc2ad50290b83f5f874f6720b67",
+      "index_sha256": "b942b6ef69209c89b42032c06714ba1de84c435eff05649d3ed2ab58591a0197"
+    }
+  },
+  "counts": {
+    "questions": 10,
+    "answerable": 9,
+    "unanswerable": 1,
+    "runtime_errors": 0,
+    "manually_reviewed": 10
+  },
+  "metrics": {
+    "retrieval_recall_at_1": 0.111111,
+    "retrieval_recall_at_5": 0.444444,
+    "retrieval_recall_at_10": 0.555556,
+    "retrieval_hit_at_1": 0.111111,
+    "retrieval_hit_at_5": 0.444444,
+    "retrieval_hit_at_10": 0.555556,
+    "answer_accuracy": 0.6,
+    "manual_answer_accuracy": 0.6,
+    "citation_precision": 0.333333,
+    "citation_recall": 0.333333,
+    "citation_validator_pass_rate": 0.8,
+    "refusal_accuracy": 0.7,
+    "latency_seconds_mean": 7.2984,
+    "latency_seconds_p50": 4.6395,
+    "latency_seconds_p95": 18.9459,
+    "llm_calls_total": 13,
+    "tokens": {
+      "uncached_input_tokens": 51078,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 542,
+      "reasoning_tokens": 0,
+      "source": "client_tokenizer",
+      "total_input_tokens": 51078,
+      "total_tokens": 51620
+    },
+    "calls_by_purpose": {
+      "answer": 10,
+      "repair": 3
+    },
+    "calls_by_provider_model": {
+      "openai_compatible::Qwen/Qwen3.5-9B": 13
+    },
+    "cost_usd_total": 0.0,
+    "cost_usd_mean": 0.0,
+    "cost_projection_same_tokens_usd": {
+      "gpt-5.6-sol": 0.215152,
+      "gpt-5.6": 0.215152,
+      "gpt-5.6-terra": 0.10866,
+      "gpt-5.6-luna": 0.010866,
+      "claude-sonnet-5": 0.161364,
+      "claude-opus-5": 0.26894,
+      "claude-fable-5": 0.53788
+    }
+  },
+  "failure_taxonomy": {
+    "citation_error": 1,
+    "false_refusal": 1,
+    "none": 5,
+    "retrieval_miss": 3
+  },
+  "manual_review": {
+    "path": "techcombank_rag/data/evaluation/baseline/manual_review.public.json",
+    "sha256": "e5e12c365b0fccf1c7f1d41ae913d4f201dbc95b43a8fc0e26663c456faa3a12",
+    "reviewed_questions": 10
+  }
+}

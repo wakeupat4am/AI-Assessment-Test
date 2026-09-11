@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "experiment": "B1-controlled-A2",
+  "description": "Every retrieval view is derived from the frozen A2 representation; A3 is excluded.",
+  "route_indexes": {
+    "narrative": ["narrative"],
+    "structured": ["structured"],
+    "multi_repr": ["structured", "narrative"],
+    "multi_hop": ["structured", "narrative"]
+  },
+  "limitations": [
+    "multi_repr and multi_hop share the same dual-view RRF operator in this controlled experiment",
+    "true iterative multi-hop search is intentionally deferred to a later Track B experiment"
+  ]
+}

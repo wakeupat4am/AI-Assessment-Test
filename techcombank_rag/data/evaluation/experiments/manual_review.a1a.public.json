@@ -1,0 +1,52 @@
+{
+  "sq-01": {
+    "correct": false,
+    "failure_category": "false_refusal",
+    "notes": "Gold page 4 appears at rank 8, outside the top-5 evidence passed to generation; the answer refuses." 
+  },
+  "sq-02": {
+    "correct": true,
+    "failure_category": "citation_error",
+    "notes": "Both ratings and outlooks are correct, but the response cites duplicate page 43 instead of canonical gold page 4." 
+  },
+  "sq-03": {
+    "correct": false,
+    "failure_category": "retrieval_miss",
+    "notes": "Gold page 5 is absent from top 10 and the response refuses." 
+  },
+  "sq-04": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "CASA 40.4% is correct and canonical page 5 is cited." 
+  },
+  "sq-05": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "NPL 1.13% is correct; page 55 is a valid repeated source, as in the frozen A0 review." 
+  },
+  "sq-06": {
+    "correct": false,
+    "failure_category": "retrieval_miss",
+    "notes": "Gold page 5 is absent; the response gives 28.3 rather than 53.4 trillion VND and omits CAGR 16.5%." 
+  },
+  "sq-07": {
+    "correct": false,
+    "failure_category": "false_refusal",
+    "notes": "Gold page 59 is retrieved at rank 4 but the response refuses." 
+  },
+  "sq-08": {
+    "correct": true,
+    "failure_category": "citation_error",
+    "notes": "The RBG expansion is correct, but the response cites page 2 instead of canonical glossary page 387." 
+  },
+  "sq-09": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "The CASA expansion and citation to canonical page 386 are correct." 
+  },
+  "sq-10": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Correctly refuses the unsupported 2027 forecast." 
+  }
+}

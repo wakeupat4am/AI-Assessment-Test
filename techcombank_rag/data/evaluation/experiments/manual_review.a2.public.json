@@ -1,0 +1,52 @@
+{
+  "sq-01": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Đúng cả 302 điểm giao dịch, 29/34 tỉnh thành và trích dẫn đúng trang chuẩn 4."
+  },
+  "sq-02": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Đúng S&P BB/Ổn định và Fitch BB-/Tích cực, trích dẫn đúng trang chuẩn 4."
+  },
+  "sq-03": {
+    "correct": false,
+    "failure_category": "retrieval_miss",
+    "notes": "Trang chuẩn 5 không xuất hiện trong top 10; hệ thống từ chối và không trả lời 1.192 nghìn tỷ đồng."
+  },
+  "sq-04": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Giá trị 40,4% đúng và trang 49 là nguồn lặp lại hợp lệ; metric citation canonical vẫn chấm theo gold trang 5."
+  },
+  "sq-05": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Giá trị NPL 1,13% đúng và trang 15 là nguồn lặp lại hợp lệ; metric citation canonical vẫn chấm theo gold trang 5."
+  },
+  "sq-06": {
+    "correct": false,
+    "failure_category": "retrieval_miss",
+    "notes": "Trang chuẩn 5 vắng top 10; câu trả lời dùng 28,3 thay vì 53,4 nghìn tỷ đồng và thiếu CAGR 16,5%."
+  },
+  "sq-07": {
+    "correct": false,
+    "failure_category": "false_refusal",
+    "notes": "Trang chuẩn 59 được truy xuất ở hạng 3 nhưng hệ thống vẫn từ chối, không trả 328,1 nghìn tỷ đồng và 26,9%."
+  },
+  "sq-08": {
+    "correct": true,
+    "failure_category": "citation_error",
+    "notes": "Khai triển RBG đúng; trang chuẩn 387 có trong top 10 nhưng câu trả lời trích trang 2."
+  },
+  "sq-09": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Khai triển CASA đúng và trích dẫn đúng trang chuẩn 386."
+  },
+  "sq-10": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Từ chối đúng câu hỏi về dự báo 2027 không có trong báo cáo."
+  }
+}

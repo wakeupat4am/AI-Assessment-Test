@@ -1,0 +1,1294 @@
+{
+  "artifact_schema_version": 1,
+  "experiment": "B1b route-decision evaluation",
+  "created_at_utc": "2026-09-10T16:30:17.042152+00:00",
+  "labels": "/home/ubuntu/TCB_Test/techcombank_rag/data/evaluation/router/b1_route_labels.json",
+  "b1a": {
+    "questions": 25,
+    "correct": 25,
+    "route_accuracy": 1.0,
+    "per_class": {
+      "multi_hop": {
+        "questions": 8,
+        "correct": 8,
+        "accuracy": 1.0
+      },
+      "multi_repr": {
+        "questions": 5,
+        "correct": 5,
+        "accuracy": 1.0
+      },
+      "narrative": {
+        "questions": 6,
+        "correct": 6,
+        "accuracy": 1.0
+      },
+      "structured": {
+        "questions": 6,
+        "correct": 6,
+        "accuracy": 1.0
+      }
+    },
+    "confusion": {
+      "multi_hop->multi_hop": 8,
+      "multi_repr->multi_repr": 5,
+      "narrative->narrative": 6,
+      "structured->structured": 6
+    },
+    "route_distribution": {
+      "multi_hop": 8,
+      "multi_repr": 5,
+      "narrative": 6,
+      "structured": 6
+    },
+    "latency_seconds_mean": 0.000218,
+    "latency_seconds_p50": 0.000204,
+    "latency_seconds_p95": 0.000279,
+    "decision_source": {
+      "rules": 25
+    },
+    "llm": {
+      "call_count": 0,
+      "usage": {
+        "uncached_input_tokens": 0,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_tokens": 0,
+        "source": "unavailable",
+        "total_input_tokens": 0,
+        "total_tokens": 0
+      },
+      "cost_usd": 0,
+      "calls": []
+    }
+  },
+  "b1b": {
+    "questions": 25,
+    "correct": 18,
+    "route_accuracy": 0.72,
+    "per_class": {
+      "multi_hop": {
+        "questions": 8,
+        "correct": 6,
+        "accuracy": 0.75
+      },
+      "multi_repr": {
+        "questions": 5,
+        "correct": 2,
+        "accuracy": 0.4
+      },
+      "narrative": {
+        "questions": 6,
+        "correct": 6,
+        "accuracy": 1.0
+      },
+      "structured": {
+        "questions": 6,
+        "correct": 4,
+        "accuracy": 0.666667
+      }
+    },
+    "confusion": {
+      "multi_hop->multi_hop": 6,
+      "multi_hop->multi_repr": 1,
+      "multi_hop->narrative": 1,
+      "multi_repr->multi_repr": 2,
+      "multi_repr->narrative": 2,
+      "multi_repr->structured": 1,
+      "narrative->narrative": 6,
+      "structured->narrative": 2,
+      "structured->structured": 4
+    },
+    "route_distribution": {
+      "multi_hop": 6,
+      "multi_repr": 3,
+      "narrative": 11,
+      "structured": 5
+    },
+    "latency_seconds_mean": 4.069138,
+    "latency_seconds_p50": 3.607505,
+    "latency_seconds_p95": 4.931913,
+    "decision_source": {
+      "llm_normalized": 25
+    },
+    "llm": {
+      "call_count": 25,
+      "usage": {
+        "uncached_input_tokens": 7686,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 688,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 7686,
+        "total_tokens": 8374
+      },
+      "cost_usd": 0.0,
+      "calls": [
+        {
+          "text": "{\"route\":\"structured\",\"confidence\":0.95,\"reasons\":\"Cần số liệu tài chính chính xác.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.842192,
+          "usage": {
+            "uncached_input_tokens": 308,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 25,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 308,
+            "total_tokens": 333
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"structured\",\"confidence\":0.95,\"reasons\":\"Tỷ lệ nợ xấu là số liệu tài chính chính xác.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.402493,
+          "usage": {
+            "uncached_input_tokens": 305,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 29,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 305,
+            "total_tokens": 334
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"structured\",\"confidence\":0.95,\"reasons\":\"Yêu cầu số liệu tài chính cụ thể.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.605109,
+          "usage": {
+            "uncached_input_tokens": 314,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 26,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 314,
+            "total_tokens": 340
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"narrative\",\"confidence\":0.95,\"reasons\":\"RBG là thuật ngữ định tính trong tổ chức.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.724521,
+          "usage": {
+            "uncached_input_tokens": 303,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 29,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 303,
+            "total_tokens": 332
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"narrative\",\"confidence\":0.95,\"reasons\":\"Xếp hạng tín nhiệm là thông tin định tính.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.572969,
+          "usage": {
+            "uncached_input_tokens": 306,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 29,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 306,
+            "total_tokens": 335
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"structured\",\"confidence\":0.95,\"reasons\":\"Số lượng chi nhánh là số liệu định lượng.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 2.868546,
+          "usage": {
+            "uncached_input_tokens": 310,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 26,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 310,
+            "total_tokens": 336
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"narrative\",\"confidence\":0.98,\"reasons\":\"Giải thích vai trò chiến lược của CASA.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.005337,
+          "usage": {
+            "uncached_input_tokens": 303,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 27,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 303,
+            "total_tokens": 330
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"narrative\",\"confidence\":0.98,\"reasons\":\"Chiến lược thuộc mô tả định tính.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.053268,
+          "usage": {
+            "uncached_input_tokens": 306,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 27,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 306,
+            "total_tokens": 333
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"narrative\",\"confidence\":0.95,\"reasons\":\"Chính sách thuộc mô tả định tính.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.559734,
+          "usage": {
+            "uncached_input_tokens": 307,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 26,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 307,
+            "total_tokens": 333
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"narrative\",\"confidence\":0.95,\"reasons\":\"Giải thích ý nghĩa định tính về rủi ro.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.643672,
+          "usage": {
+            "uncached_input_tokens": 303,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 28,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 303,
+            "total_tokens": 331
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"narrative\",\"confidence\":0.95,\"reasons\":\"Giải thích vai trò định tính của khối.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.306199,
+          "usage": {
+            "uncached_input_tokens": 307,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 27,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 307,
+            "total_tokens": 334
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"narrative\",\"confidence\":0.95,\"reasons\":\"Định hướng bền vững thuộc về chiến lược định tính.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 4.128275,
+          "usage": {
+            "uncached_input_tokens": 306,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 30,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 306,
+            "total_tokens": 336
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"multi_hop\",\"confidence\":0.95,\"reasons\":\"So sánh hai năm cần tính toán chênh lệch\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.295474,
+          "usage": {
+            "uncached_input_tokens": 313,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 26,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 313,
+            "total_tokens": 339
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"multi_hop\",\"confidence\":0.95,\"reasons\":\"Cần tính toán tỷ lệ tăng trưởng so sánh.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.806119,
+          "usage": {
+            "uncached_input_tokens": 308,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 28,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 308,
+            "total_tokens": 336
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"narrative\",\"confidence\":0.95,\"reasons\":\"Xếp hạng tín dụng là thông tin định tính.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 5.052006,
+          "usage": {
+            "uncached_input_tokens": 307,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 29,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 307,
+            "total_tokens": 336
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"multi_hop\",\"confidence\":0.95,\"reasons\":\"Cần so sánh hai chỉ tiêu qua nhiều năm.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 4.108253,
+          "usage": {
+            "uncached_input_tokens": 311,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 28,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 311,
+            "total_tokens": 339
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"multi_hop\",\"confidence\":0.95,\"reasons\":\"Cần tính CAGR từ nhiều năm.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 2.875324,
+          "usage": {
+            "uncached_input_tokens": 318,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 26,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 318,
+            "total_tokens": 344
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"multi_hop\",\"confidence\":0.95,\"reasons\":\"Cần tính toán tăng trưởng qua nhiều năm.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.110414,
+          "usage": {
+            "uncached_input_tokens": 317,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 27,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 317,
+            "total_tokens": 344
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"multi_repr\",\"confidence\":0.95,\"reasons\":\"Cần số liệu CASA kèm giải thích nguyên nhân.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.23429,
+          "usage": {
+            "uncached_input_tokens": 307,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 28,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 307,
+            "total_tokens": 335
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"multi_hop\",\"confidence\":0.95,\"reasons\":\"So sánh nợ xấu giữa các kỳ cần tính toán.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 4.06511,
+          "usage": {
+            "uncached_input_tokens": 305,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 28,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 305,
+            "total_tokens": 333
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"narrative\",\"confidence\":0.95,\"reasons\":\"Câu hỏi yêu cầu thông tin định tính về điểm nổi bật.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 4.365686,
+          "usage": {
+            "uncached_input_tokens": 303,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 31,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 303,
+            "total_tokens": 334
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"narrative\",\"confidence\":0.95,\"reasons\":\"Yêu cầu thông tin định tính về khối nghiệp vụ.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 4.238671,
+          "usage": {
+            "uncached_input_tokens": 303,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 30,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 303,
+            "total_tokens": 333
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"multi_repr\",\"confidence\":0.95,\"reasons\":\"Cần số liệu và giải thích tổng quan.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.657786,
+          "usage": {
+            "uncached_input_tokens": 304,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 27,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 304,
+            "total_tokens": 331
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"multi_repr\",\"confidence\":0.95,\"reasons\":\"Cần số liệu và giải thích CASA\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 3.566767,
+          "usage": {
+            "uncached_input_tokens": 301,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 25,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 301,
+            "total_tokens": 326
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        },
+        {
+          "text": "{\"route\":\"structured\",\"confidence\":0.95,\"reasons\":\"Cần số liệu chính xác của chỉ tiêu.\"}",
+          "provider": "openai_compatible",
+          "model": "Qwen/Qwen3.5-9B",
+          "purpose": "route",
+          "latency_seconds": 4.436372,
+          "usage": {
+            "uncached_input_tokens": 311,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 26,
+            "reasoning_tokens": 0,
+            "source": "client_tokenizer",
+            "total_input_tokens": 311,
+            "total_tokens": 337
+          },
+          "cost_usd": 0.0,
+          "pricing_source": "local inference; API cost only"
+        }
+      ]
+    }
+  },
+  "rows": {
+    "b1a": [
+      {
+        "id": "r01",
+        "query": "Lợi nhuận trước thuế năm 2025 là bao nhiêu?",
+        "expected_route": "structured",
+        "selected_route": "structured",
+        "confidence": 0.97,
+        "correct": true,
+        "reasons": [
+          "query contains a numeric value",
+          "query targets a specific year",
+          "query contains a financial metric",
+          "query matches a table/value lookup pattern"
+        ],
+        "latency_seconds": 0.000458,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r02",
+        "query": "Tỷ lệ nợ xấu của Techcombank là bao nhiêu?",
+        "expected_route": "structured",
+        "selected_route": "structured",
+        "confidence": 0.76,
+        "correct": true,
+        "reasons": [
+          "query contains a financial metric",
+          "query matches a table/value lookup pattern",
+          "query asks about a ratio or growth value"
+        ],
+        "latency_seconds": 0.000277,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r03",
+        "query": "Tổng tài sản tại ngày 31/12/2025 là bao nhiêu?",
+        "expected_route": "structured",
+        "selected_route": "structured",
+        "confidence": 0.97,
+        "correct": true,
+        "reasons": [
+          "query contains a numeric value",
+          "query targets a specific year",
+          "query contains a financial metric",
+          "query matches a table/value lookup pattern"
+        ],
+        "latency_seconds": 0.000263,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r04",
+        "query": "RBG là viết tắt của khối nào?",
+        "expected_route": "structured",
+        "selected_route": "structured",
+        "confidence": 0.64,
+        "correct": true,
+        "reasons": [
+          "query matches a table/value lookup pattern",
+          "query targets a named report entity or abbreviation"
+        ],
+        "latency_seconds": 0.000176,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r05",
+        "query": "Fitch xếp hạng tín nhiệm Techcombank ở mức nào?",
+        "expected_route": "structured",
+        "selected_route": "structured",
+        "confidence": 0.86,
+        "correct": true,
+        "reasons": [
+          "query contains a financial metric",
+          "query matches a table/value lookup pattern",
+          "query targets a named report entity or abbreviation"
+        ],
+        "latency_seconds": 0.000193,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r06",
+        "query": "Tính đến năm 2025 ngân hàng có bao nhiêu chi nhánh?",
+        "expected_route": "structured",
+        "selected_route": "structured",
+        "confidence": 0.75,
+        "correct": true,
+        "reasons": [
+          "query contains a numeric value",
+          "query targets a specific year",
+          "query matches a table/value lookup pattern"
+        ],
+        "latency_seconds": 0.000204,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r07",
+        "query": "Tại sao CASA quan trọng với ngân hàng?",
+        "expected_route": "narrative",
+        "selected_route": "narrative",
+        "confidence": 0.76,
+        "correct": true,
+        "reasons": [
+          "query asks for explanation or description",
+          "financial concept may have narrative context"
+        ],
+        "latency_seconds": 0.00023,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r08",
+        "query": "Chiến lược ngân hàng số được mô tả như thế nào?",
+        "expected_route": "narrative",
+        "selected_route": "narrative",
+        "confidence": 0.72,
+        "correct": true,
+        "reasons": [
+          "query asks for explanation or description"
+        ],
+        "latency_seconds": 0.000255,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r09",
+        "query": "Chính sách quản trị rủi ro được mô tả như thế nào?",
+        "expected_route": "narrative",
+        "selected_route": "narrative",
+        "confidence": 0.72,
+        "correct": true,
+        "reasons": [
+          "query asks for explanation or description"
+        ],
+        "latency_seconds": 0.000157,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r10",
+        "query": "Vì sao chất lượng tài sản quan trọng?",
+        "expected_route": "narrative",
+        "selected_route": "narrative",
+        "confidence": 0.72,
+        "correct": true,
+        "reasons": [
+          "query asks for explanation or description"
+        ],
+        "latency_seconds": 0.000199,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r11",
+        "query": "Vai trò của Khối Dữ liệu và Phân tích là gì?",
+        "expected_route": "narrative",
+        "selected_route": "narrative",
+        "confidence": 0.72,
+        "correct": true,
+        "reasons": [
+          "query asks for explanation or description"
+        ],
+        "latency_seconds": 0.000182,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r12",
+        "query": "Định hướng phát triển bền vững của ngân hàng là gì?",
+        "expected_route": "narrative",
+        "selected_route": "narrative",
+        "confidence": 0.72,
+        "correct": true,
+        "reasons": [
+          "query asks for explanation or description"
+        ],
+        "latency_seconds": 0.000197,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r13",
+        "query": "CASA năm 2025 so với 2024 thay đổi thế nào?",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_hop",
+        "confidence": 1.0,
+        "correct": true,
+        "reasons": [
+          "comparison plus ratio/growth requires multiple lookups",
+          "query combines exact evidence lookup with explanation",
+          "year comparison requires evidence from more than one period"
+        ],
+        "latency_seconds": 0.000206,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r14",
+        "query": "Doanh thu từ phí tăng bao nhiêu phần trăm so với năm trước?",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_hop",
+        "confidence": 0.67,
+        "correct": true,
+        "reasons": [
+          "comparison plus ratio/growth requires multiple lookups"
+        ],
+        "latency_seconds": 0.000222,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r15",
+        "query": "S&P và Fitch xếp hạng Techcombank như thế nào?",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_hop",
+        "confidence": 1.0,
+        "correct": true,
+        "reasons": [
+          "query combines exact evidence lookup with explanation",
+          "query mentions multiple named entities"
+        ],
+        "latency_seconds": 0.00028,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r16",
+        "query": "So sánh ROA và ROE của Techcombank năm 2025.",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_hop",
+        "confidence": 1.0,
+        "correct": true,
+        "reasons": [
+          "comparison plus ratio/growth requires multiple lookups",
+          "year comparison requires evidence from more than one period",
+          "query requests multiple financial metrics"
+        ],
+        "latency_seconds": 0.000271,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r17",
+        "query": "Tổng thu nhập hoạt động và CAGR giai đoạn 2018–2025 là bao nhiêu?",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_hop",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "comparison plus ratio/growth requires multiple lookups",
+          "year comparison requires evidence from more than one period"
+        ],
+        "latency_seconds": 0.000187,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r18",
+        "query": "Tính tốc độ tăng trưởng tổng tài sản từ năm 2023 đến năm 2025.",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_hop",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "comparison plus ratio/growth requires multiple lookups",
+          "year comparison requires evidence from more than one period"
+        ],
+        "latency_seconds": 0.000208,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r19",
+        "query": "Cho tôi số liệu CASA và giải thích nguyên nhân thay đổi.",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_hop",
+        "confidence": 1.0,
+        "correct": true,
+        "reasons": [
+          "comparison plus ratio/growth requires multiple lookups",
+          "query combines exact evidence lookup with explanation"
+        ],
+        "latency_seconds": 0.000192,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r20",
+        "query": "Nợ xấu tăng hay giảm so với cùng kỳ?",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_hop",
+        "confidence": 0.67,
+        "correct": true,
+        "reasons": [
+          "comparison plus ratio/growth requires multiple lookups"
+        ],
+        "latency_seconds": 0.000164,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r21",
+        "query": "Techcombank có những điểm nổi bật gì?",
+        "expected_route": "multi_repr",
+        "selected_route": "multi_repr",
+        "confidence": 0.28,
+        "correct": true,
+        "reasons": [
+          "confidence 0.280 below threshold 0.620; fallback from multi_repr"
+        ],
+        "latency_seconds": 0.000147,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r22",
+        "query": "Thông tin về Khối Ngân hàng Bán lẻ.",
+        "expected_route": "multi_repr",
+        "selected_route": "multi_repr",
+        "confidence": 0.28,
+        "correct": true,
+        "reasons": [
+          "confidence 0.280 below threshold 0.620; fallback from multi_repr"
+        ],
+        "latency_seconds": 0.000174,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r23",
+        "query": "Cho biết tình hình hoạt động của Techcombank.",
+        "expected_route": "multi_repr",
+        "selected_route": "multi_repr",
+        "confidence": 0.28,
+        "correct": true,
+        "reasons": [
+          "confidence 0.280 below threshold 0.620; fallback from multi_repr"
+        ],
+        "latency_seconds": 0.000217,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r24",
+        "query": "Thông tin liên quan đến CASA.",
+        "expected_route": "multi_repr",
+        "selected_route": "multi_repr",
+        "confidence": 0.42,
+        "correct": true,
+        "reasons": [
+          "query contains a financial metric",
+          "query asks about a ratio or growth value",
+          "confidence 0.420 below threshold 0.620; fallback from structured"
+        ],
+        "latency_seconds": 0.000211,
+        "decision_source": "rules"
+      },
+      {
+        "id": "r25",
+        "query": "Còn chỉ tiêu này?",
+        "conversation_context": "Người dùng vừa hỏi về tỷ lệ CASA năm 2025.",
+        "expected_route": "multi_repr",
+        "selected_route": "multi_repr",
+        "confidence": 0.58,
+        "correct": true,
+        "reasons": [
+          "follow-up may need precise evidence and surrounding context",
+          "confidence 0.580 below threshold 0.620; fallback from multi_repr"
+        ],
+        "latency_seconds": 0.000171,
+        "decision_source": "rules"
+      }
+    ],
+    "b1b": [
+      {
+        "id": "r01",
+        "query": "Lợi nhuận trước thuế năm 2025 là bao nhiêu?",
+        "expected_route": "structured",
+        "selected_route": "structured",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "Cần số liệu tài chính chính xác."
+        ],
+        "latency_seconds": 13.984129,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r02",
+        "query": "Tỷ lệ nợ xấu của Techcombank là bao nhiêu?",
+        "expected_route": "structured",
+        "selected_route": "structured",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "Tỷ lệ nợ xấu là số liệu tài chính chính xác."
+        ],
+        "latency_seconds": 3.405876,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r03",
+        "query": "Tổng tài sản tại ngày 31/12/2025 là bao nhiêu?",
+        "expected_route": "structured",
+        "selected_route": "structured",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "Yêu cầu số liệu tài chính cụ thể."
+        ],
+        "latency_seconds": 3.607505,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r04",
+        "query": "RBG là viết tắt của khối nào?",
+        "expected_route": "structured",
+        "selected_route": "narrative",
+        "confidence": 0.95,
+        "correct": false,
+        "reasons": [
+          "RBG là thuật ngữ định tính trong tổ chức."
+        ],
+        "latency_seconds": 3.726928,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r05",
+        "query": "Fitch xếp hạng tín nhiệm Techcombank ở mức nào?",
+        "expected_route": "structured",
+        "selected_route": "narrative",
+        "confidence": 0.95,
+        "correct": false,
+        "reasons": [
+          "Xếp hạng tín nhiệm là thông tin định tính."
+        ],
+        "latency_seconds": 3.575652,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r06",
+        "query": "Tính đến năm 2025 ngân hàng có bao nhiêu chi nhánh?",
+        "expected_route": "structured",
+        "selected_route": "structured",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "Số lượng chi nhánh là số liệu định lượng."
+        ],
+        "latency_seconds": 2.871576,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r07",
+        "query": "Tại sao CASA quan trọng với ngân hàng?",
+        "expected_route": "narrative",
+        "selected_route": "narrative",
+        "confidence": 0.98,
+        "correct": true,
+        "reasons": [
+          "Giải thích vai trò chiến lược của CASA."
+        ],
+        "latency_seconds": 3.008696,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r08",
+        "query": "Chiến lược ngân hàng số được mô tả như thế nào?",
+        "expected_route": "narrative",
+        "selected_route": "narrative",
+        "confidence": 0.98,
+        "correct": true,
+        "reasons": [
+          "Chiến lược thuộc mô tả định tính."
+        ],
+        "latency_seconds": 3.055308,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r09",
+        "query": "Chính sách quản trị rủi ro được mô tả như thế nào?",
+        "expected_route": "narrative",
+        "selected_route": "narrative",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "Chính sách thuộc mô tả định tính."
+        ],
+        "latency_seconds": 3.562438,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r10",
+        "query": "Vì sao chất lượng tài sản quan trọng?",
+        "expected_route": "narrative",
+        "selected_route": "narrative",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "Giải thích ý nghĩa định tính về rủi ro."
+        ],
+        "latency_seconds": 3.646021,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r11",
+        "query": "Vai trò của Khối Dữ liệu và Phân tích là gì?",
+        "expected_route": "narrative",
+        "selected_route": "narrative",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "Giải thích vai trò định tính của khối."
+        ],
+        "latency_seconds": 3.308883,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r12",
+        "query": "Định hướng phát triển bền vững của ngân hàng là gì?",
+        "expected_route": "narrative",
+        "selected_route": "narrative",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "Định hướng bền vững thuộc về chiến lược định tính."
+        ],
+        "latency_seconds": 4.131353,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r13",
+        "query": "CASA năm 2025 so với 2024 thay đổi thế nào?",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_hop",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "So sánh hai năm cần tính toán chênh lệch"
+        ],
+        "latency_seconds": 3.2982,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r14",
+        "query": "Doanh thu từ phí tăng bao nhiêu phần trăm so với năm trước?",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_hop",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "Cần tính toán tỷ lệ tăng trưởng so sánh."
+        ],
+        "latency_seconds": 3.809219,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r15",
+        "query": "S&P và Fitch xếp hạng Techcombank như thế nào?",
+        "expected_route": "multi_hop",
+        "selected_route": "narrative",
+        "confidence": 0.95,
+        "correct": false,
+        "reasons": [
+          "Xếp hạng tín dụng là thông tin định tính."
+        ],
+        "latency_seconds": 5.055154,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r16",
+        "query": "So sánh ROA và ROE của Techcombank năm 2025.",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_hop",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "Cần so sánh hai chỉ tiêu qua nhiều năm."
+        ],
+        "latency_seconds": 4.110404,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r17",
+        "query": "Tổng thu nhập hoạt động và CAGR giai đoạn 2018–2025 là bao nhiêu?",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_hop",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "Cần tính CAGR từ nhiều năm."
+        ],
+        "latency_seconds": 2.877373,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r18",
+        "query": "Tính tốc độ tăng trưởng tổng tài sản từ năm 2023 đến năm 2025.",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_hop",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "Cần tính toán tăng trưởng qua nhiều năm."
+        ],
+        "latency_seconds": 3.112526,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r19",
+        "query": "Cho tôi số liệu CASA và giải thích nguyên nhân thay đổi.",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_repr",
+        "confidence": 0.95,
+        "correct": false,
+        "reasons": [
+          "Cần số liệu CASA kèm giải thích nguyên nhân."
+        ],
+        "latency_seconds": 3.236403,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r20",
+        "query": "Nợ xấu tăng hay giảm so với cùng kỳ?",
+        "expected_route": "multi_hop",
+        "selected_route": "multi_hop",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "So sánh nợ xấu giữa các kỳ cần tính toán."
+        ],
+        "latency_seconds": 4.067069,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r21",
+        "query": "Techcombank có những điểm nổi bật gì?",
+        "expected_route": "multi_repr",
+        "selected_route": "narrative",
+        "confidence": 0.95,
+        "correct": false,
+        "reasons": [
+          "Câu hỏi yêu cầu thông tin định tính về điểm nổi bật."
+        ],
+        "latency_seconds": 4.367955,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r22",
+        "query": "Thông tin về Khối Ngân hàng Bán lẻ.",
+        "expected_route": "multi_repr",
+        "selected_route": "narrative",
+        "confidence": 0.95,
+        "correct": false,
+        "reasons": [
+          "Yêu cầu thông tin định tính về khối nghiệp vụ."
+        ],
+        "latency_seconds": 4.241593,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r23",
+        "query": "Cho biết tình hình hoạt động của Techcombank.",
+        "expected_route": "multi_repr",
+        "selected_route": "multi_repr",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "Cần số liệu và giải thích tổng quan."
+        ],
+        "latency_seconds": 3.660193,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r24",
+        "query": "Thông tin liên quan đến CASA.",
+        "expected_route": "multi_repr",
+        "selected_route": "multi_repr",
+        "confidence": 0.95,
+        "correct": true,
+        "reasons": [
+          "Cần số liệu và giải thích CASA"
+        ],
+        "latency_seconds": 3.569046,
+        "decision_source": "llm_normalized"
+      },
+      {
+        "id": "r25",
+        "query": "Còn chỉ tiêu này?",
+        "conversation_context": "Người dùng vừa hỏi về tỷ lệ CASA năm 2025.",
+        "expected_route": "multi_repr",
+        "selected_route": "structured",
+        "confidence": 0.95,
+        "correct": false,
+        "reasons": [
+          "Cần số liệu chính xác của chỉ tiêu."
+        ],
+        "latency_seconds": 4.438949,
+        "decision_source": "llm_normalized"
+      }
+    ]
+  },
+  "delta_b1b_minus_b1a": {
+    "route_accuracy": -0.28,
+    "latency_seconds_p50": 3.607301
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "artifact_schema_version": 1,
+  "experiment": "B1b",
+  "created_at_utc": "2026-09-10T16:40:31.839637+00:00",
+  "controlled_variables": {
+    "indexes": "frozen A2 narrative/structured and A3 multi_repr",
+    "retrieval": "same dense retrieval and RRF",
+    "answer_generation": "unchanged",
+    "changed_variable": "route decision: B1a rules vs B1b Qwen LLM agent"
+  },
+  "b1a": {
+    "questions": 20,
+    "runtime_errors": 0,
+    "retrieval_hit_at_1": 0.166667,
+    "retrieval_hit_at_5": 0.722222,
+    "retrieval_hit_at_10": 0.722222,
+    "retrieval_recall_at_5": 0.722222,
+    "retrieval_recall_at_10": 0.722222,
+    "answer_accuracy_automatic": 0.15,
+    "manual_answer_accuracy": null,
+    "citation_precision": 0.277778,
+    "citation_recall": 0.277778,
+    "latency_seconds_p50": 4.7715,
+    "latency_seconds_p95": 8.1277,
+    "router_latency_seconds_p50": 0.00055,
+    "router_latency_seconds_p95": 0.000804,
+    "route_distribution": {
+      "multi_hop": 2,
+      "multi_repr": 5,
+      "structured": 13
+    },
+    "raw_candidates_mean": 11.0,
+    "llm_calls_total": 20,
+    "calls_by_purpose": {
+      "answer": 20
+    },
+    "tokens": {
+      "uncached_input_tokens": 59736,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 671,
+      "reasoning_tokens": 0,
+      "source": "client_tokenizer",
+      "total_input_tokens": 59736,
+      "total_tokens": 60407
+    },
+    "cost_usd_total": 0.0,
+    "router_decision_source": {
+      "rules": 20
+    }
+  },
+  "b1b": {
+    "questions": 20,
+    "runtime_errors": 0,
+    "retrieval_hit_at_1": 0.166667,
+    "retrieval_hit_at_5": 0.611111,
+    "retrieval_hit_at_10": 0.666667,
+    "retrieval_recall_at_5": 0.611111,
+    "retrieval_recall_at_10": 0.666667,
+    "answer_accuracy_automatic": 0.15,
+    "manual_answer_accuracy": null,
+    "citation_precision": 0.222222,
+    "citation_recall": 0.222222,
+    "latency_seconds_p50": 7.3995,
+    "latency_seconds_p95": 10.5875,
+    "router_latency_seconds_p50": 3.177077,
+    "router_latency_seconds_p95": 3.788756,
+    "route_distribution": {
+      "multi_hop": 5,
+      "multi_repr": 2,
+      "narrative": 2,
+      "structured": 11
+    },
+    "raw_candidates_mean": 12.5,
+    "llm_calls_total": 40,
+    "calls_by_purpose": {
+      "answer": 20,
+      "route": 20
+    },
+    "tokens": {
+      "uncached_input_tokens": 67319,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 1150,
+      "reasoning_tokens": 0,
+      "source": "client_tokenizer",
+      "total_input_tokens": 67319,
+      "total_tokens": 68469
+    },
+    "cost_usd_total": 0.0,
+    "router_decision_source": {
+      "llm_normalized": 20
+    }
+  },
+  "delta_b1b_minus_b1a": {
+    "retrieval_hit_at_1": 0.0,
+    "retrieval_hit_at_5": -0.111111,
+    "retrieval_hit_at_10": -0.055555,
+    "retrieval_recall_at_5": -0.111111,
+    "retrieval_recall_at_10": -0.055555,
+    "answer_accuracy_automatic": 0.0,
+    "citation_precision": -0.055556,
+    "citation_recall": -0.055556,
+    "latency_seconds_p50": 2.628,
+    "latency_seconds_p95": 2.4598,
+    "router_latency_seconds_p50": 3.176527,
+    "router_latency_seconds_p95": 3.787952,
+    "raw_candidates_mean": 1.5,
+    "llm_calls_total": 20.0
+  },
+  "per_question": {
+    "dev-01": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-02": {
+      "b1a_route": "multi_repr",
+      "b1b_route": "multi_repr",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-03": {
+      "b1a_route": "structured",
+      "b1b_route": "narrative",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": true,
+      "b1b_automatic_correct": true
+    },
+    "dev-04": {
+      "b1a_route": "multi_hop",
+      "b1b_route": "multi_hop",
+      "b1a_hit_at_5": false,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-05": {
+      "b1a_route": "structured",
+      "b1b_route": "multi_hop",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-06": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": false,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-07": {
+      "b1a_route": "structured",
+      "b1b_route": "multi_hop",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-08": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-09": {
+      "b1a_route": "multi_repr",
+      "b1b_route": "multi_hop",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-10": {
+      "b1a_route": "multi_repr",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-11": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-12": {
+      "b1a_route": "multi_repr",
+      "b1b_route": "narrative",
+      "b1a_hit_at_5": false,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-13": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": false,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-14": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-15": {
+      "b1a_route": "multi_hop",
+      "b1b_route": "multi_hop",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-16": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": false,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-17": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-18": {
+      "b1a_route": "multi_repr",
+      "b1b_route": "multi_repr",
+      "b1a_hit_at_5": true,
+      "b1b_hit_at_5": true,
+      "b1a_automatic_correct": false,
+      "b1b_automatic_correct": false
+    },
+    "dev-19": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": false,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": true,
+      "b1b_automatic_correct": true
+    },
+    "dev-20": {
+      "b1a_route": "structured",
+      "b1b_route": "structured",
+      "b1a_hit_at_5": false,
+      "b1b_hit_at_5": false,
+      "b1a_automatic_correct": true,
+      "b1b_automatic_correct": true
+    }
+  }
+}

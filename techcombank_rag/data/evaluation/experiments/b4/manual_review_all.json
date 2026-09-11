@@ -1,0 +1,31 @@
+{
+  "criteria": "Answer-level semantic correctness against the exact question and gold fact. Exact requested numbers, direction of change, all requested subparts, and correct refusal are required. Concise wording and alternative directly supporting report pages are accepted.",
+  "splits": {
+    "public": {
+      "B0_one_shot": {"accuracy": 1.0, "incorrect_ids": []},
+      "B4a_bm25": {"accuracy": 0.9, "incorrect_ids": ["sq-03"]},
+      "B4b_hybrid_rrf": {"accuracy": 0.9, "incorrect_ids": ["sq-01"]},
+      "B4c_finance_rerank": {"accuracy": 0.8, "incorrect_ids": ["sq-01", "sq-03"]},
+      "B4d_cross_encoder": {"accuracy": 0.9, "incorrect_ids": ["sq-01"]}
+    },
+    "dev": {
+      "B0_one_shot": {"accuracy": 0.55, "incorrect_ids": ["dev-02", "dev-04", "dev-09", "dev-10", "dev-11", "dev-12", "dev-13", "dev-14", "dev-15"]},
+      "B4a_bm25": {"accuracy": 0.60, "incorrect_ids": ["dev-02", "dev-04", "dev-10", "dev-11", "dev-12", "dev-13", "dev-15", "dev-17"]},
+      "B4b_hybrid_rrf": {"accuracy": 0.65, "incorrect_ids": ["dev-02", "dev-04", "dev-10", "dev-12", "dev-13", "dev-15", "dev-17"]},
+      "B4c_finance_rerank": {"accuracy": 0.60, "incorrect_ids": ["dev-02", "dev-04", "dev-10", "dev-11", "dev-12", "dev-13", "dev-15", "dev-17"]},
+      "B4d_cross_encoder": {"accuracy": 0.80, "incorrect_ids": ["dev-02", "dev-04", "dev-12", "dev-15"]}
+    },
+    "holdout": {
+      "B0_one_shot": {"accuracy": 0.50, "incorrect_ids": ["holdout-02", "holdout-04", "holdout-06", "holdout-07", "holdout-09"]},
+      "B4a_bm25": {"accuracy": 0.70, "incorrect_ids": ["holdout-02", "holdout-06", "holdout-07"]},
+      "B4b_hybrid_rrf": {"accuracy": 0.70, "incorrect_ids": ["holdout-02", "holdout-04", "holdout-07"]},
+      "B4c_finance_rerank": {"accuracy": 0.70, "incorrect_ids": ["holdout-02", "holdout-04", "holdout-07"]},
+      "B4d_cross_encoder": {"accuracy": 0.70, "incorrect_ids": ["holdout-02", "holdout-04", "holdout-07"]}
+    }
+  },
+  "notes": {
+    "approximation": "dev-02 requires 201.9 tonnes; answers saying only approximately/more than 200 are marked incorrect.",
+    "multi_part": "An answer is incorrect if it omits a requested growth, comparison, meeting count, or calculation.",
+    "gold_pages": "Manual answer correctness is separate from automatic gold-page citation metrics; the report contains repeated facts on alternative pages."
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "rubric": "Correct when the response answers every fact explicitly requested by the question. Extra descriptive phrases present only in gold_answer are not mandatory. A citation to a different report page is accepted when the retrieved text on that page directly supports the answer.",
+  "controllers": {
+    "B0_one_shot": {
+      "correct": 10,
+      "total": 10,
+      "accuracy": 1.0,
+      "notes": {
+        "sq-01": "Correct; page 27 directly contains 302 locations and 29 provinces/cities although canonical gold lists page 4.",
+        "sq-02": "Correct; page 43 directly contains BB and BB- and also contains both outlooks, although the question only asks for rating levels.",
+        "sq-03": "Correct requested amount and canonical page 5.",
+        "sq-04": "Correct ratio; page 53 directly supports 40.4%, although canonical gold lists page 5.",
+        "sq-05": "Correct requested ratio and canonical page 5.",
+        "sq-06": "Correct amount, CAGR, period, and canonical page 5.",
+        "sq-07": "Correct amount, growth, and canonical page 59.",
+        "sq-08": "Correct expansion and canonical page 387.",
+        "sq-09": "Correct expansion and canonical page 386.",
+        "sq-10": "Correct refusal."
+      }
+    },
+    "B1a_rule": {
+      "correct": 9,
+      "total": 10,
+      "accuracy": 0.9,
+      "incorrect": {
+        "sq-04": "False refusal/citation repair failure despite supporting evidence being retrieved."
+      }
+    },
+    "B1b_llm": {
+      "correct": 8,
+      "total": 10,
+      "accuracy": 0.8,
+      "incorrect": {
+        "sq-02": "False refusal caused by the LLM route selecting evidence that omitted the rating page.",
+        "sq-04": "False refusal/citation repair failure despite supporting evidence being retrieved."
+      }
+    },
+    "B2_adaptive": {
+      "correct": 7,
+      "total": 10,
+      "accuracy": 0.7,
+      "incorrect": {
+        "sq-01": "False refusal after diversity selection demoted the direct company-profile evidence.",
+        "sq-03": "Wrong value: selected a 224,331,619 million VND table figure instead of total assets of 1,192 trillion VND.",
+        "sq-04": "Wrong value: answered 16.6%, a growth-related value, instead of the 40.4% CASA ratio."
+      }
+    }
+  }
+}

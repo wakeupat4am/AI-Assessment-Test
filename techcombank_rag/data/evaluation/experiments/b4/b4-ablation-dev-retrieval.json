@@ -1,0 +1,130 @@
+{
+  "artifact_schema_version": 1,
+  "experiment": "B4 sparse-dense retrieval over frozen A3.1",
+  "created_at_utc": "2026-09-11T08:23:45.754120+00:00",
+  "run_label": "dev",
+  "run_type": "retrieval_only",
+  "questions": "techcombank_rag/data/evaluation/dev.json",
+  "questions_sha256": "599c1b226f6fde06eacaac4e4ef58f7d725834195afb824118d68f593868155d",
+  "index_dir": "techcombank_rag/data/index/a31_semantic_multirepr/all",
+  "chunks_sha256": "d72357b78e1fe69ccdee6e3d3b957a9c41cf6c948ff6066fb86aef9f9af0cbe9",
+  "bm25_artifact_sha256": "8408924e37369102b688c773e0d52c18ccd488273072a7d57151759b6e54ba7d",
+  "config": {
+    "artifact_schema_version": 1,
+    "tokenizer": {
+      "name": "vi_lexical_v1",
+      "unicode_form": "NFKC",
+      "lowercase": true,
+      "include_bigrams": true
+    },
+    "bm25": {
+      "k1": 1.2,
+      "b": 0.75,
+      "candidate_k": 20
+    },
+    "fusion": {
+      "method": "weighted_rrf",
+      "rrf_k": 60,
+      "dense_weight": 1.0,
+      "bm25_weight": 1.0,
+      "candidate_k": 20
+    },
+    "finance_reranker": {
+      "base_weight": 0.65,
+      "constraint_weight": 0.35,
+      "year_weight": 0.28,
+      "acronym_weight": 0.18,
+      "metric_weight": 0.34,
+      "number_weight": 0.1,
+      "granularity_weight": 0.1,
+      "financial_terms": [
+        "casa",
+        "tỷ lệ nợ xấu",
+        "nợ xấu",
+        "tổng tài sản",
+        "lợi nhuận trước thuế",
+        "tổng thu nhập hoạt động",
+        "thu nhập lãi thuần",
+        "dư nợ vay",
+        "dư nợ tín dụng",
+        "tín dụng xanh",
+        "tiền gửi",
+        "doanh thu phí",
+        "tỷ lệ an toàn vốn",
+        "roe",
+        "roa",
+        "car",
+        "nim"
+      ],
+      "explanatory_markers": [
+        "tại sao",
+        "vì sao",
+        "nguyên nhân",
+        "giải thích",
+        "mô tả",
+        "chiến lược"
+      ]
+    }
+  },
+  "config_sha256": "a6bdce3afa70af1555e21fa73e17ff5570f668c5856dad745d427eeb9b269287",
+  "controlled_variables": {
+    "document_representation": "A3.1 all index",
+    "dense_embedding_model": "intfloat/multilingual-e5-small",
+    "answer_generation": "unchanged provider/model/prompt",
+    "evaluation_retrieval_k": 10,
+    "top_k_evidence": 5,
+    "changed_variable": "one-shot dense vs BM25 vs hybrid RRF vs deterministic finance reranker vs multilingual cross-encoder"
+  },
+  "arms": {
+    "B0_one_shot": {
+      "questions": 20,
+      "answerable": 18,
+      "hit_at_1": 0.388889,
+      "hit_at_5": 0.555556,
+      "hit_at_10": 0.777778,
+      "mrr_at_10": 0.467725,
+      "latency_mean_ms": 56.661,
+      "latency_p50_ms": 52.324
+    },
+    "B4a_bm25": {
+      "questions": 20,
+      "answerable": 18,
+      "hit_at_1": 0.5,
+      "hit_at_5": 0.777778,
+      "hit_at_10": 0.833333,
+      "mrr_at_10": 0.608333,
+      "latency_mean_ms": 22.4,
+      "latency_p50_ms": 22.741
+    },
+    "B4b_hybrid_rrf": {
+      "questions": 20,
+      "answerable": 18,
+      "hit_at_1": 0.555556,
+      "hit_at_5": 0.777778,
+      "hit_at_10": 0.888889,
+      "mrr_at_10": 0.651543,
+      "latency_mean_ms": 66.99,
+      "latency_p50_ms": 66.574
+    },
+    "B4c_finance_rerank": {
+      "questions": 20,
+      "answerable": 18,
+      "hit_at_1": 0.555556,
+      "hit_at_5": 0.777778,
+      "hit_at_10": 0.888889,
+      "mrr_at_10": 0.650926,
+      "latency_mean_ms": 82.704,
+      "latency_p50_ms": 80.745
+    },
+    "B4d_cross_encoder": {
+      "questions": 20,
+      "answerable": 18,
+      "hit_at_1": 0.5,
+      "hit_at_5": 0.833333,
+      "hit_at_10": 0.888889,
+      "mrr_at_10": 0.631481,
+      "latency_mean_ms": 64660.815,
+      "latency_p50_ms": 61514.583
+    }
+  }
+}

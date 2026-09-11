@@ -1,0 +1,161 @@
+{
+  "artifact_schema_version": 1,
+  "experiment": "B5 bounded tool calling over frozen A3.1+B4b",
+  "created_at_utc": "2026-09-11T09:34:56.264641+00:00",
+  "run_label": "public-final",
+  "questions": "data/evaluation/public.json",
+  "index_dir": "/home/ubuntu/TCB_Test/techcombank_rag/data/index/a31_semantic_multirepr/all",
+  "controlled_variables": {
+    "document_representation": "A3.1",
+    "first_stage_retrieval": "B4b dense+BM25 weighted RRF",
+    "answer_generation": "unchanged",
+    "changed_variable": "bounded B5 tool calling"
+  },
+  "b5_config": {
+    "artifact_schema_version": 1,
+    "agent_protocol": "provider_neutral_json_tool_calls_v1",
+    "initial_top_k": 20,
+    "followup_top_k": 12,
+    "max_tool_actions_after_initial_retrieval": 1,
+    "evidence_preview_chunks": 6,
+    "evidence_preview_characters_per_chunk": 500,
+    "trigger_patterns": [
+      "tăng thêm",
+      "chênh lệch",
+      "cao hơn",
+      "thấp hơn",
+      "so với",
+      "lần lượt",
+      "từ năm",
+      "và tăng",
+      "và giảm"
+    ],
+    "calculation_patterns": [
+      "tăng thêm",
+      "chênh lệch",
+      "giảm thêm",
+      "cao hơn bao nhiêu",
+      "thấp hơn bao nhiêu"
+    ],
+    "allowed_operations": [
+      "subtract",
+      "percentage_change",
+      "cagr"
+    ],
+    "tool_names": [
+      "hybrid_retrieve",
+      "calculator",
+      "finish"
+    ],
+    "log_version": 1
+  },
+  "arms": {
+    "B4b_hybrid": {
+      "questions": 10,
+      "runtime_errors": 0,
+      "answer_accuracy_automatic": 0.4,
+      "retrieval_hit_at_1": 0.666667,
+      "retrieval_hit_at_5": 1.0,
+      "retrieval_hit_at_10": 1.0,
+      "citation_precision": 0.777778,
+      "citation_recall": 0.777778,
+      "citation_validator_pass_rate": 0.9,
+      "refusal_accuracy": 0.9,
+      "latency_p50_seconds": 4.925,
+      "latency_p95_seconds": 9.7445,
+      "retrieval_latency_mean_seconds": 0.077621,
+      "llm_calls_total": 11,
+      "calls_by_purpose": {
+        "answer": 10,
+        "repair": 1
+      },
+      "llm_tokens": {
+        "uncached_input_tokens": 38341,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 422,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 38341,
+        "total_tokens": 38763
+      },
+      "cost_usd_total": 0.0,
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.161804,
+        "gpt-5.6": 0.161804,
+        "gpt-5.6-terra": 0.081746,
+        "gpt-5.6-luna": 0.0081746,
+        "claude-sonnet-5": 0.121353,
+        "claude-opus-5": 0.202255,
+        "claude-fable-5": 0.40451
+      },
+      "average_evidence_tokens": 2429.3,
+      "agent_trigger_rate": 0.0,
+      "planner_call_rate": 0.0,
+      "tool_outcomes": {},
+      "calculator_successes": 0,
+      "second_retrieval_successes": 0,
+      "failure_taxonomy": {
+        "answer_error": 5,
+        "citation_error": 1,
+        "false_refusal": 1,
+        "none": 3
+      }
+    },
+    "B5_tool_agent": {
+      "questions": 10,
+      "runtime_errors": 0,
+      "answer_accuracy_automatic": 0.4,
+      "retrieval_hit_at_1": 0.666667,
+      "retrieval_hit_at_5": 1.0,
+      "retrieval_hit_at_10": 1.0,
+      "citation_precision": 0.777778,
+      "citation_recall": 0.777778,
+      "citation_validator_pass_rate": 0.9,
+      "refusal_accuracy": 0.9,
+      "latency_p50_seconds": 4.9235,
+      "latency_p95_seconds": 7.90025,
+      "retrieval_latency_mean_seconds": 0.170519,
+      "llm_calls_total": 12,
+      "calls_by_purpose": {
+        "agent_planning": 1,
+        "answer": 10,
+        "repair": 1
+      },
+      "llm_tokens": {
+        "uncached_input_tokens": 39618,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 427,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 39618,
+        "total_tokens": 40045
+      },
+      "cost_usd_total": 0.0,
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.167012,
+        "gpt-5.6": 0.167012,
+        "gpt-5.6-terra": 0.08436,
+        "gpt-5.6-luna": 0.008436,
+        "claude-sonnet-5": 0.125259,
+        "claude-opus-5": 0.208765,
+        "claude-fable-5": 0.41753
+      },
+      "average_evidence_tokens": 2429.3,
+      "agent_trigger_rate": 0.1,
+      "planner_call_rate": 0.1,
+      "tool_outcomes": {
+        "ok": 11
+      },
+      "calculator_successes": 0,
+      "second_retrieval_successes": 0,
+      "failure_taxonomy": {
+        "answer_error": 5,
+        "citation_error": 1,
+        "false_refusal": 1,
+        "none": 3
+      }
+    }
+  }
+}

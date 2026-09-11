@@ -1,0 +1,10 @@
+{
+  "questions": 20,
+  "answerable": 18,
+  "hit_at_1": 0.555556,
+  "hit_at_5": 0.777778,
+  "hit_at_10": 0.888889,
+  "mrr_at_10": 0.651543,
+  "latency_mean_ms": 57.284,
+  "latency_p50_ms": 58.606
+}

@@ -1,0 +1,824 @@
+{
+  "created_at_utc": "2026-09-10T01:56:15.106621+00:00",
+  "controlled_variables": {
+    "chunk_size_characters": 3200,
+    "overlap_characters": 480,
+    "embedding_model": "intfloat/multilingual-e5-small",
+    "retrieval": "normalized dense vectors + FAISS IndexFlatIP",
+    "generator": "same configured Qwen model and answer prompt"
+  },
+  "runs": {
+    "A0": {
+      "retrieval_recall_at_1": 0.111111,
+      "retrieval_recall_at_5": 0.444444,
+      "retrieval_recall_at_10": 0.555556,
+      "answer_accuracy": 0.6,
+      "manual_answer_accuracy": 0.6,
+      "citation_precision": 0.333333,
+      "citation_recall": 0.333333,
+      "citation_validator_pass_rate": 0.8,
+      "refusal_accuracy": 0.7,
+      "latency_seconds_mean": 7.2984,
+      "latency_seconds_p50": 4.6395,
+      "latency_seconds_p95": 18.9459,
+      "llm_calls_total": 13,
+      "cost_usd_total": 0.0,
+      "tokens": {
+        "uncached_input_tokens": 51078,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 542,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 51078,
+        "total_tokens": 51620
+      },
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.215152,
+        "gpt-5.6": 0.215152,
+        "gpt-5.6-terra": 0.10866,
+        "gpt-5.6-luna": 0.010866,
+        "claude-sonnet-5": 0.161364,
+        "claude-opus-5": 0.26894,
+        "claude-fable-5": 0.53788
+      },
+      "failure_taxonomy": {
+        "citation_error": 1,
+        "false_refusal": 1,
+        "none": 5,
+        "retrieval_miss": 3
+      }
+    },
+    "A1a": {
+      "retrieval_recall_at_1": 0.0,
+      "retrieval_recall_at_5": 0.444444,
+      "retrieval_recall_at_10": 0.555556,
+      "answer_accuracy": 0.6,
+      "manual_answer_accuracy": 0.6,
+      "citation_precision": 0.222222,
+      "citation_recall": 0.222222,
+      "citation_validator_pass_rate": 1.0,
+      "refusal_accuracy": 0.7,
+      "latency_seconds_mean": 5.226,
+      "latency_seconds_p50": 4.651,
+      "latency_seconds_p95": 8.81565,
+      "llm_calls_total": 10,
+      "cost_usd_total": 0.0,
+      "tokens": {
+        "uncached_input_tokens": 36526,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 319,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 36526,
+        "total_tokens": 36845
+      },
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.152484,
+        "gpt-5.6": 0.152484,
+        "gpt-5.6-terra": 0.07688,
+        "gpt-5.6-luna": 0.007688,
+        "claude-sonnet-5": 0.114363,
+        "claude-opus-5": 0.190605,
+        "claude-fable-5": 0.38121
+      },
+      "failure_taxonomy": {
+        "citation_error": 2,
+        "false_refusal": 2,
+        "none": 4,
+        "retrieval_miss": 2
+      },
+      "delta_vs_A0": {
+        "retrieval_recall_at_1": -0.111111,
+        "retrieval_recall_at_5": 0.0,
+        "retrieval_recall_at_10": 0.0,
+        "answer_accuracy": 0.0,
+        "manual_answer_accuracy": 0.0,
+        "citation_precision": -0.111111,
+        "citation_recall": -0.111111,
+        "citation_validator_pass_rate": 0.2,
+        "refusal_accuracy": 0.0,
+        "latency_seconds_mean": -2.0724,
+        "latency_seconds_p50": 0.0115,
+        "latency_seconds_p95": -10.13025,
+        "llm_calls_total": -3.0,
+        "cost_usd_total": 0.0
+      }
+    },
+    "A1b": {
+      "retrieval_recall_at_1": 0.0,
+      "retrieval_recall_at_5": 0.222222,
+      "retrieval_recall_at_10": 0.333333,
+      "answer_accuracy": 0.4,
+      "manual_answer_accuracy": 0.4,
+      "citation_precision": 0.111111,
+      "citation_recall": 0.111111,
+      "citation_validator_pass_rate": 1.0,
+      "refusal_accuracy": 0.6,
+      "latency_seconds_mean": 5.3823,
+      "latency_seconds_p50": 4.8645,
+      "latency_seconds_p95": 9.44175,
+      "llm_calls_total": 10,
+      "cost_usd_total": 0.0,
+      "tokens": {
+        "uncached_input_tokens": 38096,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 322,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 38096,
+        "total_tokens": 38418
+      },
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.158824,
+        "gpt-5.6": 0.158824,
+        "gpt-5.6-terra": 0.080056,
+        "gpt-5.6-luna": 0.0080056,
+        "claude-sonnet-5": 0.119118,
+        "claude-opus-5": 0.19853,
+        "claude-fable-5": 0.39706
+      },
+      "failure_taxonomy": {
+        "answer_error": 1,
+        "citation_error": 2,
+        "false_refusal": 1,
+        "none": 1,
+        "retrieval_miss": 5
+      },
+      "delta_vs_A0": {
+        "retrieval_recall_at_1": -0.111111,
+        "retrieval_recall_at_5": -0.222222,
+        "retrieval_recall_at_10": -0.222223,
+        "answer_accuracy": -0.2,
+        "manual_answer_accuracy": -0.2,
+        "citation_precision": -0.222222,
+        "citation_recall": -0.222222,
+        "citation_validator_pass_rate": 0.2,
+        "refusal_accuracy": -0.1,
+        "latency_seconds_mean": -1.9161,
+        "latency_seconds_p50": 0.225,
+        "latency_seconds_p95": -9.50415,
+        "llm_calls_total": -3.0,
+        "cost_usd_total": 0.0
+      }
+    }
+  },
+  "per_question": {
+    "sq-01": {
+      "A0": {
+        "first_gold_rank": 3,
+        "retrieved_pages": [
+          36,
+          11,
+          4,
+          60,
+          166,
+          165,
+          117,
+          46,
+          16,
+          169
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "false_refusal",
+        "latency_seconds": 26.946
+      },
+      "A1a": {
+        "first_gold_rank": 8,
+        "retrieved_pages": [
+          117,
+          59,
+          36,
+          41,
+          12,
+          35,
+          19,
+          4,
+          170,
+          270
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "false_refusal",
+        "latency_seconds": 4.568
+      },
+      "A1b": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          59,
+          60,
+          46,
+          117,
+          41,
+          211,
+          89,
+          232,
+          49,
+          16
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 5.79
+      }
+    },
+    "sq-02": {
+      "A0": {
+        "first_gold_rank": 1,
+        "retrieved_pages": [
+          4,
+          43,
+          11,
+          239,
+          71,
+          178,
+          11,
+          60,
+          96,
+          35
+        ],
+        "citations": [
+          4
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 6.812
+      },
+      "A1a": {
+        "first_gold_rank": 2,
+        "retrieved_pages": [
+          43,
+          4,
+          239,
+          59,
+          71,
+          15,
+          35,
+          12,
+          49,
+          140
+        ],
+        "citations": [
+          43
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "citation_error",
+        "latency_seconds": 7.032
+      },
+      "A1b": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          239,
+          43,
+          59,
+          71,
+          60,
+          55,
+          35,
+          12,
+          15,
+          65
+        ],
+        "citations": [
+          43
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 8.658
+      }
+    },
+    "sq-03": {
+      "A0": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          84,
+          36,
+          89,
+          256,
+          117,
+          198,
+          11,
+          169,
+          11,
+          166
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 9.168
+      },
+      "A1a": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          84,
+          36,
+          89,
+          59,
+          117,
+          85,
+          340,
+          38,
+          164,
+          77
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 3.215
+      },
+      "A1b": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          84,
+          89,
+          59,
+          46,
+          55,
+          12,
+          257,
+          76,
+          49,
+          263
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 3.217
+      }
+    },
+    "sq-04": {
+      "A0": {
+        "first_gold_rank": 4,
+        "retrieved_pages": [
+          117,
+          53,
+          49,
+          5,
+          19,
+          120,
+          121,
+          16,
+          22,
+          256
+        ],
+        "citations": [
+          5
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 7.501
+      },
+      "A1a": {
+        "first_gold_rank": 5,
+        "retrieved_pages": [
+          117,
+          53,
+          49,
+          16,
+          5,
+          19,
+          62,
+          120,
+          22,
+          121
+        ],
+        "citations": [
+          5
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 4.55
+      },
+      "A1b": {
+        "first_gold_rank": 6,
+        "retrieved_pages": [
+          53,
+          49,
+          117,
+          120,
+          16,
+          5,
+          19,
+          22,
+          121,
+          46
+        ],
+        "citations": [
+          53
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "citation_error",
+        "latency_seconds": 4.742
+      }
+    },
+    "sq-05": {
+      "A0": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          55,
+          256,
+          89,
+          257,
+          198,
+          14,
+          11,
+          178,
+          11,
+          46
+        ],
+        "citations": [
+          55
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 3.558
+      },
+      "A1a": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          55,
+          89,
+          59,
+          15,
+          16,
+          49,
+          257,
+          256,
+          71,
+          52
+        ],
+        "citations": [
+          55
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 4.734
+      },
+      "A1b": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          89,
+          59,
+          46,
+          55,
+          71,
+          55,
+          15,
+          257,
+          49,
+          51
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 3.304
+      }
+    },
+    "sq-06": {
+      "A0": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          59,
+          46,
+          256,
+          12,
+          36,
+          56,
+          30,
+          71,
+          11,
+          52
+        ],
+        "citations": [
+          256
+        ],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 5.539
+      },
+      "A1a": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          59,
+          15,
+          35,
+          52,
+          71,
+          72,
+          46,
+          12,
+          49,
+          256
+        ],
+        "citations": [
+          59
+        ],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 10.275
+      },
+      "A1b": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          59,
+          15,
+          46,
+          72,
+          55,
+          35,
+          89,
+          21,
+          30,
+          49
+        ],
+        "citations": [
+          59
+        ],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 10.083
+      }
+    },
+    "sq-07": {
+      "A0": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          58,
+          54,
+          120,
+          16,
+          56,
+          71,
+          48,
+          293,
+          110,
+          72
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 3.138
+      },
+      "A1a": {
+        "first_gold_rank": 4,
+        "retrieved_pages": [
+          16,
+          71,
+          58,
+          59,
+          72,
+          120,
+          15,
+          54,
+          49,
+          53
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "false_refusal",
+        "latency_seconds": 3.965
+      },
+      "A1b": {
+        "first_gold_rank": 2,
+        "retrieved_pages": [
+          71,
+          59,
+          58,
+          72,
+          89,
+          120,
+          55,
+          15,
+          16,
+          11
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "false_refusal",
+        "latency_seconds": 3.883
+      }
+    },
+    "sq-08": {
+      "A0": {
+        "first_gold_rank": 8,
+        "retrieved_pages": [
+          2,
+          3,
+          390,
+          58,
+          392,
+          389,
+          388,
+          387,
+          74,
+          391
+        ],
+        "citations": [
+          2
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "citation_error",
+        "latency_seconds": 3.633
+      },
+      "A1a": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          392,
+          390,
+          2,
+          389,
+          388,
+          58,
+          44,
+          3,
+          393,
+          391
+        ],
+        "citations": [
+          2
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "citation_error",
+        "latency_seconds": 4.777
+      },
+      "A1b": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          392,
+          389,
+          2,
+          293,
+          58,
+          388,
+          388,
+          389,
+          392,
+          44
+        ],
+        "citations": [
+          392
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "citation_error",
+        "latency_seconds": 5.504
+      }
+    },
+    "sq-09": {
+      "A0": {
+        "first_gold_rank": 4,
+        "retrieved_pages": [
+          5,
+          48,
+          53,
+          386,
+          387,
+          3,
+          390,
+          63,
+          393,
+          120
+        ],
+        "citations": [
+          386
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 3.74
+      },
+      "A1a": {
+        "first_gold_rank": 4,
+        "retrieved_pages": [
+          5,
+          48,
+          53,
+          386,
+          62,
+          49,
+          390,
+          16,
+          393,
+          388
+        ],
+        "citations": [
+          386
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 5.207
+      },
+      "A1b": {
+        "first_gold_rank": 3,
+        "retrieved_pages": [
+          5,
+          53,
+          386,
+          48,
+          293,
+          49,
+          16,
+          389,
+          387,
+          389
+        ],
+        "citations": [
+          386
+        ],
+        "citation_recall": 1.0,
+        "correct": false,
+        "failure_category": "answer_error",
+        "latency_seconds": 4.987
+      }
+    },
+    "sq-10": {
+      "A0": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          257,
+          84,
+          77,
+          11,
+          256,
+          46,
+          198,
+          11,
+          71,
+          340
+        ],
+        "citations": [],
+        "citation_recall": null,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 2.949
+      },
+      "A1a": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          257,
+          84,
+          35,
+          15,
+          256,
+          51,
+          49,
+          50,
+          46,
+          11
+        ],
+        "citations": [],
+        "citation_recall": null,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 3.937
+      },
+      "A1b": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          257,
+          35,
+          84,
+          46,
+          257,
+          15,
+          51,
+          49,
+          158,
+          123
+        ],
+        "citations": [],
+        "citation_recall": null,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 3.655
+      }
+    }
+  }
+}

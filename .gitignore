@@ -1,0 +1,9 @@
+.DS_Store
+._*
+tmp/
+.env
+techcombank_rag/.env
+techcombank_rag/.venv/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/

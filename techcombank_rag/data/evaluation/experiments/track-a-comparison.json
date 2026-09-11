@@ -1,0 +1,1626 @@
+{
+  "created_at_utc": "2026-09-10T05:48:39.533738+00:00",
+  "baseline": "A0",
+  "runs": {
+    "A0": {
+      "retrieval_recall_at_1": 0.111111,
+      "retrieval_recall_at_5": 0.444444,
+      "retrieval_recall_at_10": 0.555556,
+      "answer_accuracy": 0.6,
+      "manual_answer_accuracy": 0.6,
+      "citation_precision": 0.333333,
+      "citation_recall": 0.333333,
+      "citation_validator_pass_rate": 0.8,
+      "refusal_accuracy": 0.7,
+      "latency_seconds_mean": 7.2984,
+      "latency_seconds_p50": 4.6395,
+      "latency_seconds_p95": 18.9459,
+      "llm_calls_total": 13,
+      "cost_usd_total": 0.0,
+      "tokens": {
+        "uncached_input_tokens": 51078,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 542,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 51078,
+        "total_tokens": 51620
+      },
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.215152,
+        "gpt-5.6": 0.215152,
+        "gpt-5.6-terra": 0.10866,
+        "gpt-5.6-luna": 0.010866,
+        "claude-sonnet-5": 0.161364,
+        "claude-opus-5": 0.26894,
+        "claude-fable-5": 0.53788
+      },
+      "failure_taxonomy": {
+        "citation_error": 1,
+        "false_refusal": 1,
+        "none": 5,
+        "retrieval_miss": 3
+      }
+    },
+    "A1a": {
+      "retrieval_recall_at_1": 0.0,
+      "retrieval_recall_at_5": 0.444444,
+      "retrieval_recall_at_10": 0.555556,
+      "answer_accuracy": 0.6,
+      "manual_answer_accuracy": 0.6,
+      "citation_precision": 0.222222,
+      "citation_recall": 0.222222,
+      "citation_validator_pass_rate": 1.0,
+      "refusal_accuracy": 0.7,
+      "latency_seconds_mean": 5.226,
+      "latency_seconds_p50": 4.651,
+      "latency_seconds_p95": 8.81565,
+      "llm_calls_total": 10,
+      "cost_usd_total": 0.0,
+      "tokens": {
+        "uncached_input_tokens": 36526,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 319,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 36526,
+        "total_tokens": 36845
+      },
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.152484,
+        "gpt-5.6": 0.152484,
+        "gpt-5.6-terra": 0.07688,
+        "gpt-5.6-luna": 0.007688,
+        "claude-sonnet-5": 0.114363,
+        "claude-opus-5": 0.190605,
+        "claude-fable-5": 0.38121
+      },
+      "failure_taxonomy": {
+        "citation_error": 2,
+        "false_refusal": 2,
+        "none": 4,
+        "retrieval_miss": 2
+      },
+      "delta_vs_baseline": {
+        "retrieval_recall_at_1": -0.111111,
+        "retrieval_recall_at_5": 0.0,
+        "retrieval_recall_at_10": 0.0,
+        "answer_accuracy": 0.0,
+        "manual_answer_accuracy": 0.0,
+        "citation_precision": -0.111111,
+        "citation_recall": -0.111111,
+        "citation_validator_pass_rate": 0.2,
+        "refusal_accuracy": 0.0,
+        "latency_seconds_mean": -2.0724,
+        "latency_seconds_p50": 0.0115,
+        "latency_seconds_p95": -10.13025,
+        "llm_calls_total": -3.0,
+        "cost_usd_total": 0.0
+      }
+    },
+    "A1b": {
+      "retrieval_recall_at_1": 0.0,
+      "retrieval_recall_at_5": 0.222222,
+      "retrieval_recall_at_10": 0.333333,
+      "answer_accuracy": 0.4,
+      "manual_answer_accuracy": 0.4,
+      "citation_precision": 0.111111,
+      "citation_recall": 0.111111,
+      "citation_validator_pass_rate": 1.0,
+      "refusal_accuracy": 0.6,
+      "latency_seconds_mean": 5.3823,
+      "latency_seconds_p50": 4.8645,
+      "latency_seconds_p95": 9.44175,
+      "llm_calls_total": 10,
+      "cost_usd_total": 0.0,
+      "tokens": {
+        "uncached_input_tokens": 38096,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 322,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 38096,
+        "total_tokens": 38418
+      },
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.158824,
+        "gpt-5.6": 0.158824,
+        "gpt-5.6-terra": 0.080056,
+        "gpt-5.6-luna": 0.0080056,
+        "claude-sonnet-5": 0.119118,
+        "claude-opus-5": 0.19853,
+        "claude-fable-5": 0.39706
+      },
+      "failure_taxonomy": {
+        "answer_error": 1,
+        "citation_error": 2,
+        "false_refusal": 1,
+        "none": 1,
+        "retrieval_miss": 5
+      },
+      "delta_vs_baseline": {
+        "retrieval_recall_at_1": -0.111111,
+        "retrieval_recall_at_5": -0.222222,
+        "retrieval_recall_at_10": -0.222223,
+        "answer_accuracy": -0.2,
+        "manual_answer_accuracy": -0.2,
+        "citation_precision": -0.222222,
+        "citation_recall": -0.222222,
+        "citation_validator_pass_rate": 0.2,
+        "refusal_accuracy": -0.1,
+        "latency_seconds_mean": -1.9161,
+        "latency_seconds_p50": 0.225,
+        "latency_seconds_p95": -9.50415,
+        "llm_calls_total": -3.0,
+        "cost_usd_total": 0.0
+      }
+    },
+    "A2": {
+      "retrieval_recall_at_1": 0.333333,
+      "retrieval_recall_at_5": 0.444444,
+      "retrieval_recall_at_10": 0.666667,
+      "answer_accuracy": 0.7,
+      "manual_answer_accuracy": 0.7,
+      "citation_precision": 0.333333,
+      "citation_recall": 0.333333,
+      "citation_validator_pass_rate": 1.0,
+      "refusal_accuracy": 0.8,
+      "latency_seconds_mean": 5.8901,
+      "latency_seconds_p50": 5.1655,
+      "latency_seconds_p95": 9.5126,
+      "llm_calls_total": 11,
+      "cost_usd_total": 0.0,
+      "tokens": {
+        "uncached_input_tokens": 33653,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 382,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 33653,
+        "total_tokens": 34035
+      },
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.142252,
+        "gpt-5.6": 0.142252,
+        "gpt-5.6-terra": 0.07189,
+        "gpt-5.6-luna": 0.007189,
+        "claude-sonnet-5": 0.106689,
+        "claude-opus-5": 0.177815,
+        "claude-fable-5": 0.35563
+      },
+      "failure_taxonomy": {
+        "citation_error": 1,
+        "false_refusal": 1,
+        "none": 6,
+        "retrieval_miss": 2
+      },
+      "delta_vs_baseline": {
+        "retrieval_recall_at_1": 0.222222,
+        "retrieval_recall_at_5": 0.0,
+        "retrieval_recall_at_10": 0.111111,
+        "answer_accuracy": 0.1,
+        "manual_answer_accuracy": 0.1,
+        "citation_precision": 0.0,
+        "citation_recall": 0.0,
+        "citation_validator_pass_rate": 0.2,
+        "refusal_accuracy": 0.1,
+        "latency_seconds_mean": -1.4083,
+        "latency_seconds_p50": 0.526,
+        "latency_seconds_p95": -9.4333,
+        "llm_calls_total": -2.0,
+        "cost_usd_total": 0.0
+      }
+    },
+    "A3": {
+      "retrieval_recall_at_1": 0.333333,
+      "retrieval_recall_at_5": 0.555556,
+      "retrieval_recall_at_10": 0.666667,
+      "answer_accuracy": 0.6,
+      "manual_answer_accuracy": 0.6,
+      "citation_precision": 0.333333,
+      "citation_recall": 0.333333,
+      "citation_validator_pass_rate": 1.0,
+      "refusal_accuracy": 0.7,
+      "latency_seconds_mean": 4.4138,
+      "latency_seconds_p50": 4.0345,
+      "latency_seconds_p95": 6.29295,
+      "llm_calls_total": 10,
+      "cost_usd_total": 0.0,
+      "tokens": {
+        "uncached_input_tokens": 28079,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 316,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 28079,
+        "total_tokens": 28395
+      },
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.118636,
+        "gpt-5.6": 0.118636,
+        "gpt-5.6-terra": 0.05995,
+        "gpt-5.6-luna": 0.005995,
+        "claude-sonnet-5": 0.088977,
+        "claude-opus-5": 0.148295,
+        "claude-fable-5": 0.29659
+      },
+      "failure_taxonomy": {
+        "false_refusal": 2,
+        "none": 6,
+        "retrieval_miss": 2
+      },
+      "delta_vs_baseline": {
+        "retrieval_recall_at_1": 0.222222,
+        "retrieval_recall_at_5": 0.111112,
+        "retrieval_recall_at_10": 0.111111,
+        "answer_accuracy": 0.0,
+        "manual_answer_accuracy": 0.0,
+        "citation_precision": 0.0,
+        "citation_recall": 0.0,
+        "citation_validator_pass_rate": 0.2,
+        "refusal_accuracy": 0.0,
+        "latency_seconds_mean": -2.8846,
+        "latency_seconds_p50": -0.605,
+        "latency_seconds_p95": -12.65295,
+        "llm_calls_total": -3.0,
+        "cost_usd_total": 0.0
+      }
+    },
+    "A4": {
+      "retrieval_recall_at_1": 0.333333,
+      "retrieval_recall_at_5": 0.555556,
+      "retrieval_recall_at_10": 0.555556,
+      "answer_accuracy": 0.6,
+      "manual_answer_accuracy": 0.6,
+      "citation_precision": 0.444444,
+      "citation_recall": 0.444444,
+      "citation_validator_pass_rate": 0.8,
+      "refusal_accuracy": 0.7,
+      "latency_seconds_mean": 7.3017,
+      "latency_seconds_p50": 5.821,
+      "latency_seconds_p95": 15.05285,
+      "llm_calls_total": 13,
+      "cost_usd_total": 0.0,
+      "tokens": {
+        "uncached_input_tokens": 46573,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 547,
+        "reasoning_tokens": 0,
+        "source": "client_tokenizer",
+        "total_input_tokens": 46573,
+        "total_tokens": 47120
+      },
+      "cost_projection_same_tokens_usd": {
+        "gpt-5.6-sol": 0.197232,
+        "gpt-5.6": 0.197232,
+        "gpt-5.6-terra": 0.09971,
+        "gpt-5.6-luna": 0.009971,
+        "claude-sonnet-5": 0.147924,
+        "claude-opus-5": 0.24654,
+        "claude-fable-5": 0.49308
+      },
+      "failure_taxonomy": {
+        "answer_error": 1,
+        "false_refusal": 1,
+        "none": 6,
+        "retrieval_miss": 2
+      },
+      "delta_vs_baseline": {
+        "retrieval_recall_at_1": 0.222222,
+        "retrieval_recall_at_5": 0.111112,
+        "retrieval_recall_at_10": 0.0,
+        "answer_accuracy": 0.0,
+        "manual_answer_accuracy": 0.0,
+        "citation_precision": 0.111111,
+        "citation_recall": 0.111111,
+        "citation_validator_pass_rate": 0.0,
+        "refusal_accuracy": 0.0,
+        "latency_seconds_mean": 0.0033,
+        "latency_seconds_p50": 1.1815,
+        "latency_seconds_p95": -3.89305,
+        "llm_calls_total": 0.0,
+        "cost_usd_total": 0.0
+      }
+    }
+  },
+  "per_question": {
+    "sq-01": {
+      "A0": {
+        "first_gold_rank": 3,
+        "retrieved_pages": [
+          36,
+          11,
+          4,
+          60,
+          166,
+          165,
+          117,
+          46,
+          16,
+          169
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "false_refusal",
+        "latency_seconds": 26.946
+      },
+      "A1a": {
+        "first_gold_rank": 8,
+        "retrieved_pages": [
+          117,
+          59,
+          36,
+          41,
+          12,
+          35,
+          19,
+          4,
+          170,
+          270
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "false_refusal",
+        "latency_seconds": 4.568
+      },
+      "A1b": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          59,
+          60,
+          46,
+          117,
+          41,
+          211,
+          89,
+          232,
+          49,
+          16
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 5.79
+      },
+      "A2": {
+        "first_gold_rank": 1,
+        "retrieved_pages": [
+          4,
+          59,
+          117,
+          12,
+          106,
+          164,
+          19,
+          64,
+          35,
+          27
+        ],
+        "citations": [
+          4
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 7.293
+      },
+      "A3": {
+        "first_gold_rank": 2,
+        "retrieved_pages": [
+          59,
+          4,
+          59,
+          117,
+          30,
+          16,
+          12,
+          4,
+          106,
+          164
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "false_refusal",
+        "latency_seconds": 4.812
+      },
+      "A4": {
+        "first_gold_rank": 3,
+        "retrieved_pages": [
+          36,
+          11,
+          4,
+          60,
+          166,
+          165,
+          117,
+          46,
+          16,
+          169
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "false_refusal",
+        "latency_seconds": 19.754
+      }
+    },
+    "sq-02": {
+      "A0": {
+        "first_gold_rank": 1,
+        "retrieved_pages": [
+          4,
+          43,
+          11,
+          239,
+          71,
+          178,
+          11,
+          60,
+          96,
+          35
+        ],
+        "citations": [
+          4
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 6.812
+      },
+      "A1a": {
+        "first_gold_rank": 2,
+        "retrieved_pages": [
+          43,
+          4,
+          239,
+          59,
+          71,
+          15,
+          35,
+          12,
+          49,
+          140
+        ],
+        "citations": [
+          43
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "citation_error",
+        "latency_seconds": 7.032
+      },
+      "A1b": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          239,
+          43,
+          59,
+          71,
+          60,
+          55,
+          35,
+          12,
+          15,
+          65
+        ],
+        "citations": [
+          43
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 8.658
+      },
+      "A2": {
+        "first_gold_rank": 1,
+        "retrieved_pages": [
+          4,
+          43,
+          239,
+          59,
+          71,
+          33,
+          35,
+          12,
+          11,
+          43
+        ],
+        "citations": [
+          4
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 6.978
+      },
+      "A3": {
+        "first_gold_rank": 1,
+        "retrieved_pages": [
+          4,
+          43,
+          43,
+          35,
+          239,
+          239,
+          59,
+          59,
+          71,
+          33
+        ],
+        "citations": [
+          4
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 5.98
+      },
+      "A4": {
+        "first_gold_rank": 1,
+        "retrieved_pages": [
+          4,
+          43,
+          11,
+          239,
+          71,
+          178,
+          11,
+          60,
+          96,
+          35
+        ],
+        "citations": [
+          4
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 6.553
+      }
+    },
+    "sq-03": {
+      "A0": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          84,
+          36,
+          89,
+          256,
+          117,
+          198,
+          11,
+          169,
+          11,
+          166
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 9.168
+      },
+      "A1a": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          84,
+          36,
+          89,
+          59,
+          117,
+          85,
+          340,
+          38,
+          164,
+          77
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 3.215
+      },
+      "A1b": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          84,
+          89,
+          59,
+          46,
+          55,
+          12,
+          257,
+          76,
+          49,
+          263
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 3.217
+      },
+      "A2": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          84,
+          89,
+          36,
+          59,
+          257,
+          76,
+          35,
+          164,
+          4,
+          77
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 3.346
+      },
+      "A3": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          84,
+          89,
+          84,
+          36,
+          59,
+          59,
+          36,
+          164,
+          257,
+          379
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 2.771
+      },
+      "A4": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          84,
+          36,
+          89,
+          256,
+          164,
+          117,
+          379,
+          167,
+          198,
+          167
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 9.307
+      }
+    },
+    "sq-04": {
+      "A0": {
+        "first_gold_rank": 4,
+        "retrieved_pages": [
+          117,
+          53,
+          49,
+          5,
+          19,
+          120,
+          121,
+          16,
+          22,
+          256
+        ],
+        "citations": [
+          5
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 7.501
+      },
+      "A1a": {
+        "first_gold_rank": 5,
+        "retrieved_pages": [
+          117,
+          53,
+          49,
+          16,
+          5,
+          19,
+          62,
+          120,
+          22,
+          121
+        ],
+        "citations": [
+          5
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 4.55
+      },
+      "A1b": {
+        "first_gold_rank": 6,
+        "retrieved_pages": [
+          53,
+          49,
+          117,
+          120,
+          16,
+          5,
+          19,
+          22,
+          121,
+          46
+        ],
+        "citations": [
+          53
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "citation_error",
+        "latency_seconds": 4.742
+      },
+      "A2": {
+        "first_gold_rank": 6,
+        "retrieved_pages": [
+          49,
+          53,
+          121,
+          16,
+          117,
+          5,
+          117,
+          19,
+          62,
+          120
+        ],
+        "citations": [
+          49
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 4.787
+      },
+      "A3": {
+        "first_gold_rank": 8,
+        "retrieved_pages": [
+          53,
+          49,
+          53,
+          49,
+          121,
+          16,
+          117,
+          5,
+          117,
+          19
+        ],
+        "citations": [
+          53
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 3.963
+      },
+      "A4": {
+        "first_gold_rank": 4,
+        "retrieved_pages": [
+          117,
+          53,
+          49,
+          5,
+          19,
+          120,
+          121,
+          16,
+          22,
+          35
+        ],
+        "citations": [
+          5
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 8.324
+      }
+    },
+    "sq-05": {
+      "A0": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          55,
+          256,
+          89,
+          257,
+          198,
+          14,
+          11,
+          178,
+          11,
+          46
+        ],
+        "citations": [
+          55
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 3.558
+      },
+      "A1a": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          55,
+          89,
+          59,
+          15,
+          16,
+          49,
+          257,
+          256,
+          71,
+          52
+        ],
+        "citations": [
+          55
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 4.734
+      },
+      "A1b": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          89,
+          59,
+          46,
+          55,
+          71,
+          55,
+          15,
+          257,
+          49,
+          51
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 3.304
+      },
+      "A2": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          89,
+          35,
+          59,
+          15,
+          49,
+          11,
+          16,
+          257,
+          71,
+          76
+        ],
+        "citations": [
+          15
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 9.066
+      },
+      "A3": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          89,
+          55,
+          35,
+          59,
+          15,
+          49,
+          11,
+          15,
+          16,
+          59
+        ],
+        "citations": [
+          15
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 4.004
+      },
+      "A4": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          55,
+          256,
+          89,
+          257,
+          198,
+          14,
+          11,
+          178,
+          11,
+          46
+        ],
+        "citations": [
+          55
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 4.576
+      }
+    },
+    "sq-06": {
+      "A0": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          59,
+          46,
+          256,
+          12,
+          36,
+          56,
+          30,
+          71,
+          11,
+          52
+        ],
+        "citations": [
+          256
+        ],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 5.539
+      },
+      "A1a": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          59,
+          15,
+          35,
+          52,
+          71,
+          72,
+          46,
+          12,
+          49,
+          256
+        ],
+        "citations": [
+          59
+        ],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 10.275
+      },
+      "A1b": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          59,
+          15,
+          46,
+          72,
+          55,
+          35,
+          89,
+          21,
+          30,
+          49
+        ],
+        "citations": [
+          59
+        ],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 10.083
+      },
+      "A2": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          59,
+          15,
+          35,
+          12,
+          38,
+          46,
+          14,
+          72,
+          71,
+          4
+        ],
+        "citations": [
+          59
+        ],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 9.878
+      },
+      "A3": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          59,
+          59,
+          15,
+          35,
+          14,
+          12,
+          15,
+          38,
+          46,
+          14
+        ],
+        "citations": [
+          59
+        ],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 6.549
+      },
+      "A4": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          59,
+          46,
+          256,
+          12,
+          36,
+          56,
+          30,
+          71,
+          11,
+          52
+        ],
+        "citations": [
+          256
+        ],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "answer_error",
+        "latency_seconds": 8.203
+      }
+    },
+    "sq-07": {
+      "A0": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          58,
+          54,
+          120,
+          16,
+          56,
+          71,
+          48,
+          293,
+          110,
+          72
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 3.138
+      },
+      "A1a": {
+        "first_gold_rank": 4,
+        "retrieved_pages": [
+          16,
+          71,
+          58,
+          59,
+          72,
+          120,
+          15,
+          54,
+          49,
+          53
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "false_refusal",
+        "latency_seconds": 3.965
+      },
+      "A1b": {
+        "first_gold_rank": 2,
+        "retrieved_pages": [
+          71,
+          59,
+          58,
+          72,
+          89,
+          120,
+          55,
+          15,
+          16,
+          11
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "false_refusal",
+        "latency_seconds": 3.883
+      },
+      "A2": {
+        "first_gold_rank": 3,
+        "retrieved_pages": [
+          58,
+          71,
+          59,
+          16,
+          72,
+          15,
+          14,
+          119,
+          11,
+          49
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "false_refusal",
+        "latency_seconds": 3.76
+      },
+      "A3": {
+        "first_gold_rank": 3,
+        "retrieved_pages": [
+          58,
+          71,
+          59,
+          16,
+          72,
+          111,
+          58,
+          16,
+          15,
+          14
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "false_refusal",
+        "latency_seconds": 3.895
+      },
+      "A4": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          58,
+          111,
+          54,
+          120,
+          16,
+          56,
+          71,
+          48,
+          293,
+          110
+        ],
+        "citations": [],
+        "citation_recall": 0.0,
+        "correct": false,
+        "failure_category": "retrieval_miss",
+        "latency_seconds": 3.625
+      }
+    },
+    "sq-08": {
+      "A0": {
+        "first_gold_rank": 8,
+        "retrieved_pages": [
+          2,
+          3,
+          390,
+          58,
+          392,
+          389,
+          388,
+          387,
+          74,
+          391
+        ],
+        "citations": [
+          2
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "citation_error",
+        "latency_seconds": 3.633
+      },
+      "A1a": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          392,
+          390,
+          2,
+          389,
+          388,
+          58,
+          44,
+          3,
+          393,
+          391
+        ],
+        "citations": [
+          2
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "citation_error",
+        "latency_seconds": 4.777
+      },
+      "A1b": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          392,
+          389,
+          2,
+          293,
+          58,
+          388,
+          388,
+          389,
+          392,
+          44
+        ],
+        "citations": [
+          392
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "citation_error",
+        "latency_seconds": 5.504
+      },
+      "A2": {
+        "first_gold_rank": 7,
+        "retrieved_pages": [
+          2,
+          44,
+          386,
+          58,
+          388,
+          3,
+          387,
+          387,
+          389,
+          390
+        ],
+        "citations": [
+          2
+        ],
+        "citation_recall": 0.0,
+        "correct": true,
+        "failure_category": "citation_error",
+        "latency_seconds": 4.781
+      },
+      "A3": {
+        "first_gold_rank": 1,
+        "retrieved_pages": [
+          387,
+          44,
+          386,
+          58,
+          2,
+          386,
+          44,
+          389,
+          392,
+          386
+        ],
+        "citations": [
+          387
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 3.749
+      },
+      "A4": {
+        "first_gold_rank": 1,
+        "retrieved_pages": [
+          387,
+          2,
+          3,
+          386,
+          390,
+          58,
+          392,
+          386,
+          389,
+          388
+        ],
+        "citations": [
+          387
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 5.089
+      }
+    },
+    "sq-09": {
+      "A0": {
+        "first_gold_rank": 4,
+        "retrieved_pages": [
+          5,
+          48,
+          53,
+          386,
+          387,
+          3,
+          390,
+          63,
+          393,
+          120
+        ],
+        "citations": [
+          386
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 3.74
+      },
+      "A1a": {
+        "first_gold_rank": 4,
+        "retrieved_pages": [
+          5,
+          48,
+          53,
+          386,
+          62,
+          49,
+          390,
+          16,
+          393,
+          388
+        ],
+        "citations": [
+          386
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 5.207
+      },
+      "A1b": {
+        "first_gold_rank": 3,
+        "retrieved_pages": [
+          5,
+          53,
+          386,
+          48,
+          293,
+          49,
+          16,
+          389,
+          387,
+          389
+        ],
+        "citations": [
+          386
+        ],
+        "citation_recall": 1.0,
+        "correct": false,
+        "failure_category": "answer_error",
+        "latency_seconds": 4.987
+      },
+      "A2": {
+        "first_gold_rank": 1,
+        "retrieved_pages": [
+          386,
+          5,
+          53,
+          117,
+          386,
+          48,
+          387,
+          62,
+          49,
+          386
+        ],
+        "citations": [
+          386
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 5.544
+      },
+      "A3": {
+        "first_gold_rank": 1,
+        "retrieved_pages": [
+          386,
+          386,
+          386,
+          53,
+          386,
+          387,
+          49,
+          386,
+          5,
+          53
+        ],
+        "citations": [
+          386
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 4.35
+      },
+      "A4": {
+        "first_gold_rank": 1,
+        "retrieved_pages": [
+          386,
+          5,
+          48,
+          386,
+          387,
+          386,
+          386,
+          53,
+          386,
+          386
+        ],
+        "citations": [
+          386
+        ],
+        "citation_recall": 1.0,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 4.402
+      }
+    },
+    "sq-10": {
+      "A0": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          257,
+          84,
+          77,
+          11,
+          256,
+          46,
+          198,
+          11,
+          71,
+          340
+        ],
+        "citations": [],
+        "citation_recall": null,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 2.949
+      },
+      "A1a": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          257,
+          84,
+          35,
+          15,
+          256,
+          51,
+          49,
+          50,
+          46,
+          11
+        ],
+        "citations": [],
+        "citation_recall": null,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 3.937
+      },
+      "A1b": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          257,
+          35,
+          84,
+          46,
+          257,
+          15,
+          51,
+          49,
+          158,
+          123
+        ],
+        "citations": [],
+        "citation_recall": null,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 3.655
+      },
+      "A2": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          35,
+          84,
+          11,
+          15,
+          51,
+          76,
+          257,
+          49,
+          46,
+          340
+        ],
+        "citations": [],
+        "citation_recall": null,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 3.468
+      },
+      "A3": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          35,
+          257,
+          84,
+          76,
+          11,
+          15,
+          84,
+          51,
+          15,
+          59
+        ],
+        "citations": [],
+        "citation_recall": null,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 4.065
+      },
+      "A4": {
+        "first_gold_rank": null,
+        "retrieved_pages": [
+          257,
+          84,
+          77,
+          11,
+          256,
+          46,
+          198,
+          14,
+          11,
+          71
+        ],
+        "citations": [],
+        "citation_recall": null,
+        "correct": true,
+        "failure_category": "none",
+        "latency_seconds": 3.184
+      }
+    }
+  }
+}

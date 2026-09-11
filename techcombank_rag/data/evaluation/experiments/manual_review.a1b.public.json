@@ -1,0 +1,52 @@
+{
+  "sq-01": {
+    "correct": false,
+    "failure_category": "retrieval_miss",
+    "notes": "Canonical page 4 is absent from top 10 and the response refuses." 
+  },
+  "sq-02": {
+    "correct": true,
+    "failure_category": "retrieval_miss",
+    "notes": "The ratings answer is correct, but canonical page 4 is absent and the response cites duplicate page 43." 
+  },
+  "sq-03": {
+    "correct": false,
+    "failure_category": "retrieval_miss",
+    "notes": "Canonical page 5 is absent from top 10 and the response refuses." 
+  },
+  "sq-04": {
+    "correct": true,
+    "failure_category": "citation_error",
+    "notes": "CASA 40.4% is correct, but the response cites page 53 instead of canonical page 5." 
+  },
+  "sq-05": {
+    "correct": false,
+    "failure_category": "retrieval_miss",
+    "notes": "Canonical page 5 is absent and the response refuses despite a duplicate value on page 55." 
+  },
+  "sq-06": {
+    "correct": false,
+    "failure_category": "retrieval_miss",
+    "notes": "Canonical page 5 is absent; the response gives 28.3 rather than 53.4 trillion VND and omits CAGR 16.5%." 
+  },
+  "sq-07": {
+    "correct": false,
+    "failure_category": "false_refusal",
+    "notes": "Gold page 59 is retrieved at rank 2 but the response refuses." 
+  },
+  "sq-08": {
+    "correct": true,
+    "failure_category": "citation_error",
+    "notes": "The RBG expansion is correct, but the response cites page 392 instead of canonical glossary page 387." 
+  },
+  "sq-09": {
+    "correct": false,
+    "failure_category": "answer_error",
+    "notes": "Page 386 is cited, but the response expands CASA as a ratio label rather than 'Tiền gửi không kỳ hạn'." 
+  },
+  "sq-10": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Correctly refuses the unsupported 2027 forecast." 
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "run_name": "a1a-paddleocr-vl-1.6-plain-fixed",
+  "created_at_utc": "2026-09-10T01:47:04.906867+00:00",
+  "evaluation_method": {
+    "retrieval": "printed-page recall and hit rate against manually verified gold pages",
+    "answer_automatic": "deterministic token-F1>=0.45 plus exact numeric coverage; refusal exactness for unanswerable questions",
+    "answer_primary": "manual review when provided, otherwise automatic heuristic",
+    "warning": "Automatic answer correctness is diagnostic, not a substitute for human review."
+  },
+  "environment": {
+    "python": "3.11.5",
+    "platform": "Linux-5.15.0-190-generic-x86_64-with-glibc2.31",
+    "llm_provider": "openai_compatible",
+    "llm_model": "Qwen/Qwen3.5-9B",
+    "embedding_model": "intfloat/multilingual-e5-small",
+    "top_k_evidence": 5,
+    "retrieval_k_evaluated": 10,
+    "index_dir": "techcombank_rag/data/index/a1a_paddleocr_vl_1_6_plain_fixed"
+  },
+  "artifacts": {
+    "questions": "/home/ubuntu/TCB_Test/techcombank_rag/data/evaluation/public.json",
+    "questions_sha256": "3949b944dbf7033c805c347c982b74234ced60710954626b779cf2c5d39b4992",
+    "index_metadata": {
+      "artifact_schema_version": 1,
+      "experiment": "A1a",
+      "pipeline": "PaddleOCR-VL-1.6-plain-fixed-chunk+dense-e5-flatip",
+      "document_parser": "PaddleOCR-VL-1.6",
+      "representation": "plain",
+      "source_pdf": "techcombank-bao-cao-thuong-nien-2025-vie-update.pdf",
+      "source_pdf_sha256": "2db3dfe6e7a05f889ec2e93bf16dda4b6a7f3334df440b7cb0761df2e89344d9",
+      "raw_ocr_dir": "data/processed/paddleocr_vl_1_6/raw",
+      "raw_fragment_count": 393,
+      "raw_manifest_sha256": "873faa472f4fc8e23d4cb4fa69a08d3730fe7c78d8e190d595cb62eb0ec56e27",
+      "embedding_model": "intfloat/multilingual-e5-small",
+      "embedding_device": "cpu",
+      "pdf_sheet_count": 197,
+      "printed_fragment_count": 393,
+      "chunk_count": 440,
+      "vector_dimension": 384,
+      "chunk_size_characters": 3200,
+      "overlap_characters": 480,
+      "index_build_seconds": 176.772,
+      "created_at_utc": "2026-09-10T01:41:27.713808+00:00",
+      "chunks_sha256": "f382018207cc9b0650dc914fd8080d719ff546beb847368418fdf7fc2a85fba8",
+      "index_sha256": "afe37dcc35264e6e1aed3666968bf6c64883f7abcdef289fdcb27d77aac9b6ae"
+    }
+  },
+  "counts": {
+    "questions": 10,
+    "answerable": 9,
+    "unanswerable": 1,
+    "runtime_errors": 0,
+    "manually_reviewed": 10
+  },
+  "metrics": {
+    "retrieval_recall_at_1": 0.0,
+    "retrieval_recall_at_5": 0.444444,
+    "retrieval_recall_at_10": 0.555556,
+    "retrieval_hit_at_1": 0.0,
+    "retrieval_hit_at_5": 0.444444,
+    "retrieval_hit_at_10": 0.555556,
+    "answer_accuracy": 0.6,
+    "manual_answer_accuracy": 0.6,
+    "citation_precision": 0.222222,
+    "citation_recall": 0.222222,
+    "citation_validator_pass_rate": 1.0,
+    "refusal_accuracy": 0.7,
+    "latency_seconds_mean": 5.226,
+    "latency_seconds_p50": 4.651,
+    "latency_seconds_p95": 8.81565,
+    "llm_calls_total": 10,
+    "tokens": {
+      "uncached_input_tokens": 36526,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 319,
+      "reasoning_tokens": 0,
+      "source": "client_tokenizer",
+      "total_input_tokens": 36526,
+      "total_tokens": 36845
+    },
+    "calls_by_purpose": {
+      "answer": 10
+    },
+    "calls_by_provider_model": {
+      "openai_compatible::Qwen/Qwen3.5-9B": 10
+    },
+    "cost_usd_total": 0.0,
+    "cost_usd_mean": 0.0,
+    "cost_projection_same_tokens_usd": {
+      "gpt-5.6-sol": 0.152484,
+      "gpt-5.6": 0.152484,
+      "gpt-5.6-terra": 0.07688,
+      "gpt-5.6-luna": 0.007688,
+      "claude-sonnet-5": 0.114363,
+      "claude-opus-5": 0.190605,
+      "claude-fable-5": 0.38121
+    }
+  },
+  "failure_taxonomy": {
+    "citation_error": 2,
+    "false_refusal": 2,
+    "none": 4,
+    "retrieval_miss": 2
+  },
+  "manual_review": {
+    "path": "data/evaluation/experiments/manual_review.a1a.public.json",
+    "sha256": "f47136b966465fa1803a1eb9984a7048d637ab2459788a5c7ccb9c46c90d598d",
+    "reviewed_questions": 10
+  }
+}

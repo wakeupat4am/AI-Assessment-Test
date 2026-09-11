@@ -1,0 +1,7 @@
+{
+  "sq-01": {
+    "correct": true,
+    "failure_category": "none",
+    "notes": "Answer contains both requested facts and the correct printed-page citation."
+  }
+}
