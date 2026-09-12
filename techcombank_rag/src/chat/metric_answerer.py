@@ -42,6 +42,7 @@ class MetricAnswer:
     label: str
     values: dict[str, str]
     calculation: dict[str, str] | None = None
+    source_kind: str = "metric_row"
 
 
 def _decimal(value: str) -> Decimal | None:
@@ -88,6 +89,59 @@ def _rows(chunk: dict[str, Any]) -> list[tuple[str, dict[str, tuple[str, str]]]]
     return parsed
 
 
+def _answer_semantic_metric(
+    query: str,
+    chunks: list[dict[str, Any]],
+    requested_years: list[str],
+    minimum_label_coverage: float,
+) -> MetricAnswer | None:
+    best: tuple[float, dict[str, Any], dict[str, Any]] | None = None
+    for chunk in chunks:
+        semantic = chunk.get("semantic_fields") or {}
+        label = normalize_search_text(str(semantic.get("metric", "")))
+        value = normalize_search_text(str(semantic.get("value", "")))
+        if not label or not value:
+            continue
+        coverage = _label_coverage(query, label)
+        if coverage < minimum_label_coverage:
+            continue
+        reporting_year = str(chunk.get("reporting_year", ""))
+        searchable = normalize_search_text(str(chunk.get("text", "")))
+        if requested_years and not all(
+            year == reporting_year or year in searchable for year in requested_years
+        ):
+            continue
+        candidate = (coverage, chunk, semantic)
+        if best is None or coverage > best[0]:
+            best = candidate
+    if best is None:
+        return None
+
+    _, chunk, semantic = best
+    label = normalize_search_text(str(semantic["metric"]))
+    value = normalize_search_text(str(semantic["value"]))
+    unit = normalize_search_text(str(semantic.get("unit") or ""))
+    if unit and unit.casefold() not in value.casefold():
+        value = f"{value} {unit.casefold()}"
+    details = []
+    for raw_detail in semantic.get("details") or []:
+        detail = normalize_search_text(str(raw_detail)).lstrip("▲△ ")
+        if not detail or detail.casefold() == unit.casefold():
+            continue
+        if detail not in details:
+            details.append(detail)
+    year = str(chunk.get("reporting_year") or (requested_years[-1] if requested_years else ""))
+    year_phrase = f" năm {year}" if year else ""
+    detail_phrase = ""
+    if details:
+        normalized_details = [item[:1].lower() + item[1:] for item in details]
+        detail_phrase = ", " + "; ".join(normalized_details)
+    page = int(chunk["printed_page"])
+    answer = f"{label}{year_phrase} là {value}{detail_phrase} [tr. {page}]."
+    values = {year: value} if year else {"value": value}
+    return MetricAnswer(answer, page, label, values, source_kind="semantic_metric")
+
+
 def answer_metric_query(
     query: str, chunks: list[dict[str, Any]], *, minimum_label_coverage: float = 0.72
 ) -> MetricAnswer | None:
@@ -116,7 +170,9 @@ def answer_metric_query(
             if best is None or coverage > best[0]:
                 best = candidate
     if best is None:
-        return None
+        return _answer_semantic_metric(
+            query, chunks, requested_years, minimum_label_coverage
+        )
 
     _, chunk, label, values = best
     selected = {year: values[year][0] for year in requested_years}

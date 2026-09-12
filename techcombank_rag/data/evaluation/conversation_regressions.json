@@ -1,0 +1,62 @@
+[
+  {
+    "id": "history_metric_identity",
+    "turns": [
+      {
+        "question": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+        "gold_answer": "8.396.946 triệu đồng",
+        "gold_printed_pages": [301]
+      },
+      {
+        "question": "Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là bao nhiêu?",
+        "gold_answer": "12.526.963 triệu đồng",
+        "gold_printed_pages": [356]
+      },
+      {
+        "question": "Thu nhập thuần từ hoạt động dịch vụ NFI năm 2025 đạt bao nhiêu?",
+        "gold_answer": "11,5 nghìn tỷ đồng",
+        "gold_printed_pages": [50]
+      },
+      {
+        "question": "Ba số liệu trên có phải cùng một chỉ tiêu không? Hãy phân biệt nguồn và ý nghĩa của từng số liệu.",
+        "gold_answer": "8.396.946 triệu đồng; 12.526.963 triệu đồng; 11,5 nghìn tỷ đồng",
+        "gold_printed_pages": [301, 356, 50]
+      }
+    ]
+  },
+  {
+    "id": "public_questions_after_history",
+    "turns": [
+      {
+        "question": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+        "gold_answer": "8.396.946 triệu đồng",
+        "gold_printed_pages": [301]
+      },
+      {
+        "question": "Tính đến năm 2025, Techcombank có bao nhiêu chi nhánh và phòng giao dịch, và hiện diện tại bao nhiêu tỉnh thành?",
+        "gold_answer": "302 chi nhánh và phòng giao dịch, tại 29 trên 34 tỉnh thành",
+        "gold_printed_pages": [4]
+      },
+      {
+        "question": "Năm 2025, Techcombank được S&P Global Ratings và Fitch Ratings xếp hạng tín nhiệm ở mức nào?",
+        "gold_answer": "BB với triển vọng Ổn định; BB- với triển vọng Tích cực",
+        "gold_printed_pages": [4]
+      },
+      {
+        "question": "Tổng tài sản của Techcombank tại ngày 31/12/2025 là bao nhiêu?",
+        "gold_answer": "1.192 nghìn tỷ đồng, tăng 21,8% so với năm trước",
+        "gold_printed_pages": [5]
+      },
+      {
+        "question": "Tỷ lệ CASA của Techcombank năm 2025 là bao nhiêu?",
+        "gold_answer": "40,4%, dẫn đầu ngành",
+        "gold_printed_pages": [5]
+      },
+      {
+        "question": "Tỷ lệ nợ xấu của Techcombank năm 2025 là bao nhiêu?",
+        "gold_answer": "1,13%, chất lượng tài sản thuộc nhóm tốt nhất thị trường",
+        "gold_printed_pages": [5]
+      }
+    ]
+  }
+]

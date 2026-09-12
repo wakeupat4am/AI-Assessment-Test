@@ -19,7 +19,7 @@ A31_INDEX_ROOT := $(APP_DIR)/data/index/a31_semantic_multirepr
 A32_INDEX_ROOT := $(APP_DIR)/data/index/a32_metric_aware
 A4_INDEX := $(APP_DIR)/data/index/a4_selective_cascade
 
-.PHONY: setup run evaluate baseline test verify-index verify-baseline verify-b4-index ingest ingest-a1 ingest-a2-a4 build-b1a-index build-a31 build-a32 build-bm25 benchmark-metric-aware benchmark-metric-multiturn benchmark-a1a benchmark-a1b benchmark-a2 benchmark-a3 benchmark-a4 benchmark-a31 benchmark-a31-dev ablate-hyde ablate-hyde-dev ablate-b4-retrieval ablate-b4 ablate-b4-dev ablate-b4-holdout ablate-b5 ablate-b5-dev ablate-b5-holdout router-proxy evaluate-router-b1b ablate-b1a ablate-b1a-dev ablate-b1b ablate-b1b-dev ablate-b1b-controlled-a2 ablate-b1b-controlled-a2-dev ablate-b2 ablate-b2-dev clean-generated
+.PHONY: setup run evaluate baseline test verify-index verify-baseline verify-b4-index ingest ingest-a1 ingest-a2-a4 build-b1a-index build-a31 build-a32 build-bm25 benchmark-metric-aware benchmark-metric-multiturn benchmark-conversation-regressions benchmark-a1a benchmark-a1b benchmark-a2 benchmark-a3 benchmark-a4 benchmark-a31 benchmark-a31-dev ablate-hyde ablate-hyde-dev ablate-b4-retrieval ablate-b4 ablate-b4-dev ablate-b4-holdout ablate-b5 ablate-b5-dev ablate-b5-holdout router-proxy evaluate-router-b1b ablate-b1a ablate-b1a-dev ablate-b1b ablate-b1b-dev ablate-b1b-controlled-a2 ablate-b1b-controlled-a2-dev ablate-b2 ablate-b2-dev clean-generated
 
 setup: $(STAMP)
 
@@ -100,6 +100,11 @@ benchmark-metric-aware: setup
 
 benchmark-metric-multiturn: setup
 	@"$(PYTHON)" "$(APP_DIR)/scripts/evaluate_metric_multiturn.py"
+
+benchmark-conversation-regressions: setup
+	@"$(PYTHON)" "$(APP_DIR)/scripts/evaluate_metric_multiturn.py" \
+		--questions "$(APP_DIR)/data/evaluation/conversation_regressions.json" \
+		--output "$(APP_DIR)/data/evaluation/experiments/metric_aware/conversation-regressions.json"
 
 # Deterministic lexical artifact built from shipped A3.1 chunks; no OCR/embedding/API.
 build-bm25: setup

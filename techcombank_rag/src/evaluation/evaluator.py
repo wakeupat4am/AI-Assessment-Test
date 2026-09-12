@@ -433,6 +433,8 @@ def evaluate_questions(
                 "latency_breakdown": response.get("latency_breakdown", {}),
                 "llm": response.get("llm", {}),
                 "routing": response.get("routing"),
+                "answer_mode": response.get("answer_mode", "llm"),
+                "metric_grounding": response.get("metric_grounding"),
                 "scores": scores,
                 "error": error,
             }

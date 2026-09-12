@@ -1,0 +1,1470 @@
+{
+  "questions": "data/evaluation/conversation_regressions.json",
+  "systems": {
+    "A31_B4b_frozen": {
+      "conversations": [
+        {
+          "id": "history_metric_identity",
+          "turns": [
+            {
+              "question": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+              "standalone_query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+              "gold_answer": "8.396.946 triệu đồng",
+              "answer": "Thu nhập từ hoạt động dịch vụ năm 2025 đạt 11,5 nghìn tỷ đồng [tr. 50].",
+              "gold_printed_pages": [
+                301
+              ],
+              "citations": [
+                50
+              ],
+              "numeric_coverage": false,
+              "citation_overlap": false,
+              "citation_coverage": false,
+              "latency_seconds": 5.72,
+              "answer_mode": "llm",
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 34,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    50,
+                    356,
+                    356,
+                    300,
+                    5,
+                    301,
+                    356,
+                    50,
+                    356,
+                    5
+                  ],
+                  "latency_seconds": 0.055655
+                }
+              }
+            },
+            {
+              "question": "Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là bao nhiêu?",
+              "standalone_query": "Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là bao nhiêu?",
+              "gold_answer": "12.526.963 triệu đồng",
+              "answer": "Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là 12.526.963 triệu đồng [tr. 356].",
+              "gold_printed_pages": [
+                356
+              ],
+              "citations": [
+                356
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 7.769,
+              "answer_mode": "llm",
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là bao nhiêu?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 35,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    356,
+                    300,
+                    369,
+                    356,
+                    50,
+                    300,
+                    356,
+                    301,
+                    318,
+                    350
+                  ],
+                  "latency_seconds": 0.093186
+                }
+              }
+            },
+            {
+              "question": "Thu nhập thuần từ hoạt động dịch vụ NFI năm 2025 đạt bao nhiêu?",
+              "standalone_query": "Thu nhập thuần từ hoạt động dịch vụ NFI năm 2025 đạt bao nhiêu?",
+              "gold_answer": "11,5 nghìn tỷ đồng",
+              "answer": "Thu nhập thuần từ hoạt động dịch vụ (NFI) năm 2025 đạt 11,5 nghìn tỷ đồng [tr. 50].",
+              "gold_printed_pages": [
+                50
+              ],
+              "citations": [
+                50
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 5.732,
+              "answer_mode": "llm",
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Thu nhập thuần từ hoạt động dịch vụ NFI năm 2025 đạt bao nhiêu?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 31,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    50,
+                    356,
+                    50,
+                    356,
+                    15,
+                    300,
+                    300,
+                    5,
+                    5,
+                    50
+                  ],
+                  "latency_seconds": 0.043328
+                }
+              }
+            },
+            {
+              "question": "Ba số liệu trên có phải cùng một chỉ tiêu không? Hãy phân biệt nguồn và ý nghĩa của từng số liệu.",
+              "standalone_query": "Ba số liệu về thu nhập từ hoạt động dịch vụ năm 2025 (11,5 nghìn tỷ đồng từ báo cáo tổng quan, 12.526.963 triệu đồng từ thuyết minh báo cáo tài chính hợp nhất, và 11,5 nghìn tỷ đồng thu nhập thuần từ hoạt động dịch vụ NFI) có phải cùng một chỉ tiêu không? Hãy phân biệt nguồn gốc và ý nghĩa của từng số liệu.",
+              "gold_answer": "8.396.946 triệu đồng; 12.526.963 triệu đồng; 11,5 nghìn tỷ đồng",
+              "answer": "Không, ba số liệu này không phải là cùng một chỉ tiêu: \"Thu nhập lãi thuần\" (38,2 nghìn tỷ đồng) phản ánh chênh lệch giữa thu và chi lãi [tr. 50], trong khi \"Thu nhập từ hoạt động dịch vụ\" (11,5 nghìn tỷ đồng) phản ánh doanh thu từ các dịch vụ phi lãi như thanh toán và bảo hiểm [tr. 50].",
+              "gold_printed_pages": [
+                301,
+                356,
+                50
+              ],
+              "citations": [
+                50
+              ],
+              "numeric_coverage": false,
+              "citation_overlap": true,
+              "citation_coverage": false,
+              "latency_seconds": 25.864,
+              "answer_mode": "llm",
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Ba số liệu về thu nhập từ hoạt động dịch vụ năm 2025 (11,5 nghìn tỷ đồng từ báo cáo tổng quan, 12.526.963 triệu đồng từ thuyết minh báo cáo tài chính hợp nhất, và 11,5 nghìn tỷ đồng thu nhập thuần từ hoạt động dịch vụ NFI) có phải cùng một chỉ tiêu không? Hãy phân biệt nguồn gốc và ý nghĩa của từng số liệu.",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 37,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    50,
+                    50,
+                    300,
+                    300,
+                    356,
+                    369,
+                    5,
+                    356,
+                    48,
+                    369
+                  ],
+                  "latency_seconds": 0.126754
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "public_questions_after_history",
+          "turns": [
+            {
+              "question": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+              "standalone_query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+              "gold_answer": "8.396.946 triệu đồng",
+              "answer": "Thu nhập từ hoạt động dịch vụ năm 2025 đạt 11,5 nghìn tỷ đồng [tr. 50].",
+              "gold_printed_pages": [
+                301
+              ],
+              "citations": [
+                50
+              ],
+              "numeric_coverage": false,
+              "citation_overlap": false,
+              "citation_coverage": false,
+              "latency_seconds": 4.257,
+              "answer_mode": "llm",
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 34,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    50,
+                    356,
+                    356,
+                    300,
+                    5,
+                    301,
+                    356,
+                    50,
+                    356,
+                    5
+                  ],
+                  "latency_seconds": 0.011445
+                }
+              }
+            },
+            {
+              "question": "Tính đến năm 2025, Techcombank có bao nhiêu chi nhánh và phòng giao dịch, và hiện diện tại bao nhiêu tỉnh thành?",
+              "standalone_query": "Tính đến năm 2025, Techcombank có bao nhiêu chi nhánh và phòng giao dịch, và hiện diện tại bao nhiêu tỉnh thành?",
+              "gold_answer": "302 chi nhánh và phòng giao dịch, tại 29 trên 34 tỉnh thành",
+              "answer": "Không thể tạo câu trả lời với trích dẫn hợp lệ từ bằng chứng được truy xuất.",
+              "gold_printed_pages": [
+                4
+              ],
+              "citations": [],
+              "numeric_coverage": false,
+              "citation_overlap": false,
+              "citation_coverage": false,
+              "latency_seconds": 14.051,
+              "answer_mode": "llm",
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Tính đến năm 2025, Techcombank có bao nhiêu chi nhánh và phòng giao dịch, và hiện diện tại bao nhiêu tỉnh thành?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 35,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    27,
+                    27,
+                    4,
+                    4,
+                    61,
+                    121,
+                    27,
+                    61,
+                    121,
+                    59
+                  ],
+                  "latency_seconds": 0.047125
+                }
+              }
+            },
+            {
+              "question": "Năm 2025, Techcombank được S&P Global Ratings và Fitch Ratings xếp hạng tín nhiệm ở mức nào?",
+              "standalone_query": "Năm 2025, Techcombank được S&P Global Ratings và Fitch Ratings xếp hạng tín nhiệm ở mức nào?",
+              "gold_answer": "BB với triển vọng Ổn định; BB- với triển vọng Tích cực",
+              "answer": "Năm 2025, Techcombank được S&P Global Ratings xếp hạng tín nhiệm ở mức BB và Fitch Ratings xếp hạng tín nhiệm dài hạn ở mức BB- [tr. 43].",
+              "gold_printed_pages": [
+                4
+              ],
+              "citations": [
+                43
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": false,
+              "citation_coverage": false,
+              "latency_seconds": 7.153,
+              "answer_mode": "llm",
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Năm 2025, Techcombank được S&P Global Ratings và Fitch Ratings xếp hạng tín nhiệm ở mức nào?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 34,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    43,
+                    4,
+                    43,
+                    35,
+                    239,
+                    239,
+                    243,
+                    35,
+                    35,
+                    48
+                  ],
+                  "latency_seconds": 0.058336
+                }
+              }
+            },
+            {
+              "question": "Tổng tài sản của Techcombank tại ngày 31/12/2025 là bao nhiêu?",
+              "standalone_query": "Tổng tài sản của Techcombank tại ngày 31/12/2025 là bao nhiêu?",
+              "gold_answer": "1.192 nghìn tỷ đồng, tăng 21,8% so với năm trước",
+              "answer": "Tổng tài sản của Techcombank tại ngày 31/12/2025 là 1.192 nghìn tỷ đồng [tr. 5].",
+              "gold_printed_pages": [
+                5
+              ],
+              "citations": [
+                5
+              ],
+              "numeric_coverage": false,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 7.481,
+              "answer_mode": "llm",
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Tổng tài sản của Techcombank tại ngày 31/12/2025 là bao nhiêu?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 37,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    379,
+                    36,
+                    342,
+                    5,
+                    36,
+                    86,
+                    379,
+                    84,
+                    85,
+                    379
+                  ],
+                  "latency_seconds": 0.072413
+                }
+              }
+            },
+            {
+              "question": "Tỷ lệ CASA của Techcombank năm 2025 là bao nhiêu?",
+              "standalone_query": "Tỷ lệ CASA của Techcombank năm 2025 là bao nhiêu?",
+              "gold_answer": "40,4%, dẫn đầu ngành",
+              "answer": "Tỷ lệ CASA của Techcombank năm 2025 là 40,4% [tr. 5].",
+              "gold_printed_pages": [
+                5
+              ],
+              "citations": [
+                5
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 5.405,
+              "answer_mode": "llm",
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Tỷ lệ CASA của Techcombank năm 2025 là bao nhiêu?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 31,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    5,
+                    53,
+                    53,
+                    48,
+                    53,
+                    5,
+                    48,
+                    5,
+                    49,
+                    121
+                  ],
+                  "latency_seconds": 0.045381
+                }
+              }
+            },
+            {
+              "question": "Tỷ lệ nợ xấu của Techcombank năm 2025 là bao nhiêu?",
+              "standalone_query": "Tỷ lệ nợ xấu của Techcombank năm 2025 là bao nhiêu?",
+              "gold_answer": "1,13%, chất lượng tài sản thuộc nhóm tốt nhất thị trường",
+              "answer": "Tỷ lệ nợ xấu của Techcombank năm 2025 là 1,13% [tr. 5].",
+              "gold_printed_pages": [
+                5
+              ],
+              "citations": [
+                5
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 5.923,
+              "answer_mode": "llm",
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Tỷ lệ nợ xấu của Techcombank năm 2025 là bao nhiêu?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 33,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    5,
+                    55,
+                    48,
+                    55,
+                    5,
+                    48,
+                    15,
+                    35,
+                    5,
+                    59
+                  ],
+                  "latency_seconds": 0.062165
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "turns": 10,
+        "numeric_coverage": 0.5,
+        "citation_overlap": 0.6,
+        "citation_coverage": 0.5,
+        "latency_mean_seconds": 8.935500000000001
+      }
+    },
+    "A32_B4e_metric_aware": {
+      "conversations": [
+        {
+          "id": "history_metric_identity",
+          "turns": [
+            {
+              "question": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+              "standalone_query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+              "gold_answer": "8.396.946 triệu đồng",
+              "answer": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là 8.396.946 triệu đồng [tr. 301].",
+              "gold_printed_pages": [
+                301
+              ],
+              "citations": [
+                301
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 0.079,
+              "answer_mode": "deterministic_metric_row",
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.2+B4e",
+                  "matched_triggers": [
+                    "nhận được"
+                  ],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "metric_aware",
+                      "query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                      "constraints": {
+                        "normalized": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                        "terms": [
+                          "thu",
+                          "nhập",
+                          "từ",
+                          "hoạt",
+                          "động",
+                          "dịch",
+                          "vụ",
+                          "nhận",
+                          "được",
+                          "năm",
+                          "2025",
+                          "là",
+                          "bao",
+                          "nhiêu"
+                        ],
+                        "qualifiers": [
+                          "nhận được"
+                        ],
+                        "years": [
+                          "2025"
+                        ],
+                        "statement_type": "unspecified"
+                      },
+                      "candidate_count": 40,
+                      "returned_candidates": 10,
+                      "final_pages": [
+                        301,
+                        301,
+                        358,
+                        356,
+                        300,
+                        301,
+                        356,
+                        5,
+                        50,
+                        356
+                      ],
+                      "latency_seconds": 0.068132,
+                      "base_trace": {
+                        "b4": {
+                          "stage": "hybrid_rrf",
+                          "query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                          "dense_candidates": 40,
+                          "bm25_candidates": 40,
+                          "union_candidates": 64,
+                          "returned_candidates": 40,
+                          "rrf_k": 60,
+                          "dense_weight": 1.0,
+                          "bm25_weight": 1.0,
+                          "final_pages": [
+                            301,
+                            356,
+                            300,
+                            50,
+                            5,
+                            356,
+                            356,
+                            356,
+                            5,
+                            358,
+                            300,
+                            51,
+                            51,
+                            300,
+                            358,
+                            300,
+                            50,
+                            49,
+                            300,
+                            369,
+                            382,
+                            5,
+                            358,
+                            317,
+                            15,
+                            356,
+                            358,
+                            49,
+                            356,
+                            256,
+                            256,
+                            318,
+                            356,
+                            301,
+                            356,
+                            356,
+                            356,
+                            15,
+                            301,
+                            355
+                          ],
+                          "latency_seconds": 0.043694
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "question": "Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là bao nhiêu?",
+              "standalone_query": "Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là bao nhiêu?",
+              "gold_answer": "12.526.963 triệu đồng",
+              "answer": "Thu nhập từ hoạt động dịch vụ của Techcombank năm 2025 là 12.526.963 triệu đồng [tr. 356].",
+              "gold_printed_pages": [
+                356
+              ],
+              "citations": [
+                356
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 5.185,
+              "answer_mode": "llm",
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.2+B4e",
+                  "matched_triggers": [
+                    "hợp nhất",
+                    "trong thuyết minh"
+                  ],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "metric_aware",
+                      "query": "Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là bao nhiêu?",
+                      "constraints": {
+                        "normalized": "Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là bao nhiêu?",
+                        "terms": [
+                          "thu",
+                          "nhập",
+                          "từ",
+                          "hoạt",
+                          "động",
+                          "dịch",
+                          "vụ",
+                          "năm",
+                          "2025",
+                          "trong",
+                          "thuyết",
+                          "minh",
+                          "báo",
+                          "cáo",
+                          "tài",
+                          "chính",
+                          "hợp",
+                          "nhất",
+                          "là",
+                          "bao",
+                          "nhiêu"
+                        ],
+                        "qualifiers": [
+                          "hợp nhất"
+                        ],
+                        "years": [
+                          "2025"
+                        ],
+                        "statement_type": "financial_note"
+                      },
+                      "candidate_count": 40,
+                      "returned_candidates": 10,
+                      "final_pages": [
+                        356,
+                        369,
+                        356,
+                        369,
+                        369,
+                        368,
+                        369,
+                        350,
+                        300,
+                        358
+                      ],
+                      "latency_seconds": 0.087617,
+                      "base_trace": {
+                        "b4": {
+                          "stage": "hybrid_rrf",
+                          "query": "Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là bao nhiêu?",
+                          "dense_candidates": 40,
+                          "bm25_candidates": 40,
+                          "union_candidates": 62,
+                          "returned_candidates": 40,
+                          "rrf_k": 60,
+                          "dense_weight": 1.0,
+                          "bm25_weight": 1.0,
+                          "final_pages": [
+                            356,
+                            300,
+                            369,
+                            301,
+                            356,
+                            5,
+                            50,
+                            356,
+                            300,
+                            300,
+                            369,
+                            369,
+                            356,
+                            300,
+                            320,
+                            300,
+                            368,
+                            369,
+                            318,
+                            350,
+                            358,
+                            300,
+                            300,
+                            300,
+                            369,
+                            5,
+                            49,
+                            300,
+                            300,
+                            382,
+                            300,
+                            317,
+                            50,
+                            347,
+                            5,
+                            356,
+                            350,
+                            350,
+                            303,
+                            374
+                          ],
+                          "latency_seconds": 0.063352
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "question": "Thu nhập thuần từ hoạt động dịch vụ NFI năm 2025 đạt bao nhiêu?",
+              "standalone_query": "Thu nhập thuần từ hoạt động dịch vụ NFI năm 2025 đạt bao nhiêu?",
+              "gold_answer": "11,5 nghìn tỷ đồng",
+              "answer": "Thu nhập thuần từ hoạt động dịch vụ (NFI) năm 2025 đạt 11,5 nghìn tỷ đồng, tăng 7,8% so với cùng kỳ [tr. 50].",
+              "gold_printed_pages": [
+                50
+              ],
+              "citations": [
+                50
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 5.508,
+              "answer_mode": "llm",
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.1+B4b_frozen",
+                  "matched_triggers": [],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "hybrid_rrf",
+                      "query": "Thu nhập thuần từ hoạt động dịch vụ NFI năm 2025 đạt bao nhiêu?",
+                      "dense_candidates": 20,
+                      "bm25_candidates": 20,
+                      "union_candidates": 31,
+                      "returned_candidates": 10,
+                      "rrf_k": 60,
+                      "dense_weight": 1.0,
+                      "bm25_weight": 1.0,
+                      "final_pages": [
+                        50,
+                        356,
+                        50,
+                        356,
+                        15,
+                        300,
+                        300,
+                        5,
+                        5,
+                        50
+                      ],
+                      "latency_seconds": 0.050429
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "question": "Ba số liệu trên có phải cùng một chỉ tiêu không? Hãy phân biệt nguồn và ý nghĩa của từng số liệu.",
+              "standalone_query": "Phân biệt các chỉ tiêu: Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu? | Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là bao nhiêu? | Thu nhập thuần từ hoạt động dịch vụ NFI năm 2025 đạt bao nhiêu?",
+              "gold_answer": "8.396.946 triệu đồng; 12.526.963 triệu đồng; 11,5 nghìn tỷ đồng",
+              "answer": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là 8.396.946 triệu đồng [tr. 301]. Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là 12.526.963 triệu đồng [tr. 356]. Thu nhập thuần từ hoạt động dịch vụ NFI năm 2025 đạt 11,5 nghìn tỷ đồng [tr. 50].",
+              "gold_printed_pages": [
+                301,
+                356,
+                50
+              ],
+              "citations": [
+                301,
+                356,
+                50
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 10.426,
+              "answer_mode": "llm",
+              "routing": {
+                "multi_turn_decomposition": {
+                  "queries": [
+                    "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                    "Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là bao nhiêu?",
+                    "Thu nhập thuần từ hoạt động dịch vụ NFI năm 2025 đạt bao nhiêu?"
+                  ],
+                  "query_count": 3,
+                  "retriever_traces": [
+                    {
+                      "b4": {
+                        "stage": "selective_metric_aware",
+                        "selected_path": "A3.2+B4e",
+                        "matched_triggers": [
+                          "nhận được"
+                        ],
+                        "base_trace": {
+                          "b4": {
+                            "stage": "metric_aware",
+                            "query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                            "constraints": {
+                              "normalized": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                              "terms": [
+                                "thu",
+                                "nhập",
+                                "từ",
+                                "hoạt",
+                                "động",
+                                "dịch",
+                                "vụ",
+                                "nhận",
+                                "được",
+                                "năm",
+                                "2025",
+                                "là",
+                                "bao",
+                                "nhiêu"
+                              ],
+                              "qualifiers": [
+                                "nhận được"
+                              ],
+                              "years": [
+                                "2025"
+                              ],
+                              "statement_type": "unspecified"
+                            },
+                            "candidate_count": 40,
+                            "returned_candidates": 10,
+                            "final_pages": [
+                              301,
+                              301,
+                              358,
+                              356,
+                              300,
+                              301,
+                              356,
+                              5,
+                              50,
+                              356
+                            ],
+                            "latency_seconds": 0.06646,
+                            "base_trace": {
+                              "b4": {
+                                "stage": "hybrid_rrf",
+                                "query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                                "dense_candidates": 40,
+                                "bm25_candidates": 40,
+                                "union_candidates": 64,
+                                "returned_candidates": 40,
+                                "rrf_k": 60,
+                                "dense_weight": 1.0,
+                                "bm25_weight": 1.0,
+                                "final_pages": [
+                                  301,
+                                  356,
+                                  300,
+                                  50,
+                                  5,
+                                  356,
+                                  356,
+                                  356,
+                                  5,
+                                  358,
+                                  300,
+                                  51,
+                                  51,
+                                  300,
+                                  358,
+                                  300,
+                                  50,
+                                  49,
+                                  300,
+                                  369,
+                                  382,
+                                  5,
+                                  358,
+                                  317,
+                                  15,
+                                  356,
+                                  358,
+                                  49,
+                                  356,
+                                  256,
+                                  256,
+                                  318,
+                                  356,
+                                  301,
+                                  356,
+                                  356,
+                                  356,
+                                  15,
+                                  301,
+                                  355
+                                ],
+                                "latency_seconds": 0.01974
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "b4": {
+                        "stage": "selective_metric_aware",
+                        "selected_path": "A3.2+B4e",
+                        "matched_triggers": [
+                          "hợp nhất",
+                          "trong thuyết minh"
+                        ],
+                        "base_trace": {
+                          "b4": {
+                            "stage": "metric_aware",
+                            "query": "Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là bao nhiêu?",
+                            "constraints": {
+                              "normalized": "Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là bao nhiêu?",
+                              "terms": [
+                                "thu",
+                                "nhập",
+                                "từ",
+                                "hoạt",
+                                "động",
+                                "dịch",
+                                "vụ",
+                                "năm",
+                                "2025",
+                                "trong",
+                                "thuyết",
+                                "minh",
+                                "báo",
+                                "cáo",
+                                "tài",
+                                "chính",
+                                "hợp",
+                                "nhất",
+                                "là",
+                                "bao",
+                                "nhiêu"
+                              ],
+                              "qualifiers": [
+                                "hợp nhất"
+                              ],
+                              "years": [
+                                "2025"
+                              ],
+                              "statement_type": "financial_note"
+                            },
+                            "candidate_count": 40,
+                            "returned_candidates": 10,
+                            "final_pages": [
+                              356,
+                              369,
+                              356,
+                              369,
+                              369,
+                              368,
+                              369,
+                              350,
+                              300,
+                              358
+                            ],
+                            "latency_seconds": 0.088525,
+                            "base_trace": {
+                              "b4": {
+                                "stage": "hybrid_rrf",
+                                "query": "Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh báo cáo tài chính hợp nhất là bao nhiêu?",
+                                "dense_candidates": 40,
+                                "bm25_candidates": 40,
+                                "union_candidates": 62,
+                                "returned_candidates": 40,
+                                "rrf_k": 60,
+                                "dense_weight": 1.0,
+                                "bm25_weight": 1.0,
+                                "final_pages": [
+                                  356,
+                                  300,
+                                  369,
+                                  301,
+                                  356,
+                                  5,
+                                  50,
+                                  356,
+                                  300,
+                                  300,
+                                  369,
+                                  369,
+                                  356,
+                                  300,
+                                  320,
+                                  300,
+                                  368,
+                                  369,
+                                  318,
+                                  350,
+                                  358,
+                                  300,
+                                  300,
+                                  300,
+                                  369,
+                                  5,
+                                  49,
+                                  300,
+                                  300,
+                                  382,
+                                  300,
+                                  317,
+                                  50,
+                                  347,
+                                  5,
+                                  356,
+                                  350,
+                                  350,
+                                  303,
+                                  374
+                                ],
+                                "latency_seconds": 0.046175
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "b4": {
+                        "stage": "selective_metric_aware",
+                        "selected_path": "A3.1+B4b_frozen",
+                        "matched_triggers": [],
+                        "base_trace": {
+                          "b4": {
+                            "stage": "hybrid_rrf",
+                            "query": "Thu nhập thuần từ hoạt động dịch vụ NFI năm 2025 đạt bao nhiêu?",
+                            "dense_candidates": 20,
+                            "bm25_candidates": 20,
+                            "union_candidates": 31,
+                            "returned_candidates": 10,
+                            "rrf_k": 60,
+                            "dense_weight": 1.0,
+                            "bm25_weight": 1.0,
+                            "final_pages": [
+                              50,
+                              356,
+                              50,
+                              356,
+                              15,
+                              300,
+                              300,
+                              5,
+                              5,
+                              50
+                            ],
+                            "latency_seconds": 0.016719
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "public_questions_after_history",
+          "turns": [
+            {
+              "question": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+              "standalone_query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+              "gold_answer": "8.396.946 triệu đồng",
+              "answer": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là 8.396.946 triệu đồng [tr. 301].",
+              "gold_printed_pages": [
+                301
+              ],
+              "citations": [
+                301
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 0.079,
+              "answer_mode": "deterministic_metric_row",
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.2+B4e",
+                  "matched_triggers": [
+                    "nhận được"
+                  ],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "metric_aware",
+                      "query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                      "constraints": {
+                        "normalized": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                        "terms": [
+                          "thu",
+                          "nhập",
+                          "từ",
+                          "hoạt",
+                          "động",
+                          "dịch",
+                          "vụ",
+                          "nhận",
+                          "được",
+                          "năm",
+                          "2025",
+                          "là",
+                          "bao",
+                          "nhiêu"
+                        ],
+                        "qualifiers": [
+                          "nhận được"
+                        ],
+                        "years": [
+                          "2025"
+                        ],
+                        "statement_type": "unspecified"
+                      },
+                      "candidate_count": 40,
+                      "returned_candidates": 10,
+                      "final_pages": [
+                        301,
+                        301,
+                        358,
+                        356,
+                        300,
+                        301,
+                        356,
+                        5,
+                        50,
+                        356
+                      ],
+                      "latency_seconds": 0.065096,
+                      "base_trace": {
+                        "b4": {
+                          "stage": "hybrid_rrf",
+                          "query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                          "dense_candidates": 40,
+                          "bm25_candidates": 40,
+                          "union_candidates": 64,
+                          "returned_candidates": 40,
+                          "rrf_k": 60,
+                          "dense_weight": 1.0,
+                          "bm25_weight": 1.0,
+                          "final_pages": [
+                            301,
+                            356,
+                            300,
+                            50,
+                            5,
+                            356,
+                            356,
+                            356,
+                            5,
+                            358,
+                            300,
+                            51,
+                            51,
+                            300,
+                            358,
+                            300,
+                            50,
+                            49,
+                            300,
+                            369,
+                            382,
+                            5,
+                            358,
+                            317,
+                            15,
+                            356,
+                            358,
+                            49,
+                            356,
+                            256,
+                            256,
+                            318,
+                            356,
+                            301,
+                            356,
+                            356,
+                            356,
+                            15,
+                            301,
+                            355
+                          ],
+                          "latency_seconds": 0.021811
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "question": "Tính đến năm 2025, Techcombank có bao nhiêu chi nhánh và phòng giao dịch, và hiện diện tại bao nhiêu tỉnh thành?",
+              "standalone_query": "Tính đến năm 2025, Techcombank có bao nhiêu chi nhánh và phòng giao dịch, và hiện diện tại bao nhiêu tỉnh thành?",
+              "gold_answer": "302 chi nhánh và phòng giao dịch, tại 29 trên 34 tỉnh thành",
+              "answer": "Tính đến năm 2025, Techcombank có 302 chi nhánh và phòng giao dịch hiện diện tại 29 trên 34 tỉnh thành trên toàn quốc [tr. 4].",
+              "gold_printed_pages": [
+                4
+              ],
+              "citations": [
+                4
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 6.026,
+              "answer_mode": "llm",
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.1+B4b_frozen",
+                  "matched_triggers": [],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "hybrid_rrf",
+                      "query": "Tính đến năm 2025, Techcombank có bao nhiêu chi nhánh và phòng giao dịch, và hiện diện tại bao nhiêu tỉnh thành?",
+                      "dense_candidates": 20,
+                      "bm25_candidates": 20,
+                      "union_candidates": 35,
+                      "returned_candidates": 10,
+                      "rrf_k": 60,
+                      "dense_weight": 1.0,
+                      "bm25_weight": 1.0,
+                      "final_pages": [
+                        27,
+                        27,
+                        4,
+                        4,
+                        61,
+                        121,
+                        27,
+                        61,
+                        121,
+                        59
+                      ],
+                      "latency_seconds": 0.081799
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "question": "Năm 2025, Techcombank được S&P Global Ratings và Fitch Ratings xếp hạng tín nhiệm ở mức nào?",
+              "standalone_query": "Năm 2025, Techcombank được S&P Global Ratings và Fitch Ratings xếp hạng tín nhiệm ở mức nào?",
+              "gold_answer": "BB với triển vọng Ổn định; BB- với triển vọng Tích cực",
+              "answer": "Năm 2025, Techcombank được S&P Global Ratings xếp hạng tín nhiệm ở mức BB với triển vọng Ổn định và được Fitch Ratings xếp hạng tín nhiệm dài hạn ở mức BB- với triển vọng \"Tích cực\" [tr. 4].",
+              "gold_printed_pages": [
+                4
+              ],
+              "citations": [
+                4
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 6.13,
+              "answer_mode": "llm",
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.1+B4b_frozen",
+                  "matched_triggers": [],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "hybrid_rrf",
+                      "query": "Năm 2025, Techcombank được S&P Global Ratings và Fitch Ratings xếp hạng tín nhiệm ở mức nào?",
+                      "dense_candidates": 20,
+                      "bm25_candidates": 20,
+                      "union_candidates": 34,
+                      "returned_candidates": 10,
+                      "rrf_k": 60,
+                      "dense_weight": 1.0,
+                      "bm25_weight": 1.0,
+                      "final_pages": [
+                        43,
+                        4,
+                        43,
+                        35,
+                        239,
+                        239,
+                        243,
+                        35,
+                        35,
+                        48
+                      ],
+                      "latency_seconds": 0.073819
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "question": "Tổng tài sản của Techcombank tại ngày 31/12/2025 là bao nhiêu?",
+              "standalone_query": "Tổng tài sản của Techcombank tại ngày 31/12/2025 là bao nhiêu?",
+              "gold_answer": "1.192 nghìn tỷ đồng, tăng 21,8% so với năm trước",
+              "answer": "Tổng tài sản năm 2025 là 1.192 nghìn tỷ đồng, tăng 21,8% so với năm trước [tr. 5].",
+              "gold_printed_pages": [
+                5
+              ],
+              "citations": [
+                5
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 0.082,
+              "answer_mode": "deterministic_semantic_metric",
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.1+B4b_frozen",
+                  "matched_triggers": [],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "hybrid_rrf",
+                      "query": "Tổng tài sản của Techcombank tại ngày 31/12/2025 là bao nhiêu?",
+                      "dense_candidates": 20,
+                      "bm25_candidates": 20,
+                      "union_candidates": 37,
+                      "returned_candidates": 10,
+                      "rrf_k": 60,
+                      "dense_weight": 1.0,
+                      "bm25_weight": 1.0,
+                      "final_pages": [
+                        379,
+                        36,
+                        342,
+                        5,
+                        36,
+                        86,
+                        379,
+                        84,
+                        85,
+                        379
+                      ],
+                      "latency_seconds": 0.073505
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "question": "Tỷ lệ CASA của Techcombank năm 2025 là bao nhiêu?",
+              "standalone_query": "Tỷ lệ CASA của Techcombank năm 2025 là bao nhiêu?",
+              "gold_answer": "40,4%, dẫn đầu ngành",
+              "answer": "Tỷ lệ CASA năm 2025 là 40,4%, dẫn đầu ngành [tr. 5].",
+              "gold_printed_pages": [
+                5
+              ],
+              "citations": [
+                5
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 0.051,
+              "answer_mode": "deterministic_semantic_metric",
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.1+B4b_frozen",
+                  "matched_triggers": [],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "hybrid_rrf",
+                      "query": "Tỷ lệ CASA của Techcombank năm 2025 là bao nhiêu?",
+                      "dense_candidates": 20,
+                      "bm25_candidates": 20,
+                      "union_candidates": 31,
+                      "returned_candidates": 10,
+                      "rrf_k": 60,
+                      "dense_weight": 1.0,
+                      "bm25_weight": 1.0,
+                      "final_pages": [
+                        5,
+                        53,
+                        53,
+                        48,
+                        53,
+                        5,
+                        48,
+                        5,
+                        49,
+                        121
+                      ],
+                      "latency_seconds": 0.045273
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "question": "Tỷ lệ nợ xấu của Techcombank năm 2025 là bao nhiêu?",
+              "standalone_query": "Tỷ lệ nợ xấu của Techcombank năm 2025 là bao nhiêu?",
+              "gold_answer": "1,13%, chất lượng tài sản thuộc nhóm tốt nhất thị trường",
+              "answer": "Tỷ lệ nợ xấu năm 2025 là 1,13%, chất lượng tài sản thuộc nhóm tốt nhất thị trường [tr. 5].",
+              "gold_printed_pages": [
+                5
+              ],
+              "citations": [
+                5
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "citation_coverage": true,
+              "latency_seconds": 0.045,
+              "answer_mode": "deterministic_semantic_metric",
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.1+B4b_frozen",
+                  "matched_triggers": [],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "hybrid_rrf",
+                      "query": "Tỷ lệ nợ xấu của Techcombank năm 2025 là bao nhiêu?",
+                      "dense_candidates": 20,
+                      "bm25_candidates": 20,
+                      "union_candidates": 33,
+                      "returned_candidates": 10,
+                      "rrf_k": 60,
+                      "dense_weight": 1.0,
+                      "bm25_weight": 1.0,
+                      "final_pages": [
+                        5,
+                        55,
+                        48,
+                        55,
+                        5,
+                        48,
+                        15,
+                        35,
+                        5,
+                        59
+                      ],
+                      "latency_seconds": 0.041145
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "turns": 10,
+        "numeric_coverage": 1.0,
+        "citation_overlap": 1.0,
+        "citation_coverage": 1.0,
+        "latency_mean_seconds": 3.3611000000000004
+      }
+    }
+  }
+}

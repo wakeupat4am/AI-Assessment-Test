@@ -62,7 +62,9 @@ def main() -> None:
                     "citations": response["citations"],
                     "numeric_coverage": expected.issubset(actual),
                     "citation_overlap": bool(gold_pages & set(response["citations"])),
+                    "citation_coverage": gold_pages.issubset(set(response["citations"])),
                     "latency_seconds": response["latency_seconds"],
+                    "answer_mode": response.get("answer_mode", "llm"),
                     "routing": response.get("routing"),
                 }
                 turns.append(row)
@@ -80,6 +82,7 @@ def main() -> None:
                 "turns": len(all_turns),
                 "numeric_coverage": sum(row["numeric_coverage"] for row in all_turns) / len(all_turns),
                 "citation_overlap": sum(row["citation_overlap"] for row in all_turns) / len(all_turns),
+                "citation_coverage": sum(row["citation_coverage"] for row in all_turns) / len(all_turns),
                 "latency_mean_seconds": sum(row["latency_seconds"] for row in all_turns) / len(all_turns),
             },
         }

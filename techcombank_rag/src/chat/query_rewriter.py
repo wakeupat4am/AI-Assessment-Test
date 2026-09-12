@@ -33,6 +33,8 @@ def rewrite_query(
     if not conversation_history:
         return question
     if preserve_metric_identity:
+        if is_self_contained_question(question):
+            return question
         deterministic = _resolve_metric_followup(question, conversation_history)
         if deterministic:
             return deterministic
@@ -75,6 +77,19 @@ FOLLOWUP_RE = re.compile(
     re.IGNORECASE,
 )
 YEAR_RE = re.compile(r"(?<!\d)(?:19|20)\d{2}(?!\d)")
+ANAPHORA_RE = re.compile(
+    r"^(?:còn\b|thế\b|vậy\b|như vậy\b)|"
+    r"\b(?:nó|đó|con số (?:đó|này)|số liệu (?:đó|này|trên)|"
+    r"chỉ tiêu (?:đó|này|trên)|các số liệu trên|những số liệu trên|"
+    r"hai số liệu trên|ba số liệu trên|cả hai|cả ba|chúng)\b",
+    re.IGNORECASE,
+)
+
+
+def is_self_contained_question(question: str) -> bool:
+    """Return true when history is unnecessary to understand the query."""
+    normalized = normalize_utf8_text(question).strip()
+    return bool(normalized) and not ANAPHORA_RE.search(normalized)
 
 
 def _resolve_metric_followup(

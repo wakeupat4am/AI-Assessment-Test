@@ -98,3 +98,40 @@ change -> +717.013 triệu đồng, khoảng +9,34% [tr. 301]
   parser intentionally declines irregular or cross-row layouts.
 - Because the regression sets tie rather than improve, A3.1+B4b stays preserved
   as the clean control. A3.2+B4e is an independently selectable repair candidate.
+
+## Online pipeline repair after interactive testing
+
+An interactive sequential run exposed four answer-layer problems not visible in
+the independent-question benchmark: a complete question was unnecessarily
+rewritten from history, plural references were not decomposed, concise-answer
+rules discarded directly attached context, and citation repair could repeat a
+page that supported only part of a multi-fact answer.
+
+The repair remains exclusive to `B4_RETRIEVAL_MODE=metric_aware`:
+
+- self-contained questions bypass the LLM rewriter;
+- plural references such as `ba số liệu trên` recover up to three prior user
+  questions, retrieve each independently, and merge evidence round-robin;
+- structured `semantic_fields` produce concise value-plus-context answers;
+- citation canonicalization requires all answer numbers on one retrieved page,
+  then uses the earliest equivalent supporting page as a stable tie-breaker;
+- assistant answers are never reused as financial evidence.
+
+Final server results after this repair:
+
+| Evaluation | Frozen A3.1+B4b | Repaired A3.2+B4e |
+|---|---:|---:|
+| Public automatic diagnostic accuracy | 40% | 80% |
+| Public manual semantic accuracy | 90% | 100% |
+| Public citation precision / recall | 77.78 / 77.78% | 100 / 100% |
+| Public mean latency | 5.463 s | 3.147 s |
+| Public LLM calls / tokens | 11 / 38,763 | 6 / 22,824 |
+| 10-turn sequential regression numeric coverage | 50% | 100% |
+| 10-turn sequential regression citation coverage | 50% | 100% |
+| 10-turn sequential regression mean latency | 8.936 s | 3.361 s |
+
+The public automatic score still marks two correct glossary paraphrases as
+incorrect because token-F1 is below its threshold; the per-item manual review is
+stored in `manual-review-pipeline-fix.json`. The original seven-turn diagnostic
+still reports 5/7 for A3.2+B4e because the generic deposit-balance ambiguity was
+not folded into this targeted repair.

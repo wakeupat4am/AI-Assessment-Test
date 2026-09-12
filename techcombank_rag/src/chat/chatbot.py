@@ -42,6 +42,14 @@ Quy tắc:
 17. Không thêm số dư tương ứng, so sánh, tăng trưởng hoặc phép quy đổi nếu câu hỏi chỉ hỏi một giá trị.
 18. Trả lời ngắn gọn, phù hợp với chuyên viên quan hệ nhà đầu tư."""
 
+METRIC_AWARE_PROMPT_EXTENSION = """
+
+Quy tắc bổ sung chỉ cho A3.2+B4e:
+19. Với một chỉ tiêu, ngoài giá trị hãy giữ lại chi tiết định tính, tăng trưởng, xếp hạng hoặc triển vọng gắn trực tiếp với chỉ tiêu nếu chúng xuất hiện trong trường `Chi tiết` hoặc cùng câu chứa giá trị.
+20. Không thêm dữ kiện không liên quan hoặc tự suy diễn. Nếu câu hỏi không hỏi nguyên nhân hoặc cơ cấu, không bổ sung nguyên nhân, cơ cấu hay diễn giải chung.
+21. Trả lời tối đa 3 câu khi cần phân biệt nhiều chỉ tiêu; các câu hỏi còn lại ưu tiên một câu ngắn gọn.
+"""
+
 
 def extract_citations(answer: str) -> list[int]:
     pages: list[int] = []
@@ -83,8 +91,11 @@ def format_evidence(chunks: list[dict[str, Any]]) -> str:
     for index in range(len(chunks), 0, -1):
         chunk = chunks[index - 1]
         rank_label = " — HIGHEST RETRIEVAL RANK" if index == 1 else ""
+        subquery = chunk.get("decomposition_query")
+        subquery_line = f"Retrieval subquery: {subquery}\n" if subquery else ""
         blocks.append(
             f"[EVIDENCE {index}{rank_label}]\n"
+            f"{subquery_line}"
             f"Printed page: {chunk['printed_page']}\n"
             f"PDF page: {chunk['pdf_page']} ({chunk.get('page_part', 'full')})\n"
             f"Chunk ID: {chunk['chunk_id']}\n"
@@ -212,45 +223,71 @@ class Chatbot:
         question = normalize_utf8_text(question)
         history = normalize_history(conversation_history or [])
         llm_calls: list[GenerationResult] = []
-        standalone = rewrite_query(
-            question,
-            history,
-            client=self.llm,
-            max_history_turns=self.settings.max_history_turns,
-            trace_sink=llm_calls,
-            preserve_metric_identity=self.settings.b4_retrieval_mode == "metric_aware",
-        )
+        decomposition_queries: list[str] = []
+        if self.settings.b4_retrieval_mode == "metric_aware":
+            from src.chat.conversation_grounding import history_queries_for_multi_reference
+
+            decomposition_queries = history_queries_for_multi_reference(question, history)
+        if decomposition_queries:
+            standalone = "Phân biệt các chỉ tiêu: " + " | ".join(decomposition_queries)
+        else:
+            standalone = rewrite_query(
+                question,
+                history,
+                client=self.llm,
+                max_history_turns=self.settings.max_history_turns,
+                trace_sink=llm_calls,
+                preserve_metric_identity=self.settings.b4_retrieval_mode == "metric_aware",
+            )
         retrieval_started = time.perf_counter()
         candidate_k = max(self.settings.top_k, self.settings.evaluation_retrieval_k)
-        if hasattr(self.retriever, "retrieve_routed"):
-            conversation_context = (
-                json.dumps(history, ensure_ascii=False) if history else None
+        candidate_groups: list[list[dict[str, Any]]] = []
+        retrieval_traces: list[dict[str, Any] | None] = []
+        for retrieval_query in decomposition_queries or [standalone]:
+            if hasattr(self.retriever, "retrieve_routed"):
+                conversation_context = (
+                    json.dumps(history, ensure_ascii=False) if history else None
+                )
+                group = self.retriever.retrieve_routed(
+                    retrieval_query,
+                    candidate_k,
+                    conversation_context=conversation_context,
+                    router_query=question,
+                )
+            else:
+                group = self.retriever.retrieve(retrieval_query, candidate_k)
+            candidate_groups.append(group)
+            retrieval_traces.append(getattr(self.retriever, "last_trace", None))
+            retrieval_calls = list(
+                getattr(self.retriever, "last_retrieval_calls", []) or []
             )
-            candidates = self.retriever.retrieve_routed(
-                standalone,
-                candidate_k,
-                conversation_context=conversation_context,
-                router_query=question,
-            )
+            llm_calls.extend(retrieval_calls)
+            router_call = getattr(self.retriever, "last_router_call", None)
+            if router_call is not None and all(
+                router_call is not call for call in retrieval_calls
+            ):
+                llm_calls.append(router_call)
+        if decomposition_queries:
+            from src.chat.conversation_grounding import merge_round_robin
+
+            candidates = merge_round_robin(candidate_groups, decomposition_queries)
+            routing = {
+                "multi_turn_decomposition": {
+                    "queries": decomposition_queries,
+                    "query_count": len(decomposition_queries),
+                    "retriever_traces": retrieval_traces,
+                }
+            }
         else:
-            candidates = self.retriever.retrieve(standalone, candidate_k)
-        routing = getattr(self.retriever, "last_trace", None)
-        retrieval_calls = list(
-            getattr(self.retriever, "last_retrieval_calls", []) or []
-        )
-        llm_calls.extend(retrieval_calls)
-        router_call = getattr(self.retriever, "last_router_call", None)
-        if router_call is not None and all(
-            router_call is not call for call in retrieval_calls
-        ):
-            llm_calls.append(router_call)
+            candidates = candidate_groups[0]
+            routing = retrieval_traces[0]
         selected_evidence = getattr(self.retriever, "last_selected_evidence", None)
         chunks = (
             list(selected_evidence)
-            if selected_evidence is not None
+            if selected_evidence is not None and not decomposition_queries
             else candidates[: self.settings.top_k]
         )
-        if self.settings.b4_retrieval_mode == "metric_aware":
+        if self.settings.b4_retrieval_mode == "metric_aware" and not decomposition_queries:
             constrained = [
                 chunk
                 for chunk in chunks
@@ -283,7 +320,7 @@ class Chatbot:
             self._debug(result, "")
             return result
 
-        if self.settings.b4_retrieval_mode == "metric_aware":
+        if self.settings.b4_retrieval_mode == "metric_aware" and not decomposition_queries:
             from src.chat.metric_answerer import answer_metric_query
 
             metric_answer = answer_metric_query(standalone, chunks)
@@ -301,7 +338,7 @@ class Chatbot:
                     retrieval_seconds,
                     routing,
                 )
-                result["answer_mode"] = "deterministic_metric_row"
+                result["answer_mode"] = f"deterministic_{metric_answer.source_kind}"
                 result["metric_grounding"] = {
                     "label": metric_answer.label,
                     "values": metric_answer.values,
@@ -311,11 +348,30 @@ class Chatbot:
                 return result
 
         evidence = format_evidence(chunks)
+        answer_prompt = build_answer_prompt(
+            standalone if decomposition_queries else question, evidence
+        )
+        system_prompt = SYSTEM_PROMPT
+        if self.settings.b4_retrieval_mode == "metric_aware":
+            system_prompt += METRIC_AWARE_PROMPT_EXTENSION
+            answer_prompt += (
+                "\n\nGiữ lại chi tiết tăng trưởng, xếp hạng, triển vọng hoặc nhận định "
+                "gắn trực tiếp với đúng chỉ tiêu trong trường `Chi tiết` hoặc cùng "
+                "câu chứa giá trị. Không thêm cơ cấu, nguyên nhân hoặc diễn giải chung "
+                "nếu câu hỏi không yêu cầu."
+            )
+        if decomposition_queries:
+            answer_prompt += (
+                "\n\nĐây là truy vấn nhiều chỉ tiêu được tách từ hội thoại. Phải trả lời "
+                "đủ từng retrieval subquery, phân biệt ý nghĩa của từng chỉ tiêu và "
+                "đặt citation của đúng evidence ngay sau chỉ tiêu tương ứng. Không được "
+                "gộp hoặc bỏ qua một subquery."
+            )
         messages = [
-            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "system", "content": system_prompt},
             {
                 "role": "user",
-                "content": build_answer_prompt(question, evidence),
+                "content": answer_prompt,
             },
         ]
         generated = self.llm.generate(
@@ -328,10 +384,27 @@ class Chatbot:
         answer = answer_result.text
         evidence_pages = {int(chunk["printed_page"]) for chunk in chunks}
         refused = _looks_like_refusal(answer)
-        citations, citation_valid = validate_citations(answer, evidence_pages)
+        canonical = None
+        if (
+            not refused
+            and self.settings.b4_retrieval_mode == "metric_aware"
+            and not decomposition_queries
+        ):
+            from src.chat.citation_grounding import canonicalize_citation
+
+            canonical = canonicalize_citation(answer, chunks)
+        if canonical is not None:
+            answer, citations = canonical
+            citation_valid = set(citations).issubset(evidence_pages)
+        else:
+            citations, citation_valid = validate_citations(answer, evidence_pages)
         if citation_valid:
             citation_valid = validate_numeric_support(answer, chunks, citations)
-            if citation_valid and self.settings.b4_retrieval_mode == "metric_aware":
+            if (
+                citation_valid
+                and self.settings.b4_retrieval_mode == "metric_aware"
+                and not decomposition_queries
+            ):
                 cited_chunks = [
                     chunk for chunk in chunks if int(chunk["printed_page"]) in citations
                 ]
@@ -347,10 +420,27 @@ class Chatbot:
             )
             llm_calls.append(repair_result)
             refused = _looks_like_refusal(answer)
-            citations, citation_valid = validate_citations(answer, evidence_pages)
+            canonical = None
+            if (
+                not refused
+                and self.settings.b4_retrieval_mode == "metric_aware"
+                and not decomposition_queries
+            ):
+                from src.chat.citation_grounding import canonicalize_citation
+
+                canonical = canonicalize_citation(answer, chunks)
+            if canonical is not None:
+                answer, citations = canonical
+                citation_valid = set(citations).issubset(evidence_pages)
+            else:
+                citations, citation_valid = validate_citations(answer, evidence_pages)
             if citation_valid:
                 citation_valid = validate_numeric_support(answer, chunks, citations)
-                if citation_valid and self.settings.b4_retrieval_mode == "metric_aware":
+                if (
+                    citation_valid
+                    and self.settings.b4_retrieval_mode == "metric_aware"
+                    and not decomposition_queries
+                ):
                     cited_chunks = [
                         chunk for chunk in chunks if int(chunk["printed_page"]) in citations
                     ]

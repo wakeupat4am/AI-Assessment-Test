@@ -94,6 +94,8 @@ Track B then asked whether more control would improve that representation. Rule 
 
 After freezing that selection, an adversarial multi-turn test exposed a narrower metric-identity failure: cash-flow service receipts, financial-note service income, and NFI share most lexical terms. I therefore kept A3.1+B4b byte-for-byte as the control and built a separate **A3.2+B4e metric-aware candidate**. It adds search-only OCR normalization, metric/statement qualifiers, conservative selective routing, identity-preserving follow-up rewriting, and deterministic same-row calculations. It tied the frozen system on public/dev/holdout retrieval, while a 10-question metric-confusion diagnostic improved Hit@5 from 80% to 100%, manually reviewed answer accuracy from 60% to 100%, and citation precision/recall from 60% to 100%. This is reported as targeted error repair—not a hidden-test estimate—and its two-index trade-off and raw evidence are documented in the [A3.2+B4e report](techcombank_rag/docs/experiments/A32_B4E_METRIC_AWARE.md).
 
+A later sequential-chat regression then fixed history pollution, plural-reference decomposition, loss of directly attached metric context, and partial-page citations without changing the frozen default. On the public set, the repaired candidate achieved 100% manually reviewed answer and citation accuracy, while the 10-turn sequential regression reached 100% numeric and citation coverage. The original seven-turn diagnostic remains at 5/7 because generic deposit-balance ambiguity is still a documented limitation.
+
 ## Architecture
 
 The final default is intentionally smaller than the experiment tree:

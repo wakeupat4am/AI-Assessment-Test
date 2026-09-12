@@ -1,0 +1,118 @@
+{
+  "run_name": "metric-aware-A32_B4e_metric_aware-public-pipeline-fix",
+  "created_at_utc": "2026-09-12T06:00:50.610588+00:00",
+  "evaluation_method": {
+    "retrieval": "printed-page recall and hit rate against manually verified gold pages",
+    "answer_automatic": "deterministic token-F1>=0.45 plus exact numeric coverage; refusal exactness for unanswerable questions",
+    "answer_primary": "manual review when provided, otherwise automatic heuristic",
+    "warning": "Automatic answer correctness is diagnostic, not a substitute for human review."
+  },
+  "environment": {
+    "python": "3.11.5",
+    "platform": "Linux-5.15.0-190-generic-x86_64-with-glibc2.31",
+    "llm_provider": "openai_compatible",
+    "llm_model": "Qwen/Qwen3.5-9B",
+    "embedding_model": "intfloat/multilingual-e5-small",
+    "top_k_evidence": 5,
+    "retrieval_k_evaluated": 10,
+    "index_dir": "techcombank_rag/data/index/a32_metric_aware/all"
+  },
+  "artifacts": {
+    "questions": "data/evaluation/public.json",
+    "questions_sha256": "3949b944dbf7033c805c347c982b74234ced60710954626b779cf2c5d39b4992",
+    "index_metadata": {
+      "artifact_schema_version": 1,
+      "experiment": "A3.2",
+      "pipeline": "a3.1+ocr-search-normalization+metric-identity+dense-e5",
+      "representation": "a3.2",
+      "source_representation": "a3.1-frozen",
+      "source_chunks_sha256": "d72357b78e1fe69ccdee6e3d3b957a9c41cf6c948ff6066fb86aef9f9af0cbe9",
+      "source_index_sha256": "31f4ff58e6db646aa0f8d630faac107b1f6e699f6f22408d77a766c80827254e",
+      "chunk_count": 3658,
+      "vector_dimension": 384,
+      "embedding_model": "intfloat/multilingual-e5-small",
+      "embedding_device": "cpu",
+      "metric_identity_count": 1032,
+      "statement_type_counts": {
+        "balance_sheet": 99,
+        "cash_flow": 35,
+        "financial_note": 446,
+        "income_statement": 81,
+        "performance_review": 18,
+        "unspecified": 2979
+      },
+      "build_seconds": 561.28,
+      "created_at_utc": "2026-09-11T18:57:00.239252+00:00",
+      "chunks_sha256": "c1d0fe48ddede1d2f441382fe9b54fa43489f50298dfe90df1c744e01286c3d5",
+      "index_sha256": "8ea201b1cb67b21a9e34009e4d56630a4cdad96c82bd93707101cc2df7eb6333"
+    }
+  },
+  "counts": {
+    "questions": 10,
+    "answerable": 9,
+    "unanswerable": 1,
+    "runtime_errors": 0,
+    "manually_reviewed": 0
+  },
+  "metrics": {
+    "retrieval_recall_at_1": 0.666667,
+    "retrieval_recall_at_5": 1.0,
+    "retrieval_recall_at_10": 1.0,
+    "retrieval_hit_at_1": 0.666667,
+    "retrieval_hit_at_5": 1.0,
+    "retrieval_hit_at_10": 1.0,
+    "answer_accuracy": 0.8,
+    "manual_answer_accuracy": null,
+    "citation_precision": 1.0,
+    "citation_recall": 1.0,
+    "citation_validator_pass_rate": 1.0,
+    "refusal_accuracy": 1.0,
+    "latency_seconds_mean": 3.1465,
+    "latency_seconds_p50": 4.1635,
+    "latency_seconds_p95": 6.14395,
+    "llm_calls_total": 6,
+    "tokens": {
+      "uncached_input_tokens": 22578,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 246,
+      "reasoning_tokens": 0,
+      "source": "client_tokenizer",
+      "total_input_tokens": 22578,
+      "total_tokens": 22824
+    },
+    "calls_by_purpose": {
+      "answer": 6
+    },
+    "calls_by_provider_model": {
+      "openai_compatible::Qwen/Qwen3.5-9B": 6
+    },
+    "cost_usd_total": 0.0,
+    "cost_usd_mean": 0.0,
+    "cost_projection_same_tokens_usd": {
+      "gpt-5.6-sol": 0.095232,
+      "gpt-5.6": 0.095232,
+      "gpt-5.6-terra": 0.048108,
+      "gpt-5.6-luna": 0.0048108,
+      "claude-sonnet-5": 0.071424,
+      "claude-opus-5": 0.11904,
+      "claude-fable-5": 0.23808
+    }
+  },
+  "routing_metrics": {
+    "enabled": true,
+    "route_distribution": {},
+    "confidence_mean": null,
+    "router_latency_seconds_p50": null,
+    "router_latency_seconds_p95": null,
+    "raw_candidates_mean": null,
+    "returned_candidates_mean": null,
+    "trace_types": [
+      "b4"
+    ]
+  },
+  "failure_taxonomy": {
+    "answer_error": 2,
+    "none": 8
+  }
+}

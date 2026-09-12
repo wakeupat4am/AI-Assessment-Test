@@ -1,0 +1,20 @@
+{
+  "review_scope": [
+    "A32_B4e_metric_aware-public-pipeline-fix-full.jsonl",
+    "conversation-regressions-context-v3.json"
+  ],
+  "review_method": "Each answer was checked for requested facts, directly attached context, printed-page citation, and safe refusal against public.json or conversation_regressions.json.",
+  "public": {
+    "reviewed": 10,
+    "correct": 10,
+    "accuracy": 1.0,
+    "notes": "All ten public answers are semantically correct. The automatic 0.8 score undercounts the two correct glossary paraphrases."
+  },
+  "sequential_regression": {
+    "reviewed": 10,
+    "correct": 10,
+    "accuracy": 1.0,
+    "notes": "Includes explicit questions after unrelated history, three-metric comparison, network citation repair, ratings canonicalization, and contextual key-figure answers."
+  },
+  "remaining_known_failure": "Two of seven turns in the separate generic deposit-balance multi-turn diagnostic remain failures outside this targeted regression and are not hidden."
+}
