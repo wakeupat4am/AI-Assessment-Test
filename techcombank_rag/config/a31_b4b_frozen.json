@@ -1,0 +1,11 @@
+{
+  "artifact_schema_version": 1,
+  "system": "A3.1+B4b frozen control",
+  "index_dir": "techcombank_rag/data/index/a31_semantic_multirepr/all",
+  "retrieval_mode": "hybrid",
+  "embedding_model": "intfloat/multilingual-e5-small",
+  "chunks_sha256": "d72357b78e1fe69ccdee6e3d3b957a9c41cf6c948ff6066fb86aef9f9af0cbe9",
+  "index_sha256": "31f4ff58e6db646aa0f8d630faac107b1f6e699f6f22408d77a766c80827254e",
+  "bm25_sha256": "8408924e37369102b688c773e0d52c18ccd488273072a7d57151759b6e54ba7d",
+  "notes": "Never overwrite these artifacts. A3.2+B4e writes to a separate directory."
+}

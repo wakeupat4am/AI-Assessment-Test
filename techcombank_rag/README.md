@@ -24,3 +24,8 @@ QWEN_GPU_IDS=2,3 \
 
 The grading runtime only needs the server URL in root `.env`; it does not need
 the serving script or local model weights.
+
+The frozen deployable control remains A3.1+B4b. A separate metric-aware repair
+candidate is shipped as A3.2+B4e; see
+[`docs/experiments/A32_B4E_METRIC_AWARE.md`](docs/experiments/A32_B4E_METRIC_AWARE.md)
+for its configuration, regression gates, multi-turn results, and trade-offs.

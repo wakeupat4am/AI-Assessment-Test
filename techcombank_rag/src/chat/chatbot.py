@@ -12,6 +12,7 @@ from src.config import Settings, get_settings
 from src.llm.base import GenerationResult, aggregate_calls, coerce_generation_result
 from src.llm.provider import create_llm_client
 from src.retrieval.retriever import DenseRetriever
+from src.retrieval.metric_identity import candidate_matches_constraints
 
 
 REFUSAL_TEXT = "Không tìm thấy đủ thông tin trong Báo cáo thường niên để trả lời câu hỏi này."
@@ -121,6 +122,7 @@ class Chatbot:
     ) -> None:
         self.settings = settings or get_settings()
         self.llm = llm_client or create_llm_client(self.settings)
+        retriever_was_injected = retriever is not None
         if retriever is not None:
             base_retriever = retriever
         elif self.settings.xrouter_enabled:
@@ -129,7 +131,7 @@ class Chatbot:
             base_retriever = RoutedRetriever(self.settings)
         else:
             base_retriever = DenseRetriever(self.settings)
-        if self.settings.b4_retrieval_mode != "off":
+        if self.settings.b4_retrieval_mode != "off" and not retriever_was_injected:
             if self.settings.xrouter_enabled or self.settings.hyde_enabled:
                 raise ValueError(
                     "B4_RETRIEVAL_MODE cannot be combined implicitly with X-Router "
@@ -216,6 +218,7 @@ class Chatbot:
             client=self.llm,
             max_history_turns=self.settings.max_history_turns,
             trace_sink=llm_calls,
+            preserve_metric_identity=self.settings.b4_retrieval_mode == "metric_aware",
         )
         retrieval_started = time.perf_counter()
         candidate_k = max(self.settings.top_k, self.settings.evaluation_retrieval_k)
@@ -247,6 +250,14 @@ class Chatbot:
             if selected_evidence is not None
             else candidates[: self.settings.top_k]
         )
+        if self.settings.b4_retrieval_mode == "metric_aware":
+            constrained = [
+                chunk
+                for chunk in chunks
+                if candidate_matches_constraints(standalone, chunk)
+            ]
+            if constrained:
+                chunks = constrained[: self.settings.top_k]
         retrieval_seconds = time.perf_counter() - retrieval_started
         top_score = chunks[0]["score"] if chunks else float("-inf")
         b2_trace = routing.get("b2", {}) if routing else {}
@@ -272,6 +283,33 @@ class Chatbot:
             self._debug(result, "")
             return result
 
+        if self.settings.b4_retrieval_mode == "metric_aware":
+            from src.chat.metric_answerer import answer_metric_query
+
+            metric_answer = answer_metric_query(standalone, chunks)
+            if metric_answer is not None:
+                result = self._result(
+                    question,
+                    standalone,
+                    metric_answer.answer,
+                    [metric_answer.page],
+                    candidates,
+                    started,
+                    False,
+                    True,
+                    llm_calls,
+                    retrieval_seconds,
+                    routing,
+                )
+                result["answer_mode"] = "deterministic_metric_row"
+                result["metric_grounding"] = {
+                    "label": metric_answer.label,
+                    "values": metric_answer.values,
+                    "calculation": metric_answer.calculation,
+                }
+                self._debug(result, format_evidence(chunks))
+                return result
+
         evidence = format_evidence(chunks)
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT},
@@ -293,6 +331,14 @@ class Chatbot:
         citations, citation_valid = validate_citations(answer, evidence_pages)
         if citation_valid:
             citation_valid = validate_numeric_support(answer, chunks, citations)
+            if citation_valid and self.settings.b4_retrieval_mode == "metric_aware":
+                cited_chunks = [
+                    chunk for chunk in chunks if int(chunk["printed_page"]) in citations
+                ]
+                citation_valid = bool(cited_chunks) and all(
+                    candidate_matches_constraints(standalone, chunk)
+                    for chunk in cited_chunks
+                )
         if refused:
             citation_valid = not citations or set(citations).issubset(evidence_pages)
         elif not citation_valid:
@@ -304,6 +350,14 @@ class Chatbot:
             citations, citation_valid = validate_citations(answer, evidence_pages)
             if citation_valid:
                 citation_valid = validate_numeric_support(answer, chunks, citations)
+                if citation_valid and self.settings.b4_retrieval_mode == "metric_aware":
+                    cited_chunks = [
+                        chunk for chunk in chunks if int(chunk["printed_page"]) in citations
+                    ]
+                    citation_valid = bool(cited_chunks) and all(
+                        candidate_matches_constraints(standalone, chunk)
+                        for chunk in cited_chunks
+                    )
             if refused:
                 citation_valid = not citations or set(citations).issubset(evidence_pages)
 

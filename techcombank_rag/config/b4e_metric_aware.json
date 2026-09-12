@@ -1,0 +1,51 @@
+{
+  "artifact_schema_version": 1,
+  "tokenizer": {
+    "name": "vi_lexical_v2_metric_aware",
+    "unicode_form": "NFKC",
+    "lowercase": true,
+    "include_bigrams": true
+  },
+  "bm25": {
+    "k1": 1.2,
+    "b": 0.75,
+    "candidate_k": 40
+  },
+  "fusion": {
+    "method": "weighted_rrf",
+    "rrf_k": 60,
+    "dense_weight": 1.0,
+    "bm25_weight": 1.0,
+    "candidate_k": 40
+  },
+  "finance_reranker": {
+    "base_weight": 0.65,
+    "constraint_weight": 0.35,
+    "year_weight": 0.28,
+    "acronym_weight": 0.18,
+    "metric_weight": 0.34,
+    "number_weight": 0.10,
+    "granularity_weight": 0.10,
+    "financial_terms": [],
+    "explanatory_markers": []
+  },
+  "metric_aware": {
+    "base_weight": 0.48,
+    "label_weight": 0.22,
+    "exact_label_weight": 0.10,
+    "qualifier_weight": 0.14,
+    "year_weight": 0.03,
+    "statement_weight": 0.03,
+    "missing_qualifier_penalty": 0.35,
+    "selective_triggers": [
+      "nhận được",
+      "đã trả",
+      "hợp nhất",
+      "riêng lẻ",
+      "lưu chuyển tiền tệ",
+      "báo cáo tình hình tài chính",
+      "báo cáo kết quả hoạt động",
+      "trong thuyết minh"
+    ]
+  }
+}

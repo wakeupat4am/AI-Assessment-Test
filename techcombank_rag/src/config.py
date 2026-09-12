@@ -236,6 +236,17 @@ class Settings:
             APP_ROOT / "data/index/a31_semantic_multirepr/all/bm25.json.gz",
         )
     )
+    b4_frozen_index_dir: Path = field(
+        default_factory=lambda: _as_path(
+            "B4_FROZEN_INDEX_DIR",
+            APP_ROOT / "data/index/a31_semantic_multirepr/all",
+        )
+    )
+    b4_frozen_config_path: Path = field(
+        default_factory=lambda: _as_path(
+            "B4_FROZEN_CONFIG", APP_ROOT / "config/b4_retrieval.json"
+        )
+    )
     b4_cross_encoder_model: str = field(
         default_factory=lambda: _env(
             "B4_CROSS_ENCODER_MODEL", "BAAI/bge-reranker-v2-m3"

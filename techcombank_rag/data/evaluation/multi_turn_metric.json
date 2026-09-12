@@ -1,0 +1,24 @@
+[
+  {
+    "id": "mt_metric_01",
+    "turns": [
+      {"question":"Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?","gold_answer":"8.396.946 triệu đồng","gold_printed_pages":[301]},
+      {"question":"Còn năm 2024 thì sao?","gold_answer":"7.679.933 triệu đồng","gold_printed_pages":[301]},
+      {"question":"Như vậy năm 2025 tăng bao nhiêu so với năm 2024?","gold_answer":"717.013 triệu đồng, khoảng 9,34%","gold_printed_pages":[301]}
+    ]
+  },
+  {
+    "id": "mt_metric_02",
+    "turns": [
+      {"question":"Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2025 là bao nhiêu?","gold_answer":"67.231.128 triệu đồng","gold_printed_pages":[301]},
+      {"question":"Còn năm 2024?","gold_answer":"61.748.921 triệu đồng","gold_printed_pages":[301]}
+    ]
+  },
+  {
+    "id": "mt_metric_03",
+    "turns": [
+      {"question":"Tiền gửi của khách hàng tại 31/12/2025 là bao nhiêu?","gold_answer":"618.911.535 triệu đồng","gold_printed_pages":[298]},
+      {"question":"Còn cuối năm 2024 thì sao?","gold_answer":"533.392.350 triệu đồng","gold_printed_pages":[298]}
+    ]
+  }
+]

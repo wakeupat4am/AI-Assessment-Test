@@ -1,0 +1,13 @@
+{
+  "artifact_schema_version": 1,
+  "system": "A3.2+B4e metric-aware candidate",
+  "index_dir": "techcombank_rag/data/index/a32_metric_aware/all",
+  "retrieval_mode": "metric_aware",
+  "embedding_model": "intfloat/multilingual-e5-small",
+  "source_system": "A3.1+B4b frozen control",
+  "source_chunks_sha256": "d72357b78e1fe69ccdee6e3d3b957a9c41cf6c948ff6066fb86aef9f9af0cbe9",
+  "chunks_sha256": "c1d0fe48ddede1d2f441382fe9b54fa43489f50298dfe90df1c744e01286c3d5",
+  "index_sha256": "8ea201b1cb67b21a9e34009e4d56630a4cdad96c82bd93707101cc2df7eb6333",
+  "bm25_sha256": "aab54ad232a5b6500648b61f0aefc51c0d987e485b6e34fb36d3b11d77e24dbd",
+  "notes": "Separate candidate. Ordinary queries fall back to the exact frozen A3.1+B4b retriever."
+}

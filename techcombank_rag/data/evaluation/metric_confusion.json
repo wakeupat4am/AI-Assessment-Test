@@ -1,0 +1,12 @@
+[
+  {"id":"mc01","question":"Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?","gold_answer":"8.396.946 triệu đồng","gold_printed_pages":[301],"answerable":true,"question_type":"metric_disambiguation","requires_calculation":false},
+  {"id":"mc02","question":"Thu nhập từ hoạt động dịch vụ nhận được năm 2024 là bao nhiêu?","gold_answer":"7.679.933 triệu đồng","gold_printed_pages":[301],"answerable":true,"question_type":"metric_disambiguation","requires_calculation":false},
+  {"id":"mc03","question":"Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2025 là bao nhiêu?","gold_answer":"67.231.128 triệu đồng","gold_printed_pages":[301],"answerable":true,"question_type":"metric_disambiguation","requires_calculation":false},
+  {"id":"mc04","question":"Chi phí lãi và các chi phí tương tự đã trả năm 2024 là bao nhiêu?","gold_answer":"26.124.464 triệu đồng","gold_printed_pages":[301],"answerable":true,"question_type":"metric_disambiguation","requires_calculation":false},
+  {"id":"mc05","question":"Thu nhập lãi thuần năm 2025 trên báo cáo kết quả hoạt động hợp nhất là bao nhiêu?","gold_answer":"38.155.091 triệu đồng","gold_printed_pages":[300],"answerable":true,"question_type":"statement_disambiguation","requires_calculation":false},
+  {"id":"mc06","question":"Tiền gửi của khách hàng tại ngày 31/12/2025 trên báo cáo tình hình tài chính hợp nhất là bao nhiêu?","gold_answer":"618.911.535 triệu đồng","gold_printed_pages":[298],"answerable":true,"question_type":"statement_disambiguation","requires_calculation":false},
+  {"id":"mc07","question":"Khoản tăng tiền gửi của khách hàng trong lưu chuyển tiền tệ năm 2025 là bao nhiêu?","gold_answer":"85.524.799 triệu đồng","gold_printed_pages":[301],"answerable":true,"question_type":"statement_disambiguation","requires_calculation":false},
+  {"id":"mc08","question":"Thu nhập từ hoạt động dịch vụ năm 2025 trong thuyết minh là bao nhiêu?","gold_answer":"12.526.963 triệu đồng","gold_printed_pages":[356],"answerable":true,"question_type":"statement_disambiguation","requires_calculation":false},
+  {"id":"mc09","question":"Thu nhập thuần từ hoạt động dịch vụ NFI năm 2025 đạt bao nhiêu?","gold_answer":"11,5 nghìn tỷ đồng","gold_printed_pages":[50],"answerable":true,"question_type":"metric_disambiguation","requires_calculation":false},
+  {"id":"mc10","question":"Lợi nhuận trước thuế năm 2025 trong bảng ba năm 2023-2025 là bao nhiêu?","gold_answer":"32.538 tỷ đồng","gold_printed_pages":[257],"answerable":true,"question_type":"table_lookup","requires_calculation":false}
+]

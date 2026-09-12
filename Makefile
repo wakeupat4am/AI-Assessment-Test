@@ -16,9 +16,10 @@ A1B_INDEX := $(APP_DIR)/data/index/a1b_paddleocr_vl_1_6_markdown_fixed
 A2_INDEX := $(APP_DIR)/data/index/a2_paddleocr_vl_1_6_layout_aware
 A3_INDEX := $(APP_DIR)/data/index/a3_paddleocr_vl_1_6_multigranularity
 A31_INDEX_ROOT := $(APP_DIR)/data/index/a31_semantic_multirepr
+A32_INDEX_ROOT := $(APP_DIR)/data/index/a32_metric_aware
 A4_INDEX := $(APP_DIR)/data/index/a4_selective_cascade
 
-.PHONY: setup run evaluate baseline test verify-index verify-baseline verify-b4-index ingest ingest-a1 ingest-a2-a4 build-b1a-index build-a31 build-bm25 benchmark-a1a benchmark-a1b benchmark-a2 benchmark-a3 benchmark-a4 benchmark-a31 benchmark-a31-dev ablate-hyde ablate-hyde-dev ablate-b4-retrieval ablate-b4 ablate-b4-dev ablate-b4-holdout ablate-b5 ablate-b5-dev ablate-b5-holdout router-proxy evaluate-router-b1b ablate-b1a ablate-b1a-dev ablate-b1b ablate-b1b-dev ablate-b1b-controlled-a2 ablate-b1b-controlled-a2-dev ablate-b2 ablate-b2-dev clean-generated
+.PHONY: setup run evaluate baseline test verify-index verify-baseline verify-b4-index ingest ingest-a1 ingest-a2-a4 build-b1a-index build-a31 build-a32 build-bm25 benchmark-metric-aware benchmark-metric-multiturn benchmark-a1a benchmark-a1b benchmark-a2 benchmark-a3 benchmark-a4 benchmark-a31 benchmark-a31-dev ablate-hyde ablate-hyde-dev ablate-b4-retrieval ablate-b4 ablate-b4-dev ablate-b4-holdout ablate-b5 ablate-b5-dev ablate-b5-holdout router-proxy evaluate-router-b1b ablate-b1a ablate-b1a-dev ablate-b1b ablate-b1b-dev ablate-b1b-controlled-a2 ablate-b1b-controlled-a2-dev ablate-b2 ablate-b2-dev clean-generated
 
 setup: $(STAMP)
 
@@ -84,6 +85,21 @@ build-b1a-index: setup
 build-a31: setup
 	@"$(PYTHON)" "$(APP_DIR)/scripts/build_a31_index.py" \
 		--output-root "$(A31_INDEX_ROOT)"
+
+# Derives the metric-aware representation from the frozen A3.1 chunks. It does
+# not rerun PaddleOCR-VL; outputs are written to a different directory.
+build-a32: setup
+	@"$(PYTHON)" "$(APP_DIR)/scripts/build_a32_index.py" \
+		--source-index "$(A31_INDEX_ROOT)/all" \
+		--output-dir "$(A32_INDEX_ROOT)/all"
+
+benchmark-metric-aware: setup
+	@"$(PYTHON)" "$(APP_DIR)/scripts/compare_metric_aware.py" \
+		"$(APP_DIR)/data/evaluation/metric_confusion.json" \
+		--run-label metric-confusion --run-type full
+
+benchmark-metric-multiturn: setup
+	@"$(PYTHON)" "$(APP_DIR)/scripts/evaluate_metric_multiturn.py"
 
 # Deterministic lexical artifact built from shipped A3.1 chunks; no OCR/embedding/API.
 build-bm25: setup

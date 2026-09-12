@@ -1,0 +1,20 @@
+{
+  "review_scope": "A32_B4e_metric_aware-metric-confusion-final-full.jsonl",
+  "review_method": "Exact metric identity, requested year, value, unit, and gold printed-page citation were checked against metric_confusion.json and the cited report row.",
+  "reviewed_questions": 10,
+  "correct": 10,
+  "accuracy": 1.0,
+  "items": [
+    {"id":"mc01","correct":true,"page":301,"notes":"Exact cash-flow service receipts, 2025."},
+    {"id":"mc02","correct":true,"page":301,"notes":"Exact cash-flow service receipts, 2024."},
+    {"id":"mc03","correct":true,"page":301,"notes":"Exact interest receipts, 2025."},
+    {"id":"mc04","correct":true,"page":301,"notes":"Exact interest paid, 2024; parentheses preserve the cash-outflow sign."},
+    {"id":"mc05","correct":true,"page":300,"notes":"Exact consolidated income-statement metric."},
+    {"id":"mc06","correct":true,"page":298,"notes":"Exact consolidated statement-of-financial-position balance."},
+    {"id":"mc07","correct":true,"page":301,"notes":"Exact cash-flow movement, not closing balance."},
+    {"id":"mc08","correct":true,"page":356,"notes":"Exact financial-note service income."},
+    {"id":"mc09","correct":true,"page":50,"notes":"Exact NFI performance-review value."},
+    {"id":"mc10","correct":true,"page":257,"notes":"Exact three-year table value."}
+  ],
+  "warning": "This is a targeted diagnostic set, not an estimate of hidden-test accuracy. The repository's automatic token-F1 score is intentionally reported separately."
+}

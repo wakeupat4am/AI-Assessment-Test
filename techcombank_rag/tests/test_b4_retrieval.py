@@ -54,6 +54,28 @@ def test_bm25_artifact_is_deterministic_and_rejects_wrong_chunks(tmp_path: Path)
         raise AssertionError("mismatched chunks must fail")
 
 
+def test_bm25_indexes_search_text_without_overwriting_evidence(tmp_path: Path) -> None:
+    chunks = tmp_path / "chunks.jsonl"
+    chunks.write_text(
+        json.dumps(
+            chunk(
+                "cash",
+                "OCR evidence: thu nhập tử dịch vụ",
+                301,
+                search_text="thu nhập từ hoạt động dịch vụ nhận được",
+            ),
+            ensure_ascii=False,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    artifact = tmp_path / "bm25.json.gz"
+    build_bm25_artifact(chunks, artifact, tokenizer={"include_bigrams": True})
+    result = BM25Retriever(chunks, artifact).retrieve("dịch vụ nhận được", 1)[0]
+    assert result["chunk_id"] == "cash"
+    assert "tử" in result["text"]
+
+
 class FakeRetriever:
     def __init__(self, rows):
         self.rows = rows

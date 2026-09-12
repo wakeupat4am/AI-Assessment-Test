@@ -1,0 +1,1080 @@
+{
+  "questions": "/home/ubuntu/TCB_Test/techcombank_rag/data/evaluation/multi_turn_metric.json",
+  "systems": {
+    "A31_B4b_frozen": {
+      "conversations": [
+        {
+          "id": "mt_metric_01",
+          "turns": [
+            {
+              "question": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+              "standalone_query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+              "gold_answer": "8.396.946 triệu đồng",
+              "answer": "Thu nhập từ hoạt động dịch vụ năm 2025 đạt 11,5 nghìn tỷ đồng [tr. 50].",
+              "gold_printed_pages": [
+                301
+              ],
+              "citations": [
+                50
+              ],
+              "numeric_coverage": false,
+              "citation_overlap": false,
+              "latency_seconds": 6.406,
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 34,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    50,
+                    356,
+                    356,
+                    300,
+                    5,
+                    301,
+                    356,
+                    50,
+                    356,
+                    5
+                  ],
+                  "latency_seconds": 0.094942
+                }
+              }
+            },
+            {
+              "question": "Còn năm 2024 thì sao?",
+              "standalone_query": "Thu nhập từ hoạt động dịch vụ năm 2024 là bao nhiêu?",
+              "gold_answer": "7.679.933 triệu đồng",
+              "answer": "Năm 2024, thu nhập từ hoạt động dịch vụ đạt 10.961.642 triệu đồng [tr. 356].",
+              "gold_printed_pages": [
+                301
+              ],
+              "citations": [
+                356
+              ],
+              "numeric_coverage": false,
+              "citation_overlap": false,
+              "latency_seconds": 5.461,
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Thu nhập từ hoạt động dịch vụ năm 2024 là bao nhiêu?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 32,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    356,
+                    356,
+                    50,
+                    300,
+                    51,
+                    356,
+                    300,
+                    358,
+                    5,
+                    50
+                  ],
+                  "latency_seconds": 0.052159
+                }
+              }
+            },
+            {
+              "question": "Như vậy năm 2025 tăng bao nhiêu so với năm 2024?",
+              "standalone_query": "So với năm 2024, thu nhập từ hoạt động dịch vụ năm 2025 tăng bao nhiêu?",
+              "gold_answer": "717.013 triệu đồng, khoảng 9,34%",
+              "answer": "Năm 2025, thu nhập từ hoạt động dịch vụ tăng 7,8% so với cùng kỳ, đạt 11,5 nghìn tỷ đồng [tr. 50].",
+              "gold_printed_pages": [
+                301
+              ],
+              "citations": [
+                50
+              ],
+              "numeric_coverage": false,
+              "citation_overlap": false,
+              "latency_seconds": 7.881,
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "So với năm 2024, thu nhập từ hoạt động dịch vụ năm 2025 tăng bao nhiêu?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 33,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    356,
+                    50,
+                    356,
+                    300,
+                    51,
+                    5,
+                    51,
+                    50,
+                    15,
+                    5
+                  ],
+                  "latency_seconds": 0.050489
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt_metric_02",
+          "turns": [
+            {
+              "question": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2025 là bao nhiêu?",
+              "standalone_query": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2025 là bao nhiêu?",
+              "gold_answer": "67.231.128 triệu đồng",
+              "answer": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2025 là 67.231.128 triệu đồng [tr. 301].",
+              "gold_printed_pages": [
+                301
+              ],
+              "citations": [
+                301
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "latency_seconds": 5.376,
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2025 là bao nhiêu?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 29,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    355,
+                    301,
+                    355,
+                    355,
+                    300,
+                    355,
+                    355,
+                    300,
+                    355,
+                    355
+                  ],
+                  "latency_seconds": 0.072796
+                }
+              }
+            },
+            {
+              "question": "Còn năm 2024?",
+              "standalone_query": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2024 là bao nhiêu?",
+              "gold_answer": "61.748.921 triệu đồng",
+              "answer": "Không tìm thấy đủ thông tin trong Báo cáo thường niên để trả lời câu hỏi này.",
+              "gold_printed_pages": [
+                301
+              ],
+              "citations": [],
+              "numeric_coverage": false,
+              "citation_overlap": false,
+              "latency_seconds": 5.069,
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2024 là bao nhiêu?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 30,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    355,
+                    301,
+                    355,
+                    355,
+                    355,
+                    300,
+                    300,
+                    355,
+                    355,
+                    355
+                  ],
+                  "latency_seconds": 0.04739
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt_metric_03",
+          "turns": [
+            {
+              "question": "Tiền gửi của khách hàng tại 31/12/2025 là bao nhiêu?",
+              "standalone_query": "Tiền gửi của khách hàng tại 31/12/2025 là bao nhiêu?",
+              "gold_answer": "618.911.535 triệu đồng",
+              "answer": "Tiền gửi của khách hàng tại ngày 31/12/2025 là 164.387.483 triệu đồng [tr. 379].",
+              "gold_printed_pages": [
+                298
+              ],
+              "citations": [
+                379
+              ],
+              "numeric_coverage": false,
+              "citation_overlap": false,
+              "latency_seconds": 6.331,
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Tiền gửi của khách hàng tại 31/12/2025 là bao nhiêu?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 33,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    379,
+                    377,
+                    374,
+                    347,
+                    347,
+                    347,
+                    345,
+                    298,
+                    374,
+                    345
+                  ],
+                  "latency_seconds": 0.047032
+                }
+              }
+            },
+            {
+              "question": "Còn cuối năm 2024 thì sao?",
+              "standalone_query": "Tiền gửi của khách hàng tại cuối năm 2024 là bao nhiêu?",
+              "gold_answer": "533.392.350 triệu đồng",
+              "answer": "Không tìm thấy đủ thông tin trong Báo cáo thường niên để trả lời câu hỏi này.",
+              "gold_printed_pages": [
+                298
+              ],
+              "citations": [],
+              "numeric_coverage": false,
+              "citation_overlap": false,
+              "latency_seconds": 5.944,
+              "routing": {
+                "b4": {
+                  "stage": "hybrid_rrf",
+                  "query": "Tiền gửi của khách hàng tại cuối năm 2024 là bao nhiêu?",
+                  "dense_candidates": 20,
+                  "bm25_candidates": 20,
+                  "union_candidates": 38,
+                  "returned_candidates": 10,
+                  "rrf_k": 60,
+                  "dense_weight": 1.0,
+                  "bm25_weight": 1.0,
+                  "final_pages": [
+                    301,
+                    346,
+                    346,
+                    347,
+                    345,
+                    366,
+                    347,
+                    347,
+                    366,
+                    345
+                  ],
+                  "latency_seconds": 0.043824
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "turns": 7,
+        "numeric_coverage": 0.14285714285714285,
+        "citation_overlap": 0.14285714285714285,
+        "latency_mean_seconds": 6.066857142857144
+      }
+    },
+    "A32_B4e_metric_aware": {
+      "conversations": [
+        {
+          "id": "mt_metric_01",
+          "turns": [
+            {
+              "question": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+              "standalone_query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+              "gold_answer": "8.396.946 triệu đồng",
+              "answer": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là 8.396.946 triệu đồng [tr. 301].",
+              "gold_printed_pages": [
+                301
+              ],
+              "citations": [
+                301
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "latency_seconds": 0.077,
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.2+B4e",
+                  "matched_triggers": [
+                    "nhận được"
+                  ],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "metric_aware",
+                      "query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                      "constraints": {
+                        "normalized": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                        "terms": [
+                          "thu",
+                          "nhập",
+                          "từ",
+                          "hoạt",
+                          "động",
+                          "dịch",
+                          "vụ",
+                          "nhận",
+                          "được",
+                          "năm",
+                          "2025",
+                          "là",
+                          "bao",
+                          "nhiêu"
+                        ],
+                        "qualifiers": [
+                          "nhận được"
+                        ],
+                        "years": [
+                          "2025"
+                        ],
+                        "statement_type": "unspecified"
+                      },
+                      "candidate_count": 40,
+                      "returned_candidates": 10,
+                      "final_pages": [
+                        301,
+                        301,
+                        358,
+                        356,
+                        300,
+                        301,
+                        356,
+                        5,
+                        50,
+                        356
+                      ],
+                      "latency_seconds": 0.068786,
+                      "base_trace": {
+                        "b4": {
+                          "stage": "hybrid_rrf",
+                          "query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 là bao nhiêu?",
+                          "dense_candidates": 40,
+                          "bm25_candidates": 40,
+                          "union_candidates": 64,
+                          "returned_candidates": 40,
+                          "rrf_k": 60,
+                          "dense_weight": 1.0,
+                          "bm25_weight": 1.0,
+                          "final_pages": [
+                            301,
+                            356,
+                            300,
+                            50,
+                            5,
+                            356,
+                            356,
+                            356,
+                            5,
+                            358,
+                            300,
+                            51,
+                            51,
+                            300,
+                            358,
+                            300,
+                            50,
+                            49,
+                            300,
+                            369,
+                            382,
+                            5,
+                            358,
+                            317,
+                            15,
+                            356,
+                            358,
+                            49,
+                            356,
+                            256,
+                            256,
+                            318,
+                            356,
+                            301,
+                            356,
+                            356,
+                            356,
+                            15,
+                            301,
+                            355
+                          ],
+                          "latency_seconds": 0.050097
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "question": "Còn năm 2024 thì sao?",
+              "standalone_query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2024 là bao nhiêu?",
+              "gold_answer": "7.679.933 triệu đồng",
+              "answer": "Thu nhập từ hoạt động dịch vụ nhận được năm 2024 là 7.679.933 triệu đồng [tr. 301].",
+              "gold_printed_pages": [
+                301
+              ],
+              "citations": [
+                301
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "latency_seconds": 0.102,
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.2+B4e",
+                  "matched_triggers": [
+                    "nhận được"
+                  ],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "metric_aware",
+                      "query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2024 là bao nhiêu?",
+                      "constraints": {
+                        "normalized": "Thu nhập từ hoạt động dịch vụ nhận được năm 2024 là bao nhiêu?",
+                        "terms": [
+                          "thu",
+                          "nhập",
+                          "từ",
+                          "hoạt",
+                          "động",
+                          "dịch",
+                          "vụ",
+                          "nhận",
+                          "được",
+                          "năm",
+                          "2024",
+                          "là",
+                          "bao",
+                          "nhiêu"
+                        ],
+                        "qualifiers": [
+                          "nhận được"
+                        ],
+                        "years": [
+                          "2024"
+                        ],
+                        "statement_type": "unspecified"
+                      },
+                      "candidate_count": 40,
+                      "returned_candidates": 10,
+                      "final_pages": [
+                        301,
+                        301,
+                        358,
+                        356,
+                        300,
+                        356,
+                        5,
+                        300,
+                        358,
+                        356
+                      ],
+                      "latency_seconds": 0.091414,
+                      "base_trace": {
+                        "b4": {
+                          "stage": "hybrid_rrf",
+                          "query": "Thu nhập từ hoạt động dịch vụ nhận được năm 2024 là bao nhiêu?",
+                          "dense_candidates": 40,
+                          "bm25_candidates": 40,
+                          "union_candidates": 63,
+                          "returned_candidates": 40,
+                          "rrf_k": 60,
+                          "dense_weight": 1.0,
+                          "bm25_weight": 1.0,
+                          "final_pages": [
+                            301,
+                            50,
+                            356,
+                            300,
+                            356,
+                            5,
+                            356,
+                            300,
+                            51,
+                            356,
+                            51,
+                            300,
+                            358,
+                            358,
+                            358,
+                            301,
+                            300,
+                            50,
+                            5,
+                            49,
+                            5,
+                            300,
+                            358,
+                            369,
+                            317,
+                            355,
+                            15,
+                            358,
+                            49,
+                            355,
+                            300,
+                            356,
+                            318,
+                            382,
+                            256,
+                            256,
+                            50,
+                            15,
+                            369,
+                            300
+                          ],
+                          "latency_seconds": 0.053555
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "question": "Như vậy năm 2025 tăng bao nhiêu so với năm 2024?",
+              "standalone_query": "Thu nhập từ hoạt động dịch vụ nhận được: Như vậy năm 2025 tăng bao nhiêu so với năm 2024?",
+              "gold_answer": "717.013 triệu đồng, khoảng 9,34%",
+              "answer": "Thu nhập từ hoạt động dịch vụ nhận được năm 2025 tăng 717.013 triệu đồng, tương đương khoảng 9,34% so với năm 2024 [tr. 301].",
+              "gold_printed_pages": [
+                301
+              ],
+              "citations": [
+                301
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "latency_seconds": 0.125,
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.2+B4e",
+                  "matched_triggers": [
+                    "nhận được"
+                  ],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "metric_aware",
+                      "query": "Thu nhập từ hoạt động dịch vụ nhận được: Như vậy năm 2025 tăng bao nhiêu so với năm 2024?",
+                      "constraints": {
+                        "normalized": "Thu nhập từ hoạt động dịch vụ nhận được: Như vậy năm 2025 tăng bao nhiêu so với năm 2024?",
+                        "terms": [
+                          "thu",
+                          "nhập",
+                          "từ",
+                          "hoạt",
+                          "động",
+                          "dịch",
+                          "vụ",
+                          "nhận",
+                          "được",
+                          "như",
+                          "vậy",
+                          "năm",
+                          "2025",
+                          "tăng",
+                          "bao",
+                          "nhiêu",
+                          "so",
+                          "với",
+                          "năm",
+                          "2024"
+                        ],
+                        "qualifiers": [
+                          "nhận được"
+                        ],
+                        "years": [
+                          "2025",
+                          "2024"
+                        ],
+                        "statement_type": "unspecified"
+                      },
+                      "candidate_count": 40,
+                      "returned_candidates": 10,
+                      "final_pages": [
+                        301,
+                        301,
+                        358,
+                        356,
+                        300,
+                        356,
+                        5,
+                        50,
+                        51,
+                        51
+                      ],
+                      "latency_seconds": 0.115929,
+                      "base_trace": {
+                        "b4": {
+                          "stage": "hybrid_rrf",
+                          "query": "Thu nhập từ hoạt động dịch vụ nhận được: Như vậy năm 2025 tăng bao nhiêu so với năm 2024?",
+                          "dense_candidates": 40,
+                          "bm25_candidates": 40,
+                          "union_candidates": 66,
+                          "returned_candidates": 40,
+                          "rrf_k": 60,
+                          "dense_weight": 1.0,
+                          "bm25_weight": 1.0,
+                          "final_pages": [
+                            301,
+                            50,
+                            356,
+                            300,
+                            51,
+                            51,
+                            356,
+                            5,
+                            5,
+                            356,
+                            300,
+                            356,
+                            50,
+                            358,
+                            50,
+                            15,
+                            15,
+                            383,
+                            5,
+                            300,
+                            79,
+                            300,
+                            79,
+                            355,
+                            49,
+                            356,
+                            356,
+                            358,
+                            78,
+                            369,
+                            49,
+                            382,
+                            79,
+                            355,
+                            358,
+                            301,
+                            369,
+                            358,
+                            361,
+                            14
+                          ],
+                          "latency_seconds": 0.072723
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt_metric_02",
+          "turns": [
+            {
+              "question": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2025 là bao nhiêu?",
+              "standalone_query": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2025 là bao nhiêu?",
+              "gold_answer": "67.231.128 triệu đồng",
+              "answer": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2025 là 67.231.128 triệu đồng [tr. 301].",
+              "gold_printed_pages": [
+                301
+              ],
+              "citations": [
+                301
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "latency_seconds": 0.071,
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.2+B4e",
+                  "matched_triggers": [
+                    "nhận được"
+                  ],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "metric_aware",
+                      "query": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2025 là bao nhiêu?",
+                      "constraints": {
+                        "normalized": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2025 là bao nhiêu?",
+                        "terms": [
+                          "thu",
+                          "nhập",
+                          "lãi",
+                          "và",
+                          "các",
+                          "khoản",
+                          "thu",
+                          "nhập",
+                          "tương",
+                          "tự",
+                          "nhận",
+                          "được",
+                          "năm",
+                          "2025",
+                          "là",
+                          "bao",
+                          "nhiêu"
+                        ],
+                        "qualifiers": [
+                          "nhận được"
+                        ],
+                        "years": [
+                          "2025"
+                        ],
+                        "statement_type": "unspecified"
+                      },
+                      "candidate_count": 40,
+                      "returned_candidates": 10,
+                      "final_pages": [
+                        301,
+                        301,
+                        300,
+                        301,
+                        300,
+                        355,
+                        355,
+                        355,
+                        300,
+                        355
+                      ],
+                      "latency_seconds": 0.065225,
+                      "base_trace": {
+                        "b4": {
+                          "stage": "hybrid_rrf",
+                          "query": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2025 là bao nhiêu?",
+                          "dense_candidates": 40,
+                          "bm25_candidates": 40,
+                          "union_candidates": 63,
+                          "returned_candidates": 40,
+                          "rrf_k": 60,
+                          "dense_weight": 1.0,
+                          "bm25_weight": 1.0,
+                          "final_pages": [
+                            301,
+                            300,
+                            355,
+                            355,
+                            300,
+                            355,
+                            355,
+                            355,
+                            355,
+                            300,
+                            355,
+                            355,
+                            355,
+                            356,
+                            355,
+                            355,
+                            355,
+                            301,
+                            51,
+                            51,
+                            355,
+                            50,
+                            355,
+                            300,
+                            361,
+                            358,
+                            300,
+                            48,
+                            356,
+                            369,
+                            301,
+                            356,
+                            361,
+                            59,
+                            356,
+                            356,
+                            356,
+                            320,
+                            356,
+                            356
+                          ],
+                          "latency_seconds": 0.050984
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "question": "Còn năm 2024?",
+              "standalone_query": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2024 là bao nhiêu?",
+              "gold_answer": "61.748.921 triệu đồng",
+              "answer": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2024 là 61.748.921 triệu đồng [tr. 301].",
+              "gold_printed_pages": [
+                301
+              ],
+              "citations": [
+                301
+              ],
+              "numeric_coverage": true,
+              "citation_overlap": true,
+              "latency_seconds": 0.098,
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.2+B4e",
+                  "matched_triggers": [
+                    "nhận được"
+                  ],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "metric_aware",
+                      "query": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2024 là bao nhiêu?",
+                      "constraints": {
+                        "normalized": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2024 là bao nhiêu?",
+                        "terms": [
+                          "thu",
+                          "nhập",
+                          "lãi",
+                          "và",
+                          "các",
+                          "khoản",
+                          "thu",
+                          "nhập",
+                          "tương",
+                          "tự",
+                          "nhận",
+                          "được",
+                          "năm",
+                          "2024",
+                          "là",
+                          "bao",
+                          "nhiêu"
+                        ],
+                        "qualifiers": [
+                          "nhận được"
+                        ],
+                        "years": [
+                          "2024"
+                        ],
+                        "statement_type": "unspecified"
+                      },
+                      "candidate_count": 40,
+                      "returned_candidates": 10,
+                      "final_pages": [
+                        301,
+                        301,
+                        301,
+                        300,
+                        300,
+                        355,
+                        355,
+                        355,
+                        300,
+                        355
+                      ],
+                      "latency_seconds": 0.087068,
+                      "base_trace": {
+                        "b4": {
+                          "stage": "hybrid_rrf",
+                          "query": "Thu nhập lãi và các khoản thu nhập tương tự nhận được năm 2024 là bao nhiêu?",
+                          "dense_candidates": 40,
+                          "bm25_candidates": 40,
+                          "union_candidates": 64,
+                          "returned_candidates": 40,
+                          "rrf_k": 60,
+                          "dense_weight": 1.0,
+                          "bm25_weight": 1.0,
+                          "final_pages": [
+                            300,
+                            301,
+                            300,
+                            355,
+                            355,
+                            355,
+                            355,
+                            355,
+                            300,
+                            355,
+                            355,
+                            356,
+                            355,
+                            355,
+                            301,
+                            355,
+                            51,
+                            301,
+                            51,
+                            50,
+                            355,
+                            355,
+                            355,
+                            355,
+                            300,
+                            361,
+                            300,
+                            369,
+                            358,
+                            320,
+                            48,
+                            356,
+                            320,
+                            356,
+                            356,
+                            369,
+                            356,
+                            358,
+                            356,
+                            350
+                          ],
+                          "latency_seconds": 0.057045
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "mt_metric_03",
+          "turns": [
+            {
+              "question": "Tiền gửi của khách hàng tại 31/12/2025 là bao nhiêu?",
+              "standalone_query": "Tiền gửi của khách hàng tại 31/12/2025 là bao nhiêu?",
+              "gold_answer": "618.911.535 triệu đồng",
+              "answer": "Tiền gửi của khách hàng tại ngày 31/12/2025 là 164.387.483 triệu đồng [tr. 379].",
+              "gold_printed_pages": [
+                298
+              ],
+              "citations": [
+                379
+              ],
+              "numeric_coverage": false,
+              "citation_overlap": false,
+              "latency_seconds": 6.405,
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.1+B4b_frozen",
+                  "matched_triggers": [],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "hybrid_rrf",
+                      "query": "Tiền gửi của khách hàng tại 31/12/2025 là bao nhiêu?",
+                      "dense_candidates": 20,
+                      "bm25_candidates": 20,
+                      "union_candidates": 33,
+                      "returned_candidates": 10,
+                      "rrf_k": 60,
+                      "dense_weight": 1.0,
+                      "bm25_weight": 1.0,
+                      "final_pages": [
+                        379,
+                        377,
+                        374,
+                        347,
+                        347,
+                        347,
+                        345,
+                        298,
+                        374,
+                        345
+                      ],
+                      "latency_seconds": 0.062819
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "question": "Còn cuối năm 2024 thì sao?",
+              "standalone_query": "Tiền gửi của khách hàng tại 31/12/2024 là bao nhiêu?",
+              "gold_answer": "533.392.350 triệu đồng",
+              "answer": "Không tìm thấy đủ thông tin trong Báo cáo thường niên để trả lời câu hỏi này.",
+              "gold_printed_pages": [
+                298
+              ],
+              "citations": [],
+              "numeric_coverage": false,
+              "citation_overlap": false,
+              "latency_seconds": 4.459,
+              "routing": {
+                "b4": {
+                  "stage": "selective_metric_aware",
+                  "selected_path": "A3.1+B4b_frozen",
+                  "matched_triggers": [],
+                  "base_trace": {
+                    "b4": {
+                      "stage": "hybrid_rrf",
+                      "query": "Tiền gửi của khách hàng tại 31/12/2024 là bao nhiêu?",
+                      "dense_candidates": 20,
+                      "bm25_candidates": 20,
+                      "union_candidates": 30,
+                      "returned_candidates": 10,
+                      "rrf_k": 60,
+                      "dense_weight": 1.0,
+                      "bm25_weight": 1.0,
+                      "final_pages": [
+                        347,
+                        377,
+                        347,
+                        374,
+                        298,
+                        347,
+                        379,
+                        345,
+                        345,
+                        345
+                      ],
+                      "latency_seconds": 0.058959
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "metrics": {
+        "turns": 7,
+        "numeric_coverage": 0.7142857142857143,
+        "citation_overlap": 0.7142857142857143,
+        "latency_mean_seconds": 1.6195714285714284
+      }
+    }
+  }
+}

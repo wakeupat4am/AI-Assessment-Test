@@ -59,7 +59,11 @@ def build_bm25_artifact(
     postings: dict[str, list[list[int]]] = {}
     document_lengths: list[int] = []
     for document_id, chunk in enumerate(chunks):
-        counts = Counter(lexical_tokens(str(chunk.get("text", "")), **tokenizer))
+        counts = Counter(
+            lexical_tokens(
+                str(chunk.get("search_text") or chunk.get("text", "")), **tokenizer
+            )
+        )
         document_lengths.append(sum(counts.values()))
         for token, frequency in counts.items():
             postings.setdefault(token, []).append([document_id, frequency])

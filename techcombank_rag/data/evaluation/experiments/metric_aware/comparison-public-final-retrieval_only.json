@@ -1,0 +1,16 @@
+{
+  "A31_B4b_frozen": {
+    "questions": 10,
+    "hit_at_1": 0.6666666666666666,
+    "hit_at_5": 1.0,
+    "hit_at_10": 1.0,
+    "latency_mean_ms": 71.98299217270687
+  },
+  "A32_B4e_metric_aware": {
+    "questions": 10,
+    "hit_at_1": 0.6666666666666666,
+    "hit_at_5": 1.0,
+    "hit_at_10": 1.0,
+    "latency_mean_ms": 50.6687835091725
+  }
+}
