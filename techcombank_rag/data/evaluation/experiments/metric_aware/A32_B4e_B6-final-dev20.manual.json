@@ -1,0 +1,22 @@
+{
+  "dev20_01": {"correct": true, "failure_category": "none", "notes": "Đúng; trang 117 là nguồn thay thế trực tiếp cho quy mô hơn 18 triệu khách hàng."},
+  "dev20_02": {"correct": true, "failure_category": "none", "notes": "Đúng giá trị, tăng trưởng và citation."},
+  "dev20_03": {"correct": true, "failure_category": "none", "notes": "Đúng giá trị; CAGR là chi tiết bổ sung được nguồn hỗ trợ."},
+  "dev20_04": {"correct": true, "failure_category": "none", "notes": "Đúng giá trị và vị thế dẫn đầu ngành."},
+  "dev20_05": {"correct": true, "failure_category": "none", "notes": "Đúng giá trị và nhận định chất lượng tài sản."},
+  "dev20_06": {"correct": true, "failure_category": "none", "notes": "Đúng thực hiện, kế hoạch, chênh lệch tuyệt đối và phần trăm tại trang 14."},
+  "dev20_07": {"correct": true, "failure_category": "none", "notes": "Đúng hai tốc độ tăng trưởng và chênh lệch 17,4 điểm phần trăm."},
+  "dev20_08": {"correct": true, "failure_category": "none", "notes": "Đúng mức giảm từ 33% xuống 31% và chênh lệch 2 điểm phần trăm."},
+  "dev20_09": {"correct": true, "failure_category": "none", "notes": "Đúng ba chỉ báo quy mô Data Brain; 55 mô hình là chi tiết bổ sung hợp lệ."},
+  "dev20_10": {"correct": true, "failure_category": "none", "notes": "Các nhóm ứng dụng AI trả lời đúng ý; trang 208 là nguồn thay thế trực tiếp."},
+  "dev20_11": {"correct": true, "failure_category": "none", "notes": "Giải thích đúng quan hệ giữa dữ liệu hợp nhất, AI/ML và siêu cá nhân hóa."},
+  "dev20_12": {"correct": true, "failure_category": "none", "notes": "Đúng chuyển dịch khỏi bất động sản và tăng ở các ngành khác, với số liệu trực tiếp trang 54."},
+  "dev20_13": {"correct": true, "failure_category": "none", "notes": "Đúng đủ tăng trưởng tín dụng, NPL, bao phủ nợ xấu và CAR; trang 48 là nguồn thay thế hợp lệ cho CAR."},
+  "dev20_14": {"correct": true, "failure_category": "none", "notes": "Đúng IPO chứng khoán, quản lý gia sản và mở rộng bảo hiểm; trang 17 tự thân hỗ trợ các ý."},
+  "dev20_15": {"correct": true, "failure_category": "none", "notes": "Đúng đủ bốn kết quả định lượng và cùng được hỗ trợ tại trang 20."},
+  "dev20_16": {"correct": true, "failure_category": "none", "notes": "Đúng phép tính ngược 18,7/1,15 và kết quả làm tròn 16,3."},
+  "dev20_17": {"correct": true, "failure_category": "none", "notes": "Đúng phép nhân đôi; trang 106 và 21 lần lượt hỗ trợ số gốc và mục tiêu."},
+  "dev20_18": {"correct": true, "failure_category": "none", "notes": "Đúng phép nhân 53,4 x 4; trang 48 và 21 lần lượt hỗ trợ số gốc và mục tiêu."},
+  "dev20_19": {"correct": true, "failure_category": "none", "notes": "Nêu đúng ba thay đổi cốt lõi: CASA/bán chéo, đa dạng tín dụng và tăng thu nhập phí."},
+  "dev20_20": {"correct": true, "failure_category": "none", "notes": "Xác định đúng ba nhóm năng lực tài chính, dữ liệu/AI và hệ sinh thái; phần hệ sinh thái ít chi tiết hơn gold và là điểm cần cải thiện."}
+}

@@ -1,0 +1,182 @@
+[
+  {
+    "id": "dev20_01",
+    "question": "Techcombank có bao nhiêu khách hàng vào cuối năm 2025?",
+    "gold_answer": "Techcombank phục vụ hơn 18 triệu khách hàng vào cuối năm 2025.",
+    "gold_printed_pages": [5],
+    "answerable": true,
+    "question_type": "single_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev20_02",
+    "question": "Tổng tài sản của Techcombank cuối năm 2025 là bao nhiêu?",
+    "gold_answer": "Tổng tài sản đạt khoảng 1.192 nghìn tỷ đồng, tăng 21,8% so với năm trước.",
+    "gold_printed_pages": [5],
+    "answerable": true,
+    "question_type": "single_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev20_03",
+    "question": "Lợi nhuận trước thuế của Techcombank năm 2025 là bao nhiêu?",
+    "gold_answer": "Lợi nhuận trước thuế đạt 32,5 nghìn tỷ đồng.",
+    "gold_printed_pages": [5],
+    "answerable": true,
+    "question_type": "single_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev20_04",
+    "question": "Tỷ lệ CASA của Techcombank năm 2025 là bao nhiêu?",
+    "gold_answer": "Tỷ lệ CASA đạt 40,4%, dẫn đầu ngành.",
+    "gold_printed_pages": [5],
+    "answerable": true,
+    "question_type": "single_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev20_05",
+    "question": "Tỷ lệ nợ xấu của Techcombank cuối năm 2025 là bao nhiêu?",
+    "gold_answer": "Tỷ lệ nợ xấu là 1,13%; báo cáo đánh giá chất lượng tài sản thuộc nhóm tốt nhất thị trường.",
+    "gold_printed_pages": [5],
+    "answerable": true,
+    "question_type": "single_lookup",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev20_06",
+    "question": "Techcombank đã đạt kết quả lợi nhuận trước thuế như thế nào so với kế hoạch năm 2025?",
+    "gold_answer": "Lợi nhuận trước thuế thực hiện đạt 32.538 tỷ đồng, cao hơn kế hoạch 31.500 tỷ đồng khoảng 1.038 tỷ đồng, tương đương 3,3%.",
+    "gold_printed_pages": [14],
+    "answerable": true,
+    "question_type": "comparison",
+    "requires_calculation": true
+  },
+  {
+    "id": "dev20_07",
+    "question": "Trong năm 2025, tăng trưởng cho vay khách hàng cá nhân và khách hàng doanh nghiệp khác nhau như thế nào?",
+    "gold_answer": "Cho vay khách hàng cá nhân tăng 30,8%, trong khi cho vay khách hàng doanh nghiệp tăng 13,4%; bán lẻ cao hơn 17,4 điểm phần trăm.",
+    "gold_printed_pages": [15],
+    "answerable": true,
+    "question_type": "comparison",
+    "requires_calculation": true
+  },
+  {
+    "id": "dev20_08",
+    "question": "Techcombank đã thay đổi mức độ tập trung tín dụng vào bất động sản như thế nào trong năm 2025?",
+    "gold_answer": "Tỷ trọng tín dụng bất động sản giảm từ 33% cuối năm 2024 xuống 31% cuối năm 2025, giảm 2 điểm phần trăm.",
+    "gold_printed_pages": [54],
+    "answerable": true,
+    "question_type": "comparison",
+    "requires_calculation": true
+  },
+  {
+    "id": "dev20_09",
+    "question": "Data Brain của Techcombank có quy mô như thế nào vào cuối năm 2025?",
+    "gold_answer": "Data Brain tích hợp dữ liệu từ khoảng 100 hệ thống nguồn, xử lý khoảng 8 tỷ điểm dữ liệu mỗi ngày và mô tả mỗi khách hàng bằng hơn 12.500 thuộc tính.",
+    "gold_printed_pages": [18],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev20_10",
+    "question": "Techcombank sử dụng AI trong những lĩnh vực kinh doanh nào?",
+    "gold_answer": "Techcombank ứng dụng AI cho cá nhân hóa bán hàng và tiếp thị, thẩm định tín dụng và đánh giá rủi ro, đồng thời nâng cao năng suất nhân viên bằng trợ lý hội thoại và AI Agents.",
+    "gold_printed_pages": [18],
+    "answerable": true,
+    "question_type": "narrative",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev20_11",
+    "question": "Vì sao Data Brain có thể được xem là nền tảng quan trọng cho chiến lược siêu cá nhân hóa của Techcombank?",
+    "gold_answer": "Data Brain hợp nhất và chuẩn hóa dữ liệu từ khoảng 100 hệ thống, xử lý khoảng 8 tỷ điểm dữ liệu mỗi ngày, tạo hơn 12.500 thuộc tính cho mỗi khách hàng và cung cấp hiểu biết thời gian thực cho các mô hình AI/ML cá nhân hóa.",
+    "gold_printed_pages": [18],
+    "answerable": true,
+    "question_type": "explanatory",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev20_12",
+    "question": "Những chỉ số nào cho thấy Techcombank đang chuyển dịch từ tăng trưởng tín dụng tập trung sang danh mục đa dạng hơn?",
+    "gold_answer": "Tỷ trọng tín dụng bất động sản giảm từ 33% xuống 31%; tín dụng xây dựng tăng 51,4%, tài chính và dịch vụ công tăng 106%, và cho vay cá nhân tăng 30,8%.",
+    "gold_printed_pages": [54],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev20_13",
+    "question": "Các số liệu năm 2025 cho thấy Techcombank đang kết hợp tăng trưởng và kiểm soát rủi ro như thế nào?",
+    "gold_answer": "Tăng trưởng tín dụng đạt 18,4% trong khi tỷ lệ nợ xấu là 1,13%, tỷ lệ bao phủ nợ xấu 127,9% và CAR 14,6%, cho thấy tăng trưởng đi cùng chất lượng tài sản và bộ đệm vốn.",
+    "gold_printed_pages": [5, 15],
+    "answerable": true,
+    "question_type": "multi_hop",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev20_14",
+    "question": "Hệ sinh thái tài chính của Techcombank được mở rộng như thế nào trong năm 2025?",
+    "gold_answer": "Hệ sinh thái được mở rộng qua IPO Techcom Securities, mảng quản lý gia sản, Techcom Life cho bảo hiểm nhân thọ và TCGI cho bảo hiểm phi nhân thọ.",
+    "gold_printed_pages": [11, 17],
+    "answerable": true,
+    "question_type": "multi_hop",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev20_15",
+    "question": "Phát triển bền vững của Techcombank năm 2025 được thể hiện qua những kết quả định lượng nào?",
+    "gold_answer": "Các kết quả gồm 18,7 nghìn tỷ đồng tín dụng xanh, khoảng 1 triệu thẻ Eco, 231 tỷ đồng cho các sáng kiến xã hội và được lựa chọn vào Top 20 VNSI.",
+    "gold_printed_pages": [20],
+    "answerable": true,
+    "question_type": "multi_fact",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev20_16",
+    "question": "Nếu tín dụng xanh năm 2025 đạt 18,7 nghìn tỷ đồng và tăng 15% so với 2024, có thể ước tính tín dụng xanh năm 2024 là bao nhiêu?",
+    "gold_answer": "Tín dụng xanh năm 2024 ước tính khoảng 16,3 nghìn tỷ đồng, tính bằng 18,7 chia cho 1,15.",
+    "gold_printed_pages": [244],
+    "answerable": true,
+    "question_type": "calculation",
+    "requires_calculation": true
+  },
+  {
+    "id": "dev20_17",
+    "question": "Nếu Techcombank đạt mục tiêu nhân đôi số lượng khách hàng vào năm 2030, dựa trên quy mô cuối năm 2025 thì ngân hàng sẽ cần phục vụ khoảng bao nhiêu khách hàng?",
+    "gold_answer": "Từ hơn 18 triệu khách hàng cuối năm 2025, mục tiêu nhân đôi tương ứng hơn 36 triệu khách hàng vào năm 2030.",
+    "gold_printed_pages": [5, 21],
+    "answerable": true,
+    "question_type": "calculation",
+    "requires_calculation": true
+  },
+  {
+    "id": "dev20_18",
+    "question": "Nếu lấy TOI năm 2025 là 53,4 nghìn tỷ đồng làm mốc, mục tiêu gấp bốn lần TOI đến năm 2030 tương ứng khoảng bao nhiêu?",
+    "gold_answer": "Nếu dùng TOI 2025 làm mốc, gấp bốn lần 53,4 nghìn tỷ đồng tương ứng khoảng 213,6 nghìn tỷ đồng.",
+    "gold_printed_pages": [5, 21],
+    "answerable": true,
+    "question_type": "calculation",
+    "requires_calculation": true
+  },
+  {
+    "id": "dev20_19",
+    "question": "Chiến lược 2026–2030 cho thấy Techcombank dự định thay đổi cơ cấu tăng trưởng như thế nào so với mô hình ngân hàng truyền thống?",
+    "gold_answer": "Techcombank hướng tới hệ sinh thái tài chính toàn diện, tăng CASA và bán chéo dựa trên dữ liệu, đa dạng hóa tín dụng sang bán lẻ, hộ kinh doanh, SME, hạ tầng và y tế, đồng thời tăng thu nhập phí từ thị trường vốn, supply-chain finance, bảo hiểm và sản phẩm mới.",
+    "gold_printed_pages": [22],
+    "answerable": true,
+    "question_type": "explanatory",
+    "requires_calculation": false
+  },
+  {
+    "id": "dev20_20",
+    "question": "Dựa trên kết quả 2025 và chiến lược 2026–2030, đâu là ba năng lực có thể xem là nền tảng chính giúp Techcombank theo đuổi mục tiêu trở thành định chế tài chính toàn diện mang tầm vóc quốc tế?",
+    "gold_answer": "Ba năng lực chính gồm nền tảng vốn và hiệu quả tài chính mạnh; dữ liệu, AI và nền tảng số; và hệ sinh thái tài chính mở rộng qua ngân hàng, chứng khoán, quản lý gia sản và bảo hiểm.",
+    "gold_printed_pages": [5, 17, 18, 21, 22],
+    "answerable": true,
+    "question_type": "multi_hop",
+    "requires_calculation": false
+  }
+]

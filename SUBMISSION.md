@@ -4,31 +4,28 @@
 
 ## How to run
 
-- **Clean machine:** prerequisites are Python 3.11 or 3.12 with `venv`, `make`, network access for the first dependency/model download, and an accessible OpenAI-compatible, OpenAI, or Anthropic generation endpoint. From the repository root, this single command creates `.venv`, installs pinned dependencies, verifies the shipped A3.1 FAISS and BM25 checksums, and opens the final A3.1+B4b CLI:
+- **Clean machine:** prerequisites are Python 3.11 or 3.12 with `venv`, `make`, network access for the first dependency/model download, and an accessible OpenAI-compatible, OpenAI, or Anthropic generation endpoint. From the repository root, this single command creates `.venv`, installs pinned dependencies, and opens the selected A3.2+B4e+B6 CLI using only shipped indexes:
 
   ```bash
-  INDEX_DIR=techcombank_rag/data/index/a31_semantic_multirepr/all \
-    B4_RETRIEVAL_MODE=hybrid \
-    B4_BM25_ARTIFACT=techcombank_rag/data/index/a31_semantic_multirepr/all/bm25.json.gz \
-    EMBEDDING_MODEL=intfloat/multilingual-e5-small \
+  EMBEDDING_MODEL=intfloat/multilingual-e5-small \
     LLM_PROVIDER=openai_compatible LLM_BASE_URL=http://YOUR_HOST:PORT/v1 \
-    LLM_MODEL=YOUR_MODEL LLM_API_KEY=YOUR_KEY make run
+    LLM_MODEL=YOUR_MODEL LLM_API_KEY=YOUR_KEY make run-financial
   ```
 
-  Alternatively, copy `.env.example` to `.env`, change only the endpoint/model/key, then run `make run`. No `/home/ubuntu/...` path, OCR service, ingestion job, or author server is required.
+  Alternatively, copy `.env.example` to `.env`, change only the endpoint/model/key, then run `make run-financial`. No `/home/ubuntu/...` path, OCR service, ingestion job, or author server is required. `make run` remains the frozen A3.1+B4b control.
 
 - **Different key or local model:** configuration is environment-only; no key or model name is hard-coded in Python. Examples:
 
   ```bash
   # OpenAI
-  LLM_PROVIDER=openai LLM_MODEL=YOUR_OPENAI_MODEL LLM_API_KEY=... make run
+  LLM_PROVIDER=openai LLM_MODEL=YOUR_OPENAI_MODEL LLM_API_KEY=... make run-financial
 
   # Anthropic
-  LLM_PROVIDER=anthropic LLM_MODEL=YOUR_ANTHROPIC_MODEL LLM_API_KEY=... make run
+  LLM_PROVIDER=anthropic LLM_MODEL=YOUR_ANTHROPIC_MODEL LLM_API_KEY=... make run-financial
 
   # Qwen/vLLM/llama.cpp/any OpenAI-compatible local server
   LLM_PROVIDER=openai_compatible LLM_BASE_URL=http://127.0.0.1:8000/v1 \
-    LLM_MODEL=YOUR_LOCAL_MODEL LLM_API_KEY=local make run
+    LLM_MODEL=YOUR_LOCAL_MODEL LLM_API_KEY=local make run-financial
   ```
 
   `LLM_MODEL_FAST` and `LLM_MODEL_STRONG` are optional. If they are blank, every purpose gracefully falls back to `LLM_MODEL`.
@@ -36,13 +33,10 @@
 - **Batch run:** no human input is required:
 
   ```bash
-  INDEX_DIR=techcombank_rag/data/index/a31_semantic_multirepr/all \
-    B4_RETRIEVAL_MODE=hybrid \
-    B4_BM25_ARTIFACT=techcombank_rag/data/index/a31_semantic_multirepr/all/bm25.json.gz \
-    EMBEDDING_MODEL=intfloat/multilingual-e5-small \
+  EMBEDDING_MODEL=intfloat/multilingual-e5-small \
     LLM_PROVIDER=openai_compatible LLM_BASE_URL=http://YOUR_HOST:PORT/v1 \
     LLM_MODEL=YOUR_MODEL LLM_API_KEY=YOUR_KEY \
-    make evaluate QUESTIONS=techcombank_rag/data/evaluation/public.json
+    make evaluate-financial QUESTIONS=techcombank_rag/data/evaluation/public.json
   ```
 
   Results are written as per-question JSONL plus an adjacent summary containing retrieval, answer, citation, refusal, latency, token, cost, and failure metrics.
@@ -60,17 +54,18 @@
   | Optional B2 | `B2_ENABLED`, `ENABLE_AUTO_SEARCH`, `ENABLE_PAGE_DEDUP`, `ENABLE_DIVERSITY_SELECTION`, `B2_INITIAL_TOP_K`, `B2_SECOND_ROUND_TOP_K`, `B2_MAX_SEARCH_ROUNDS`, `B2_MAX_PER_PAGE`, `B2_PAGE_SIMILARITY_THRESHOLD`, `B2_FINAL_K`, `B2_MAX_EVIDENCE_TOKENS`, `B2_DIVERSITY_LAMBDA`, `B2_LOG_PATH` | Adaptive retrieval, page deduplication, diversity selection and token budget; disabled by default. |
   | Optional HyDE | `ENABLE_HYDE`, `HYDE_MODE`, `HYDE_PROMPT_VARIANT`, `HYDE_CONFIG`, `HYDE_PROVIDER`, `HYDE_MODEL`, `HYDE_BASE_URL`, `HYDE_API_KEY`, `HYDE_TEMPERATURE`, `HYDE_TIMEOUT_SECONDS`, `HYDE_MAX_TOKENS`, `HYDE_CANDIDATE_K`, `HYDE_RRF_K`, `HYDE_ORIGINAL_WEIGHT`, `HYDE_HYPOTHETICAL_WEIGHT`, `HYDE_CACHE_SIZE`, `HYDE_LOG_PATH` | B3 hypothetical-document ablation; disabled by default and never used as answer evidence. |
   | Optional B5 | `B5_AGENT_ENABLED`, `B5_AGENT_CONFIG`, `B5_AGENT_LOG_PATH` | Audited retrieval/calculator tool calling; disabled by default. |
+  | Selected B6 | `FINANCIAL_REASONING_ENABLED`, `FINANCIAL_REASONING_CONFIG`, `ENABLE_FINANCIAL_ENTITY_SCOPE`, `ENABLE_FINANCIAL_FACT_COVERAGE`, `ENABLE_FINANCIAL_CALCULATOR`, `ENABLE_DERIVATION_PROVENANCE` | Selective entity/fact planning, at most one focused follow-up retrieval, typed arithmetic and operand provenance. Generic/unseen intents remain on frozen A3.2+B4e. |
   | Cost/debug | `LLM_INPUT_PRICE_PER_MILLION`, `LLM_CACHED_INPUT_PRICE_PER_MILLION`, `LLM_CACHE_WRITE_PRICE_PER_MILLION`, `LLM_OUTPUT_PRICE_PER_MILLION`, `DEBUG` | Optional pricing override and diagnostic logging. |
   | Author-only local Qwen | `QWEN_MODEL_PATH`, `QWEN_PYTHON`, `QWEN_DEPS`, `QWEN_GPU_IDS`, `QWEN_MAX_MEMORY_GIB` | Optional serving helper; not required by graders. |
 
-- **Shipped index:** the final runtime uses `techcombank_rag/data/index/a31_semantic_multirepr/all/`:
+- **Shipped indexes:** the selected runtime uses `techcombank_rag/data/index/a32_metric_aware/all/` for metric-risk queries and the frozen `techcombank_rag/data/index/a31_semantic_multirepr/all/` fallback for ordinary queries. Both contain FAISS, chunks, BM25 and checksummed metadata; no ingestion is run by graders. Each contains 3,658 aligned chunks; A3.2 is approximately 22 MiB and A3.1 approximately 19 MiB.
 
   - `chunks.jsonl`: 3,658 A3.1 row/block/page/metric children;
   - `index.faiss`: 384-dimensional normalized E5 vectors;
   - `bm25.json.gz`: Vietnamese lexical index over the identical chunks;
   - `metadata.json` and `bm25.metadata.json`: source hashes, model, dimensions, counts, parameters and artifact checksums.
 
-  `make verify-index` validates both retrieval artifacts. Graders do not run ingestion.
+  `make verify-financial-indexes` validates both retrieval artifacts. Graders do not run ingestion.
 
   The compact frozen A0/B0 dense index is additionally shipped at
   `techcombank_rag/data/index/`, allowing `make baseline` to reproduce the
@@ -96,9 +91,11 @@ After freezing that selection, an adversarial multi-turn test exposed a narrower
 
 A later sequential-chat regression then fixed history pollution, plural-reference decomposition, loss of directly attached metric context, and partial-page citations without changing the frozen default. On the public set, the repaired candidate achieved 100% manually reviewed answer and citation accuracy, while the 10-turn sequential regression reached 100% numeric and citation coverage. The original seven-turn diagnostic remains at 5/7 because generic deposit-balance ambiguity is still a documented limitation.
 
+Finally, a new 20-question financial-reasoning diagnostic exposed entity confusion, incomplete multi-page fact coverage and arithmetic failures. **B6** adds a deterministic query schema, entity-aware ranking, one optional retrieval round for explicitly missing facts, and typed calculators/fact synthesis with operand pages. It is selective: unrecognized queries execute the unchanged A3.2+B4e path. On that development set, automatic/manual accuracy improved from 35%/55% to 75%/100%, Hit@5 from 65% to 90%, and total tokens fell from 57,675 to 32,977. Frozen public retained 100% Hit@5/10 and reached 100% manual accuracy; untouched holdout retrieval and 70% manual accuracy remained equal to B4b. Full traces and caveats are in the [B6 report](techcombank_rag/docs/experiments/B6_FINANCIAL_REASONING.md).
+
 ## Architecture
 
-The final default is intentionally smaller than the experiment tree:
+The selected final path is intentionally bounded rather than autonomously agentic:
 
 ```text
 OFFLINE, SHIPPED
@@ -106,25 +103,31 @@ OFFLINE, SHIPPED
   -> PaddleOCR-VL 1.6 checkpoint (393 printed-page fragments)
   -> A3 row/block/page representations
   -> A3.1 metric-value children + inherited section/entity/year/unit
+  -> A3.2 search normalization + metric/statement identity
   -> one E5 embedding pass
   -> FAISS index + BM25 inverted index + checksummed metadata
 
 ONLINE, PER QUESTION
 query + bounded conversation context
-  -> E5 dense top-20 -----------+
-  -> BM25 lexical top-20 -------+-> weighted Reciprocal Rank Fusion
-                                      -> top child evidence
-                                      -> bounded parent-context expansion
-                                      -> provider-configurable grounded LLM
-                                      -> printed-page + verbatim-number validator
-                                      -> cited answer, repair, or refusal
+  -> recognized financial intent? -- no --> unchanged A3.2+B4e
+                |
+               yes
+                v
+       entity + required-fact plan
+                -> E5 dense + BM25 weighted RRF
+                -> entity/fact-aware ranking
+                -> enough evidence? -- no --> one focused retrieval round
+                -> typed calculator/fact synthesis when supported
+                -> otherwise provider-configurable grounded LLM
+                -> printed-page, number and operand provenance
+                -> cited answer, repair, or refusal
 ```
 
 Dense retrieval handles paraphrase and semantic similarity; BM25 protects exact financial terms, abbreviations, years and numbers. RRF combines ranks without pretending their raw scores are calibrated. A compact child is retrieved first so a specific row or metric can rank highly; only then is its parent block appended so the answer model sees the heading, table context and units. Every chunk preserves its printed page. The answer layer may cite only retrieved pages and rejects unsupported numeric claims. Multi-turn history helps resolve follow-ups, but it is never treated as a source of financial truth.
 
-The final path uses no router, HyDE generation, reranker model or autonomous loop. Those components remain independently switchable for ablation. B5's calculator accepts operands only when both literal values and source pages exist in retrieved evidence.
+The final path uses no LLM router, HyDE generation, cross-encoder or autonomous loop. B6 can make only configured deterministic decisions and at most one additional retrieval round. Its calculator accepts operands only when literal values and source pages exist in retrieved evidence.
 
-The optional A3.2+B4e mode is selected explicitly with `B4_RETRIEVAL_MODE=metric_aware`; it does not replace or mutate the default above. Ordinary queries still traverse the exact frozen A3.1+B4b path, while ambiguity-risk queries can use the separate metric-aware index and audited row answerer.
+A3.2+B4e is selected explicitly with `B4_RETRIEVAL_MODE=metric_aware`; B6 is enabled separately and does not mutate either shipped index. Ordinary and unseen queries retain the exact frozen path, while configured financial intents receive bounded planning, missing-fact retrieval and calculator provenance.
 
 ## What I tried that did not work
 
@@ -144,28 +147,28 @@ These negative results are kept with raw rows and traces under `techcombank_rag/
 
 - **Results on the 10 published questions:**
 
-  | Metric | Original A0/B0 | Final A3.1+B4b |
-  |---|---:|---:|
-  | Manual semantic answer accuracy | 60.0% | 90.0% |
-  | Automatic diagnostic accuracy | not used as primary | 40.0% |
-  | Retrieval Hit@1 | 11.11% | 66.67% |
-  | Retrieval Hit@5 | 44.44% | 100.0% |
-  | Retrieval Hit@10 | 55.56% | 100.0% |
-  | Canonical citation precision / recall | 33.33% / 33.33% | 77.78% / 77.78% |
-  | Refusal accuracy | 70.0% | 90.0% |
-  | End-to-end p50 / p95 | 4.640 / 18.946 s | 5.197 / 9.603 s |
+  | Metric | Original A0/B0 | A3.1+B4b | Selected A3.2+B4e+B6 |
+  |---|---:|---:|---:|
+  | Manual semantic answer accuracy | 60.0% | 90.0% | 100.0% |
+  | Automatic diagnostic accuracy | not used as primary | 40.0% | 80.0% |
+  | Retrieval Hit@1 | 11.11% | 66.67% | 66.67% |
+  | Retrieval Hit@5 | 44.44% | 100.0% | 100.0% |
+  | Retrieval Hit@10 | 55.56% | 100.0% | 100.0% |
+  | Canonical citation precision / recall | 33.33% / 33.33% | 77.78% / 77.78% | 100.0% / 100.0% |
+  | Refusal accuracy | 70.0% | 90.0% | 100.0% |
+  | End-to-end p50 / p95 | 4.640 / 18.946 s | 5.197 / 9.603 s | 3.598 / 5.696 s |
 
   The final choice is not based on public alone. Across all 40 public/dev/holdout questions, B4b achieved 72.5% manual accuracy, Hit@1/5/10 of 63.9%/83.3%/91.7%, and canonical citation P/R of 63.9%. On the untouched holdout, it improved manual accuracy from A3.1 dense-only's 50% to 70%, Hit@1 from 44.4% to 77.8%, and citation overlap from 33.3% to 55.6% at roughly 61 ms retrieval latency.
 
 - **Audit evidence:** the exact B4 public/dev/holdout tables are in the [B4 experiment report](techcombank_rag/docs/experiments/B4_HYBRID_RETRIEVAL.md); the ten public outputs are listed in [B4 public answers](techcombank_rag/docs/experiments/B4_PUBLIC_ANSWERS.md); retrieval/citation disagreements are documented in the [evidence analysis](techcombank_rag/docs/experiments/B4_EVIDENCE_ANALYSIS.md). Machine-readable per-question rows, summaries, manual reviews and ablation tables are under [`techcombank_rag/data/evaluation/experiments/`](techcombank_rag/data/evaluation/experiments/). This separates measured outputs from interpretation and keeps negative experiments reproducible.
 
-- **What the numbers made me change:** the A0 failure taxonomy moved work from prompting to evidence construction. A1's flat/regressive result moved the focus from OCR serialization to layout-aware semantic chunks. A3's coverage led to A3.1 child/parent representations. Router, B2 and HyDE results prevented adding unconditional LLM decisions. B4's public/dev/holdout evidence selected B4b over the higher-dev-accuracy but 11-second B4d reranker. B5's single arithmetic win justified keeping validated tools, but its aggregate/latency result prevented making the system agentic by default.
+- **What the numbers made me change:** the A0 failure taxonomy moved work from prompting to evidence construction. A1's flat/regressive result moved the focus from OCR serialization to layout-aware semantic chunks. A3's coverage led to A3.1 child/parent representations. Router, B2 and HyDE results prevented adding unconditional LLM decisions. B4's public/dev/holdout evidence selected B4b over the higher-dev-accuracy but 11-second B4d reranker. B5's weak aggregate result prevented an always-on agent. B6 therefore exposes only the useful bounded operations and bypasses every unrecognized intent; the first B6 attempt that reranked all queries was rejected after holdout Hit@5 fell to 66.67%.
 
 ## Cost and latency
 
 - **Ingestion:** the one-time PaddleOCR-VL checkpoint covered all 393 printed-page fragments from 197 PDF sheets. On the recorded CPU/contention run, checkpoint wall time was 35,573.843 s (9 h 52 m 53.843 s). A3.1 then reused that frozen checkpoint—no OCR or LLM call—and built 3,658 chunks plus three FAISS views in 483.753 s (8 m 3.753 s). The selected `all` runtime directory, including FAISS, chunks and BM25, is approximately 19 MiB; the full A3.1 family is approximately 35 MiB. Self-hosted OCR/embedding incurred USD 0 API charges; hardware/electricity was not converted to money. Graders use the shipped index and pay none of this ingestion time.
 
-- **Per query:** on the published final B4b run, mean retrieval was 67.5 ms and end-to-end p50/p95 was 5.197/9.603 s. The 10 questions used 38,763 tokens, averaging about 3,876 tokens/query. Self-hosted Qwen API charge was recorded as USD 0; this excludes hardware cost. Same-token list-price projections from the repository's dated pricing snapshot were approximately `$0.01618/query` for GPT-5.6 Sol, `$0.00817/query` for GPT-5.6 Terra, `$0.00082/query` for GPT-5.6 Luna, `$0.01214/query` for Claude Sonnet 5, and `$0.02023/query` for Claude Opus 5. These are exposure estimates, not invoices or quality claims.
+- **Per query:** on the selected public run, end-to-end p50/p95 was 3.598/5.696 s. The 10 questions used 22,824 tokens, averaging about 2,282 tokens/query. Self-hosted Qwen API charge was recorded as USD 0; this excludes hardware cost. Same-token list-price projections were approximately `$0.00952/query` for GPT-5.6, `$0.00481/query` for GPT-5.6 Terra, `$0.00048/query` for GPT-5.6 Luna, `$0.00714/query` for Claude Sonnet 5, and `$0.01190/query` for Claude Opus 5. These are exposure estimates, not invoices or quality claims.
 
 - **Models used:** PaddleOCR-VL 1.6 for offline document parsing; `intfloat/multilingual-e5-small` (384 dimensions, normalized) for offline chunk and online query embeddings; Qwen/Qwen3.5-9B at temperature 0 through an OpenAI-compatible endpoint for measured generation. B4d's `BAAI/bge-reranker-v2-m3` and all alternative providers are optional and not required by the final path.
 
@@ -184,7 +187,7 @@ These negative results are kept with raw rows and traces under `techcombank_rag/
 1. Build a larger Vietnamese financial QA evaluation set with complete multi-page gold evidence, independent dual manual review and an untouched test split.
 2. Benchmark Vietnamese/multilingual dense encoders and learned sparse retrievers on exactly the same A3.1 chunks; compare E5+BM25 against dense+[SPLADE](https://arxiv.org/abs/2107.05720)-style fusion.
 3. Add an auditable financial glossary/alias field (`LNTT/PBT`, `CASA`, `RBG`, `NIM`, `ROE`) while preserving verbatim source text for citations.
-4. Improve multi-hop sufficiency using explicit `(entity, metric, year, value, unit)` slots, then test selective second retrieval and selective HyDE only for a verified missing slot.
+4. Replace the hand-authored B6 intent/fact schema with a larger independently reviewed Vietnamese financial ontology, calibrate coverage thresholds on a second report, and add claim-level completeness scoring.
 5. Train/calibrate a RAG-on-a-Diet-style hop controller over fast/medium/strong models only after enough trajectories exist to measure the quality-cost frontier.
 6. Add targeted chart/figure understanding and a multilingual financial reranker optimized for the actual deployment hardware.
 

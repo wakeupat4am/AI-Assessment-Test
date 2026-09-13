@@ -19,7 +19,7 @@ A31_INDEX_ROOT := $(APP_DIR)/data/index/a31_semantic_multirepr
 A32_INDEX_ROOT := $(APP_DIR)/data/index/a32_metric_aware
 A4_INDEX := $(APP_DIR)/data/index/a4_selective_cascade
 
-.PHONY: setup run evaluate baseline test verify-index verify-baseline verify-b4-index ingest ingest-a1 ingest-a2-a4 build-b1a-index build-a31 build-a32 build-bm25 benchmark-metric-aware benchmark-metric-multiturn benchmark-conversation-regressions benchmark-a1a benchmark-a1b benchmark-a2 benchmark-a3 benchmark-a4 benchmark-a31 benchmark-a31-dev ablate-hyde ablate-hyde-dev ablate-b4-retrieval ablate-b4 ablate-b4-dev ablate-b4-holdout ablate-b5 ablate-b5-dev ablate-b5-holdout router-proxy evaluate-router-b1b ablate-b1a ablate-b1a-dev ablate-b1b ablate-b1b-dev ablate-b1b-controlled-a2 ablate-b1b-controlled-a2-dev ablate-b2 ablate-b2-dev clean-generated
+.PHONY: setup run run-financial evaluate evaluate-financial baseline test verify-index verify-financial-indexes verify-baseline verify-b4-index ingest ingest-a1 ingest-a2-a4 build-b1a-index build-a32 build-a31 build-bm25 benchmark-metric-aware benchmark-metric-multiturn benchmark-conversation-regressions benchmark-financial-dev benchmark-financial-all benchmark-a1a benchmark-a1b benchmark-a2 benchmark-a3 benchmark-a4 benchmark-a31 benchmark-a31-dev ablate-hyde ablate-hyde-dev ablate-b4-retrieval ablate-b4 ablate-b4-dev ablate-b4-holdout ablate-b5 ablate-b5-dev ablate-b5-holdout router-proxy evaluate-router-b1b ablate-b1a ablate-b1a-dev ablate-b1b ablate-b1b-dev ablate-b1b-controlled-a2 ablate-b1b-controlled-a2-dev ablate-b2 ablate-b2-dev clean-generated
 
 setup: $(STAMP)
 
@@ -32,6 +32,31 @@ $(STAMP): $(APP_DIR)/requirements.txt
 run: setup
 	@$(MAKE) --no-print-directory verify-index
 	@"$(PYTHON)" "$(APP_DIR)/scripts/chat.py"
+
+# Final bounded financial-reasoning candidate. Provider/model/key remain fully
+# environment-controlled; this target only pins the shipped retrieval artifacts.
+run-financial: setup verify-financial-indexes
+	@INDEX_DIR="$(A32_INDEX_ROOT)/all" B4_RETRIEVAL_MODE=metric_aware \
+		B4_CONFIG="$(APP_DIR)/config/b4e_metric_aware.json" \
+		B4_BM25_ARTIFACT="$(A32_INDEX_ROOT)/all/bm25.json.gz" \
+		B4_FROZEN_INDEX_DIR="$(A31_INDEX_ROOT)/all" \
+		B4_FROZEN_CONFIG="$(APP_DIR)/config/b4_retrieval.json" \
+		XROUTER_ENABLED=false B2_ENABLED=false ENABLE_HYDE=false \
+		B5_AGENT_ENABLED=false FINANCIAL_REASONING_ENABLED=true \
+		FINANCIAL_REASONING_CONFIG="$(APP_DIR)/config/financial_reasoning.json" \
+		"$(PYTHON)" "$(APP_DIR)/scripts/chat.py"
+
+evaluate-financial: setup verify-financial-indexes
+	@INDEX_DIR="$(A32_INDEX_ROOT)/all" B4_RETRIEVAL_MODE=metric_aware \
+		B4_CONFIG="$(APP_DIR)/config/b4e_metric_aware.json" \
+		B4_BM25_ARTIFACT="$(A32_INDEX_ROOT)/all/bm25.json.gz" \
+		B4_FROZEN_INDEX_DIR="$(A31_INDEX_ROOT)/all" \
+		B4_FROZEN_CONFIG="$(APP_DIR)/config/b4_retrieval.json" \
+		XROUTER_ENABLED=false B2_ENABLED=false ENABLE_HYDE=false \
+		B5_AGENT_ENABLED=false FINANCIAL_REASONING_ENABLED=true \
+		FINANCIAL_REASONING_CONFIG="$(APP_DIR)/config/financial_reasoning.json" \
+		"$(PYTHON)" "$(APP_DIR)/scripts/evaluate.py" "$(QUESTIONS)" \
+		--output-dir "$(OUTPUT_DIR)" --run-name A32_B4e_B6
 
 evaluate: setup
 	@$(MAKE) --no-print-directory verify-index
@@ -52,6 +77,12 @@ test: setup
 verify-index:
 	@"$(PYTHON)" "$(APP_DIR)/scripts/verify_artifacts.py" \
 		--index-dir "$(A31_INDEX_ROOT)/all"
+
+verify-financial-indexes:
+	@"$(PYTHON)" "$(APP_DIR)/scripts/verify_artifacts.py" \
+		--index-dir "$(A31_INDEX_ROOT)/all"
+	@"$(PYTHON)" "$(APP_DIR)/scripts/verify_artifacts.py" \
+		--index-dir "$(A32_INDEX_ROOT)/all"
 
 verify-baseline:
 	@"$(PYTHON)" "$(APP_DIR)/scripts/verify_artifacts.py" \
@@ -105,6 +136,31 @@ benchmark-conversation-regressions: setup
 	@"$(PYTHON)" "$(APP_DIR)/scripts/evaluate_metric_multiturn.py" \
 		--questions "$(APP_DIR)/data/evaluation/conversation_regressions.json" \
 		--output "$(APP_DIR)/data/evaluation/experiments/metric_aware/conversation-regressions.json"
+
+benchmark-financial-dev: setup
+	@INDEX_DIR="$(A32_INDEX_ROOT)/all" B4_RETRIEVAL_MODE=metric_aware \
+		B4_CONFIG="$(APP_DIR)/config/b4e_metric_aware.json" \
+		B4_BM25_ARTIFACT="$(A32_INDEX_ROOT)/all/bm25.json.gz" \
+		B4_FROZEN_INDEX_DIR="$(A31_INDEX_ROOT)/all" \
+		B4_FROZEN_CONFIG="$(APP_DIR)/config/b4_retrieval.json" \
+		XROUTER_ENABLED=false B2_ENABLED=false ENABLE_HYDE=false \
+		B5_AGENT_ENABLED=false FINANCIAL_REASONING_ENABLED=true \
+		FINANCIAL_REASONING_CONFIG="$(APP_DIR)/config/financial_reasoning.json" \
+		"$(PYTHON)" "$(APP_DIR)/scripts/evaluate.py" \
+		"$(APP_DIR)/data/evaluation/dev_20_stateless_reviewed.json" \
+		--output "$(APP_DIR)/data/evaluation/experiments/metric_aware/A32_B4e_B6-dev20.jsonl" \
+		--run-name A32_B4e_B6-dev20
+
+benchmark-financial-all: setup
+	@INDEX_DIR="$(A32_INDEX_ROOT)/all" B4_RETRIEVAL_MODE=metric_aware \
+		B4_CONFIG="$(APP_DIR)/config/b4e_metric_aware.json" \
+		B4_BM25_ARTIFACT="$(A32_INDEX_ROOT)/all/bm25.json.gz" \
+		B4_FROZEN_INDEX_DIR="$(A31_INDEX_ROOT)/all" \
+		B4_FROZEN_CONFIG="$(APP_DIR)/config/b4_retrieval.json" \
+		XROUTER_ENABLED=false B2_ENABLED=false ENABLE_HYDE=false \
+		B5_AGENT_ENABLED=false FINANCIAL_REASONING_ENABLED=true \
+		FINANCIAL_REASONING_CONFIG="$(APP_DIR)/config/financial_reasoning.json" \
+		"$(PYTHON)" "$(APP_DIR)/scripts/evaluate_financial_splits.py"
 
 # Deterministic lexical artifact built from shipped A3.1 chunks; no OCR/embedding/API.
 build-bm25: setup

@@ -238,6 +238,11 @@ def summarize(
     latencies = [float(row["latency_seconds"]) for row in rows if row.get("error") is None]
     answerable_scores = [score for row, score in zip(rows, scores) if row.get("answerable") is True]
     judged = [score["effective_correct"] for score in scores if score["effective_correct"] is not None]
+    automatic = [
+        score["automatic_correct"]
+        for score in scores
+        if score["automatic_correct"] is not None
+    ]
     manual = [score["manual_correct"] for score in scores if score["manual_correct"] is not None]
     usage_rows = [row.get("llm", {}).get("usage", {}) for row in rows]
     costs = [row.get("llm", {}).get("cost_usd") for row in rows]
@@ -318,6 +323,9 @@ def summarize(
             "retrieval_hit_at_5": _safe_mean([float(s["hit_at_5"]) for s in answerable_scores]),
             "retrieval_hit_at_10": _safe_mean([float(s["hit_at_10"]) for s in answerable_scores]),
             "answer_accuracy": round(sum(bool(value) for value in judged) / len(judged), 6) if judged else None,
+            "automatic_answer_accuracy": round(
+                sum(bool(value) for value in automatic) / len(automatic), 6
+            ) if automatic else None,
             "manual_answer_accuracy": round(sum(bool(value) for value in manual) / len(manual), 6) if manual else None,
             "citation_precision": _safe_mean([s["citation_precision"] for s in answerable_scores]),
             "citation_recall": _safe_mean([
@@ -435,6 +443,7 @@ def evaluate_questions(
                 "routing": response.get("routing"),
                 "answer_mode": response.get("answer_mode", "llm"),
                 "metric_grounding": response.get("metric_grounding"),
+                "financial_grounding": response.get("financial_grounding"),
                 "scores": scores,
                 "error": error,
             }

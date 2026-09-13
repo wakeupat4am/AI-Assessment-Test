@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "max_search_rounds": 2,
+  "max_followup_queries": 4,
+  "initial_candidate_k": 20,
+  "followup_candidate_k": 12,
+  "simple_evidence_k": 5,
+  "complex_evidence_k": 8,
+  "entity_mismatch_penalty": 1.25,
+  "fact_match_weight": 0.32,
+  "heading_overlap_weight": 0.18,
+  "numeric_summary_weight": 0.08,
+  "entity_aliases": {
+    "techcom_capital": ["techcom capital", "công ty cổ phần quản lý quỹ kỹ thương", " tcc "],
+    "tcbs": ["techcom securities", "công ty cổ phần chứng khoán kỹ thương", " tcbs "],
+    "techcom_life": ["techcom life", "tcli"],
+    "tcgi": ["techcom general insurance", "tcgi", "bảo hiểm phi nhân thọ techcom"]
+  },
+  "facts": {
+    "profit_plan_actual_table": {
+      "keyword_groups": [["mục: lợi nhuận trước thuế", "lợi nhuận trước thuế ;"], ["kế hoạch"], ["so sánh với"]],
+      "query": "Techcombank lợi nhuận trước thuế năm 2025 kế hoạch thực hiện"
+    },
+    "personal_loan_growth": {
+      "keyword_groups": [["cho vay khách hàng cá nhân", "danh mục cho vay cá nhân"], ["tăng trưởng", "n/n"]],
+      "query": "tăng trưởng cho vay khách hàng cá nhân năm 2025"
+    },
+    "corporate_loan_growth": {
+      "keyword_groups": [["cho vay doanh nghiệp", "danh mục cho vay doanh nghiệp", "khách hàng doanh nghiệp"], ["tăng trưởng", "n/n"]],
+      "query": "tăng trưởng cho vay khách hàng doanh nghiệp năm 2025"
+    },
+    "real_estate_share_2025": {
+      "keyword_groups": [["bất động sản"], ["tỷ trọng"], ["2025", "31/12/2025"]],
+      "query": "tỷ trọng tín dụng bất động sản tổng dư nợ cuối năm 2025"
+    },
+    "real_estate_share_2024": {
+      "keyword_groups": [["bất động sản"], ["tỷ trọng"], ["2024", "cuối năm 2024"]],
+      "query": "tỷ trọng tín dụng bất động sản tổng dư nợ cuối năm 2024"
+    },
+    "credit_growth": {
+      "keyword_groups": [["tăng trưởng tín dụng", "tăng trưởng tính dụng"], ["2025"]],
+      "value_pattern": "tăng trưởng (?:tín|tính) dụng[^%]{0,80}?\\d+(?:[.,]\\d+)?%",
+      "query": "Techcombank tăng trưởng tín dụng năm 2025"
+    },
+    "npl": {
+      "keyword_groups": [["tỷ lệ nợ xấu", "npl"]],
+      "value_pattern": "tỷ lệ nợ xấu(?:\\s*\\(npl\\))?[^%]{0,60}?\\d+(?:[.,]\\d+)?%",
+      "query": "Techcombank tỷ lệ nợ xấu NPL năm 2025"
+    },
+    "npl_coverage": {
+      "keyword_groups": [["bao phủ nợ xấu", "tỷ lệ bao phủ"]],
+      "value_pattern": "(?:tỷ lệ )?bao phủ nợ xấu[^%]{0,60}?\\d+(?:[.,]\\d+)?%",
+      "query": "Techcombank tỷ lệ bao phủ nợ xấu năm 2025"
+    },
+    "car": {
+      "keyword_groups": [["tỷ lệ an toàn vốn", "car"]],
+      "value_pattern": "(?:tỷ lệ an toàn vốn|car)[^%]{0,500}?\\d+(?:[.,]\\d+)?%",
+      "query": "Techcombank tỷ lệ an toàn vốn CAR năm 2025"
+    },
+    "green_credit": {
+      "keyword_groups": [["tín dụng xanh", "tính dung xanh"]],
+      "query": "Techcombank tín dụng xanh năm 2025 tăng trưởng so với 2024"
+    },
+    "eco_cards": {
+      "keyword_groups": [["eco card", "thẻ eco", "thẻ techcombank visa eco"]],
+      "query": "Techcombank số lượng thẻ Eco năm 2025"
+    },
+    "social_contribution": {
+      "keyword_groups": [["sáng kiến xã hội", "đóng góp cho cộng đồng", "đóng góp cho xã hội", "hoạt động xã hội", "từ thiện và cộng đồng"]],
+      "query": "Techcombank đóng góp sáng kiến xã hội cộng đồng năm 2025"
+    },
+    "vnsi": {
+      "keyword_groups": [["vnsi", "chỉ số phát triển bền vững"]],
+      "query": "Techcombank Top 20 VNSI năm 2025"
+    },
+    "customer_count": {
+      "keyword_groups": [["hơn 18 triệu khách hàng", "18 triệu khách hàng"]],
+      "query": "Techcombank tổng số khách hàng cuối năm 2025"
+    },
+    "customer_double_target": {
+      "keyword_groups": [["nhân đôi số lượng khách hàng", "gấp đôi số lượng khách hàng"]],
+      "query": "Techcombank mục tiêu nhân đôi số lượng khách hàng năm 2030"
+    },
+    "toi_2025": {
+      "keyword_groups": [["tổng thu nhập hoạt động", "toi"], ["2025"]],
+      "query": "Techcombank tổng thu nhập hoạt động TOI năm 2025"
+    },
+    "toi_multiplier_target": {
+      "keyword_groups": [["gấp bốn lần", "gấp 4 lần"], ["toi", "tổng thu nhập hoạt động"]],
+      "query": "Techcombank mục tiêu gấp bốn lần TOI năm 2030"
+    },
+    "financial_performance": {
+      "keyword_groups": [["lợi nhuận trước thuế", "tỷ lệ an toàn vốn", "tổng tài sản", "roa"]],
+      "query": "Techcombank điểm nhấn tài chính 2025 CAR ROA lợi nhuận trước thuế"
+    },
+    "data_ai_capability": {
+      "keyword_groups": [["data brain", "dữ liệu và ai"], ["8 tỷ", "12.500", "siêu cá nhân hóa"]],
+      "query": "Techcombank Data Brain dữ liệu AI nền tảng số năm 2025"
+    },
+    "ecosystem_capability": {
+      "keyword_groups": [["hệ sinh thái tài chính"], ["techcom securities", "tcbs", "bảo hiểm"]],
+      "query": "Techcombank hệ sinh thái tài chính TCBS quản lý gia sản bảo hiểm năm 2025"
+    },
+    "international_strategy": {
+      "keyword_groups": [["chiến lược 2026", "2030"], ["tầm vóc quốc tế", "định chế tài chính toàn diện"]],
+      "query": "chiến lược 2026 2030 định chế tài chính toàn diện tầm vóc quốc tế"
+    },
+    "casa_cross_sell": {
+      "keyword_groups": [["casa"], ["bán chéo", "sinh lời tự động"]],
+      "query": "định hướng 2026 tăng CASA bán chéo dữ liệu"
+    },
+    "credit_diversification": {
+      "keyword_groups": [["đa dạng hóa danh mục tín dụng"], ["bán lẻ", "sme", "hạ tầng", "y tế"]],
+      "query": "định hướng đa dạng hóa tín dụng bán lẻ SME hạ tầng y tế"
+    },
+    "fee_income_growth": {
+      "keyword_groups": [["thu nhập từ phí", "thu nhập phí"], ["thu xếp vốn", "trái phiếu", "supply-chain", "bảo hiểm"]],
+      "query": "định hướng tăng thu nhập phí thu xếp vốn trái phiếu supply-chain bảo hiểm"
+    }
+  },
+  "intent_rules": [
+    {
+      "intent": "plan_vs_actual",
+      "patterns": ["so với kế hoạch", "vượt kế hoạch", "so với chỉ tiêu"],
+      "query_type": "calculation",
+      "required_facts": ["profit_plan_actual_table"],
+      "operation": "plan_variance"
+    },
+    {
+      "intent": "loan_growth_comparison",
+      "patterns": ["cho vay khách hàng cá nhân và khách hàng doanh nghiệp", "cho vay cá nhân và doanh nghiệp"],
+      "query_type": "calculation",
+      "required_facts": ["personal_loan_growth", "corporate_loan_growth"],
+      "operation": "percentage_point_difference"
+    },
+    {
+      "intent": "real_estate_concentration",
+      "patterns": ["tập trung tín dụng vào bất động sản", "tỷ trọng tín dụng bất động sản", "tỷ trọng cho vay bất động sản"],
+      "query_type": "calculation",
+      "required_facts": ["real_estate_share_2025", "real_estate_share_2024"],
+      "operation": "percentage_point_difference"
+    },
+    {
+      "intent": "growth_risk_balance",
+      "patterns": ["kết hợp tăng trưởng và kiểm soát rủi ro", "tăng trưởng đi cùng kiểm soát rủi ro"],
+      "query_type": "multi_hop",
+      "required_facts": ["credit_growth", "npl", "npl_coverage", "car"]
+    },
+    {
+      "intent": "sustainability_quantitative",
+      "patterns": ["phát triển bền vững", "kết quả định lượng esg"],
+      "query_type": "multi_hop",
+      "required_facts": ["green_credit", "eco_cards", "social_contribution", "vnsi"]
+    },
+    {
+      "intent": "green_credit_reverse_growth",
+      "patterns": ["ước tính tín dụng xanh năm 2024", "tín dụng xanh năm 2024 là bao nhiêu"],
+      "query_type": "calculation",
+      "required_facts": ["green_credit"],
+      "operation": "reverse_percentage_growth"
+    },
+    {
+      "intent": "customer_multiplier",
+      "patterns": ["nhân đôi số lượng khách hàng", "gấp đôi số lượng khách hàng"],
+      "query_type": "calculation",
+      "required_facts": ["customer_count", "customer_double_target"],
+      "operation": "multiply"
+    },
+    {
+      "intent": "toi_multiplier",
+      "patterns": ["gấp bốn lần toi", "gấp 4 lần toi", "gấp bốn lần tổng thu nhập hoạt động"],
+      "query_type": "calculation",
+      "required_facts": ["toi_2025", "toi_multiplier_target"],
+      "operation": "multiply"
+    },
+    {
+      "intent": "strategy_growth_mix",
+      "patterns": ["thay đổi cơ cấu tăng trưởng", "so với mô hình ngân hàng truyền thống"],
+      "query_type": "multi_hop",
+      "required_facts": ["casa_cross_sell", "credit_diversification", "fee_income_growth"]
+    },
+    {
+      "intent": "strategic_capabilities",
+      "patterns": ["ba năng lực", "năng lực có thể xem là nền tảng", "định chế tài chính toàn diện mang tầm vóc quốc tế"],
+      "query_type": "multi_hop",
+      "required_facts": ["financial_performance", "data_ai_capability", "ecosystem_capability", "international_strategy"]
+    }
+  ]
+}

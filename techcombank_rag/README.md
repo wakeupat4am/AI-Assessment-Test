@@ -25,7 +25,10 @@ QWEN_GPU_IDS=2,3 \
 The grading runtime only needs the server URL in root `.env`; it does not need
 the serving script or local model weights.
 
-The frozen deployable control remains A3.1+B4b. A separate metric-aware repair
-candidate is shipped as A3.2+B4e; see
+The frozen deployable control remains A3.1+B4b. The selected candidate is
+A3.2+B4e plus the selective B6 bounded financial-reasoning layer; see
 [`docs/experiments/A32_B4E_METRIC_AWARE.md`](docs/experiments/A32_B4E_METRIC_AWARE.md)
-for its configuration, regression gates, multi-turn results, and trade-offs.
+and [`docs/experiments/B6_FINANCIAL_REASONING.md`](docs/experiments/B6_FINANCIAL_REASONING.md)
+for configuration, regression gates, public/dev/holdout results and trade-offs.
+Use the repository-root `make run-financial`; `make run` still reproduces the
+control.

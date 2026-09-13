@@ -215,6 +215,33 @@ class Chatbot:
                 )
         else:
             self.retriever = base_retriever
+        self.financial_reasoning = None
+        if self.settings.financial_reasoning_enabled:
+            if self.settings.b4_retrieval_mode != "metric_aware":
+                raise ValueError(
+                    "FINANCIAL_REASONING_ENABLED requires "
+                    "B4_RETRIEVAL_MODE=metric_aware (A3.2+B4e)."
+                )
+            if b2_requested or self.settings.b5_agent_enabled:
+                raise ValueError(
+                    "FINANCIAL_REASONING_ENABLED cannot be implicitly combined with "
+                    "B2 or B5; benchmark an explicit composition instead."
+                )
+            from src.chat.financial_reasoning import (
+                FinancialReasoningController,
+                load_financial_reasoning_config,
+            )
+
+            self.financial_reasoning = FinancialReasoningController(
+                self.retriever,
+                load_financial_reasoning_config(
+                    self.settings.financial_reasoning_config_path
+                ),
+                enable_entity_scope=self.settings.enable_financial_entity_scope,
+                enable_fact_coverage=self.settings.enable_financial_fact_coverage,
+                enable_calculator=self.settings.enable_financial_calculator,
+                enable_provenance=self.settings.enable_derivation_provenance,
+            )
 
     def ask(
         self, question: str, conversation_history: list[dict[str, str]] | None = None
@@ -243,31 +270,46 @@ class Chatbot:
         candidate_k = max(self.settings.top_k, self.settings.evaluation_retrieval_k)
         candidate_groups: list[list[dict[str, Any]]] = []
         retrieval_traces: list[dict[str, Any] | None] = []
-        for retrieval_query in decomposition_queries or [standalone]:
-            if hasattr(self.retriever, "retrieve_routed"):
-                conversation_context = (
-                    json.dumps(history, ensure_ascii=False) if history else None
+        financial_state = None
+        financial_plan = (
+            self.financial_reasoning.analyze(standalone)
+            if self.financial_reasoning is not None and not decomposition_queries
+            else None
+        )
+        if financial_plan is not None and financial_plan.intent != "generic":
+            financial_state = self.financial_reasoning.retrieve(standalone, candidate_k)
+            candidates = financial_state.candidates
+            chunks = self.financial_reasoning.evidence(financial_state)
+            routing = financial_state.trace()
+            llm_calls.extend(self.financial_reasoning.last_retrieval_calls)
+        else:
+            for retrieval_query in decomposition_queries or [standalone]:
+                if hasattr(self.retriever, "retrieve_routed"):
+                    conversation_context = (
+                        json.dumps(history, ensure_ascii=False) if history else None
+                    )
+                    group = self.retriever.retrieve_routed(
+                        retrieval_query,
+                        candidate_k,
+                        conversation_context=conversation_context,
+                        router_query=question,
+                    )
+                else:
+                    group = self.retriever.retrieve(retrieval_query, candidate_k)
+                candidate_groups.append(group)
+                retrieval_traces.append(getattr(self.retriever, "last_trace", None))
+                retrieval_calls = list(
+                    getattr(self.retriever, "last_retrieval_calls", []) or []
                 )
-                group = self.retriever.retrieve_routed(
-                    retrieval_query,
-                    candidate_k,
-                    conversation_context=conversation_context,
-                    router_query=question,
-                )
-            else:
-                group = self.retriever.retrieve(retrieval_query, candidate_k)
-            candidate_groups.append(group)
-            retrieval_traces.append(getattr(self.retriever, "last_trace", None))
-            retrieval_calls = list(
-                getattr(self.retriever, "last_retrieval_calls", []) or []
-            )
-            llm_calls.extend(retrieval_calls)
-            router_call = getattr(self.retriever, "last_router_call", None)
-            if router_call is not None and all(
-                router_call is not call for call in retrieval_calls
-            ):
-                llm_calls.append(router_call)
-        if decomposition_queries:
+                llm_calls.extend(retrieval_calls)
+                router_call = getattr(self.retriever, "last_router_call", None)
+                if router_call is not None and all(
+                    router_call is not call for call in retrieval_calls
+                ):
+                    llm_calls.append(router_call)
+        if financial_state is not None:
+            pass
+        elif decomposition_queries:
             from src.chat.conversation_grounding import merge_round_robin
 
             candidates = merge_round_robin(candidate_groups, decomposition_queries)
@@ -281,13 +323,18 @@ class Chatbot:
         else:
             candidates = candidate_groups[0]
             routing = retrieval_traces[0]
-        selected_evidence = getattr(self.retriever, "last_selected_evidence", None)
-        chunks = (
-            list(selected_evidence)
-            if selected_evidence is not None and not decomposition_queries
-            else candidates[: self.settings.top_k]
-        )
-        if self.settings.b4_retrieval_mode == "metric_aware" and not decomposition_queries:
+        if financial_state is None:
+            selected_evidence = getattr(self.retriever, "last_selected_evidence", None)
+            chunks = (
+                list(selected_evidence)
+                if selected_evidence is not None and not decomposition_queries
+                else candidates[: self.settings.top_k]
+            )
+        if (
+            self.settings.b4_retrieval_mode == "metric_aware"
+            and not decomposition_queries
+            and financial_state is None
+        ):
             constrained = [
                 chunk
                 for chunk in chunks
@@ -320,7 +367,44 @@ class Chatbot:
             self._debug(result, "")
             return result
 
-        if self.settings.b4_retrieval_mode == "metric_aware" and not decomposition_queries:
+        if financial_state is not None:
+            calculated = self.financial_reasoning.calculate(financial_state, chunks)
+            if calculated is not None:
+                result = self._result(
+                    question,
+                    standalone,
+                    calculated.answer,
+                    list(calculated.pages),
+                    candidates,
+                    started,
+                    False,
+                    True,
+                    llm_calls,
+                    retrieval_seconds,
+                    routing,
+                )
+                result["answer_mode"] = "deterministic_financial_calculator"
+                result["financial_grounding"] = {
+                    "operation": calculated.operation,
+                    "expression": calculated.expression,
+                    "operands": list(calculated.operands),
+                    "result": calculated.result,
+                    "coverage": {
+                        "covered": list(financial_state.coverage.covered_facts),
+                        "missing": list(financial_state.coverage.missing_facts),
+                    },
+                }
+                self._debug(result, format_evidence(chunks))
+                return result
+
+        if (
+            self.settings.b4_retrieval_mode == "metric_aware"
+            and not decomposition_queries
+            and (
+                financial_state is None
+                or financial_state.plan.query_type in {"lookup", "narrative"}
+            )
+        ):
             from src.chat.metric_answerer import answer_metric_query
 
             metric_answer = answer_metric_query(standalone, chunks)
@@ -360,6 +444,8 @@ class Chatbot:
                 "câu chứa giá trị. Không thêm cơ cấu, nguyên nhân hoặc diễn giải chung "
                 "nếu câu hỏi không yêu cầu."
             )
+        if financial_state is not None:
+            answer_prompt += self.financial_reasoning.prompt_extension(financial_state)
         if decomposition_queries:
             answer_prompt += (
                 "\n\nĐây là truy vấn nhiều chỉ tiêu được tách từ hội thoại. Phải trả lời "

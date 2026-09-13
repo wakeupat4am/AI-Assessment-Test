@@ -276,6 +276,31 @@ class Settings:
         )
     )
 
+    # B6 is a bounded financial-reasoning layer over the frozen A3.2+B4e
+    # retriever.  The master switch is deliberately off so the control remains
+    # reproducible; the sub-flags support controlled ablations.
+    financial_reasoning_enabled: bool = field(
+        default_factory=lambda: _as_bool("FINANCIAL_REASONING_ENABLED")
+    )
+    financial_reasoning_config_path: Path = field(
+        default_factory=lambda: _as_path(
+            "FINANCIAL_REASONING_CONFIG",
+            APP_ROOT / "config/financial_reasoning.json",
+        )
+    )
+    enable_financial_entity_scope: bool = field(
+        default_factory=lambda: _as_bool("ENABLE_FINANCIAL_ENTITY_SCOPE", True)
+    )
+    enable_financial_fact_coverage: bool = field(
+        default_factory=lambda: _as_bool("ENABLE_FINANCIAL_FACT_COVERAGE", True)
+    )
+    enable_financial_calculator: bool = field(
+        default_factory=lambda: _as_bool("ENABLE_FINANCIAL_CALCULATOR", True)
+    )
+    enable_derivation_provenance: bool = field(
+        default_factory=lambda: _as_bool("ENABLE_DERIVATION_PROVENANCE", True)
+    )
+
     llm_provider: str = field(default_factory=lambda: _env("LLM_PROVIDER", "openai_compatible"))
     llm_base_url: str = field(default_factory=lambda: _env("LLM_BASE_URL"))
     llm_model: str = field(default_factory=lambda: _env("LLM_MODEL"))

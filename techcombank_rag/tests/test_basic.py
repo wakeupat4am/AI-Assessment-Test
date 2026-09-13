@@ -168,12 +168,17 @@ def test_batch_runner_needs_no_keyboard_input(tmp_path: Path) -> None:
                         "fallback": False,
                     }
                 },
+                "financial_grounding": {
+                    "operation": "multiply",
+                    "operands": [{"value": "2", "page": 1}],
+                },
             }
 
     output = tmp_path / "results.jsonl"
     rows = evaluate_questions(questions, output, chatbot=FakeBot())
     assert len(rows) == 1
     assert output.exists()
+    assert rows[0]["financial_grounding"]["operation"] == "multiply"
 
 
 def test_single_model_fallback_covers_fast_and_strong(tmp_path: Path) -> None:

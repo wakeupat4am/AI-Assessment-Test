@@ -1,0 +1,12 @@
+{
+  "holdout-01": {"correct": true, "failure_category": "none", "notes": "Đúng hơn 5 triệu người dùng, tăng 137% và ba giải Stevie."},
+  "holdout-02": {"correct": false, "failure_category": "answer_error", "notes": "Trả lời dư nợ tín dụng giảm 13%; nguồn/gold yêu cầu mức tăng trưởng, nên sai chiều diễn giải."},
+  "holdout-03": {"correct": true, "failure_category": "none", "notes": "Đúng 1,5x và 2,8x."},
+  "holdout-04": {"correct": false, "failure_category": "retrieval_miss", "notes": "Không lấy được đủ hai số liệu nền tảng tương tác nên từ chối."},
+  "holdout-05": {"correct": true, "failure_category": "none", "notes": "Đúng thu nhập bình quân tháng 48 triệu đồng."},
+  "holdout-06": {"correct": true, "failure_category": "none", "notes": "Đúng chi phí R&D 1.673 tỷ và tăng 40%."},
+  "holdout-07": {"correct": false, "failure_category": "false_refusal", "notes": "Chưa thực hiện phép trừ số nộp ngân sách 2025 và 2024."},
+  "holdout-08": {"correct": true, "failure_category": "none", "notes": "Đúng số dư thuế TNDN hoãn lại và citation."},
+  "holdout-09": {"correct": true, "failure_category": "none", "notes": "Đúng tỷ lệ sở hữu tăng từ 11% lên 68%."},
+  "holdout-10": {"correct": true, "failure_category": "none", "notes": "Từ chối đúng vì báo cáo không nêu dự kiến CASA 2028."}
+}

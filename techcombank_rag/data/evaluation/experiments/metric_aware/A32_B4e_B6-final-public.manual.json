@@ -1,0 +1,12 @@
+{
+  "sq-01": {"correct": true, "failure_category": "none", "notes": "Đúng 302 điểm giao dịch và 29/34 tỉnh thành, citation trang 4."},
+  "sq-02": {"correct": true, "failure_category": "none", "notes": "Đúng S&P BB/Ổn định và Fitch BB-/Tích cực, citation trang 4."},
+  "sq-03": {"correct": true, "failure_category": "none", "notes": "Đúng tổng tài sản và tăng trưởng."},
+  "sq-04": {"correct": true, "failure_category": "none", "notes": "Đúng CASA và vị thế dẫn đầu."},
+  "sq-05": {"correct": true, "failure_category": "none", "notes": "Đúng NPL và mô tả chất lượng tài sản."},
+  "sq-06": {"correct": true, "failure_category": "none", "notes": "Đúng TOI và CAGR 2018-2025."},
+  "sq-07": {"correct": true, "failure_category": "none", "notes": "Đúng dư nợ RBG và mức tăng."},
+  "sq-08": {"correct": true, "failure_category": "none", "notes": "Đúng nghĩa của RBG; automatic heuristic phạt diễn đạt ngắn."},
+  "sq-09": {"correct": true, "failure_category": "none", "notes": "Đúng nghĩa của CASA; automatic heuristic phạt diễn đạt ngắn."},
+  "sq-10": {"correct": true, "failure_category": "none", "notes": "Từ chối đúng vì báo cáo 2025 không có dự báo LNTT 2027."}
+}

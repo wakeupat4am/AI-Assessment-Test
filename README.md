@@ -1,9 +1,10 @@
 # Techcombank Annual Report 2025 RAG
 
 Reproducible Vietnamese question answering over the 197-sheet Techcombank
-Annual Report. The default runtime is the selected A3.1+B4b system: semantic
-child/parent representations with dense E5 + BM25 weighted-RRF retrieval. It
-uses the shipped FAISS/BM25 artifacts and never re-runs ingestion.
+Annual Report. The selected runtime is A3.2+B4e+B6: metric-aware A3.2 evidence,
+dense E5 + BM25 retrieval, and a selective bounded financial-reasoning layer.
+Unrecognized queries retain the frozen A3.2+B4e path. It uses shipped
+FAISS/BM25 artifacts and never re-runs ingestion.
 
 ## Clean-machine quick start
 
@@ -12,12 +13,12 @@ Prerequisites: Python 3.11 or 3.12, `make`, and an accessible LLM endpoint.
 ```bash
 cp .env.example .env
 # Set LLM_BASE_URL, LLM_MODEL and LLM_API_KEY in .env
-make run
+make run-financial
 ```
 
-`make run` creates an isolated virtual environment, installs pinned packages,
-verifies the shipped index checksums, then starts the CLI. No host-specific path
-is required.
+`make run-financial` creates an isolated virtual environment, installs pinned
+packages, verifies both shipped index families, then starts the CLI. No
+host-specific path is required. `make run` remains the A3.1+B4b control.
 
 ## Provider configuration
 
@@ -54,8 +55,9 @@ all purposes gracefully fall back to that single model.
 
 ```bash
 make test
-make verify-index
-make evaluate QUESTIONS=techcombank_rag/data/evaluation/dev.json
+make verify-financial-indexes
+make evaluate-financial QUESTIONS=techcombank_rag/data/evaluation/public.json
+make benchmark-financial-all
 make baseline
 ```
 
@@ -79,11 +81,12 @@ the report's primary human score.
 ## Shipped artifacts
 
 The selected runtime artifacts are under
-`techcombank_rag/data/index/a31_semantic_multirepr/all/` and contain
+`techcombank_rag/data/index/a32_metric_aware/all/` with the frozen fallback at
+`techcombank_rag/data/index/a31_semantic_multirepr/all/`. Both contain
 `index.faiss`, `chunks.jsonl`, `metadata.json`, `bm25.json.gz`, and
 `bm25.metadata.json`.
 Metadata records the PDF hash, embedding model, dimensions, chunking parameters,
-and checksums for both runtime files. `make verify-index` detects a corrupt or
+and checksums for both runtime files. `make verify-financial-indexes` detects a corrupt or
 mismatched artifact. `make ingest` exists only to document the author's build;
 graders do not need it.
 
@@ -112,8 +115,8 @@ The continuation—A2 layout-aware heading/table chunks, A3 row/block/page
 multi-granularity, and A4 selective PyMuPDF + Paddle structured regions—is
 documented in
 [`techcombank_rag/docs/experiments/A2_A4_DOCUMENT_INTELLIGENCE.md`](techcombank_rag/docs/experiments/A2_A4_DOCUMENT_INTELLIGENCE.md).
-Human-reviewed results and machine-readable traces are shipped; the final A3.1
-index is the only runtime index included. The author-side commands are
+Human-reviewed results and machine-readable traces are shipped; A3.1 and the
+aligned A3.2 metric-aware index are the runtime indexes. The author-side commands are
 `make benchmark-a2`, `make benchmark-a3`, and `make benchmark-a4`; graders do
 not rerun OCR or ingestion.
 
@@ -151,3 +154,11 @@ dense+BM25 RRF. Controlled public/dev/untuned-holdout evidence is documented in
 [`techcombank_rag/docs/experiments/B4_HYBRID_RETRIEVAL.md`](techcombank_rag/docs/experiments/B4_HYBRID_RETRIEVAL.md).
 Run `make build-bm25`, `make verify-b4-index`, and the three `ablate-b4*`
 targets to reproduce it; set `B4_RETRIEVAL_MODE=hybrid` to enable it.
+
+B6 keeps A3.2+B4e frozen and selectively adds entity/fact planning, at most one
+focused missing-fact retrieval round, typed arithmetic/fact synthesis, and
+operand-level printed-page provenance. Generic and unseen intents bypass B6.
+Run `make run-financial`, `make evaluate-financial`, or
+`make benchmark-financial-all`; design, citations, negative ablation and frozen
+public/dev/holdout evidence are in
+[`techcombank_rag/docs/experiments/B6_FINANCIAL_REASONING.md`](techcombank_rag/docs/experiments/B6_FINANCIAL_REASONING.md).
