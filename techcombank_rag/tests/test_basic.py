@@ -175,8 +175,15 @@ def test_batch_runner_needs_no_keyboard_input(tmp_path: Path) -> None:
             }
 
     output = tmp_path / "results.jsonl"
-    rows = evaluate_questions(questions, output, chatbot=FakeBot())
+    streamed: list[dict] = []
+    rows = evaluate_questions(
+        questions,
+        output,
+        chatbot=FakeBot(),
+        on_result=streamed.append,
+    )
     assert len(rows) == 1
+    assert streamed == rows
     assert output.exists()
     assert rows[0]["financial_grounding"]["operation"] == "multiply"
 

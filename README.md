@@ -6,6 +6,14 @@ dense E5 + BM25 retrieval, and a selective bounded financial-reasoning layer.
 Unrecognized queries retain the frozen A3.2+B4e path. It uses shipped
 FAISS/BM25 artifacts and never re-runs ingestion.
 
+## Where to look first
+
+- [`SUBMISSION.md`](SUBMISSION.md): decisions, measured results, costs and limitations.
+- [`techcombank_rag/docs/REPOSITORY_MAP.md`](techcombank_rag/docs/REPOSITORY_MAP.md): grading surface versus research-only code.
+- `make run-financial`: selected multi-turn chatbot.
+- `make demo-financial`: live 10-question demo with answers, citations and latency.
+- `make evaluate-financial`: non-interactive JSONL evaluation.
+
 ## Clean-machine quick start
 
 Prerequisites: Python 3.11 or 3.12, `make`, and an accessible LLM endpoint.
@@ -56,10 +64,15 @@ all purposes gracefully fall back to that single model.
 ```bash
 make test
 make verify-financial-indexes
+make demo-financial QUESTIONS=techcombank_rag/data/evaluation/public.json
 make evaluate-financial QUESTIONS=techcombank_rag/data/evaluation/public.json
 make benchmark-financial-all
 make baseline
 ```
+
+`make demo-financial` uses the same evaluator as the batch command but streams
+each question, answer, printed-page citation and latency to the terminal. It is
+the recommended entry point for the required unedited video.
 
 `make baseline` always writes the frozen public result to
 `techcombank_rag/data/evaluation/baseline/baseline-a0-b0.jsonl` and its adjacent
@@ -72,7 +85,9 @@ Evaluation splits are deliberately separated:
 
 - `public.json`: the 10 organizer questions used in the demo.
 - `dev.json`: 20 questions used for diagnosis and threshold calibration.
-- `holdout.json`: 10 questions that must not be used for tuning.
+- `holdout.json`: a 10-question internal diagnostic split. Per-query rules were
+  not fitted to it, but its aggregate results were inspected during model
+  selection, so it is not presented as a blind external test.
 
 Automatic answer accuracy is a deterministic diagnostic heuristic. Copy
 `manual_review.example.json`, review each result, and pass `--manual-review` for
@@ -99,6 +114,8 @@ Implementation detail and known limitations are in
 [`techcombank_rag/BASELINE_DECISIONS.md`](techcombank_rag/BASELINE_DECISIONS.md),
 and the measurement contract is in
 [`techcombank_rag/docs/measurement.md`](techcombank_rag/docs/measurement.md).
+The grading surface and research-only paths are listed in
+[`techcombank_rag/docs/REPOSITORY_MAP.md`](techcombank_rag/docs/REPOSITORY_MAP.md).
 The frozen 09/09 server run is summarized in
 [`techcombank_rag/docs/baseline_a0_b0.md`](techcombank_rag/docs/baseline_a0_b0.md).
 

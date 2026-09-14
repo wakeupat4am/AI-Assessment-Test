@@ -23,7 +23,9 @@ QWEN_GPU_IDS=2,3 \
 ```
 
 The grading runtime only needs the server URL in root `.env`; it does not need
-the serving script or local model weights.
+the serving script or local model weights. `scripts/serve_transformers_text.py`
+is an optional thin entry point for testing another local Transformers causal
+LM through the same OpenAI-compatible provider interface.
 
 The frozen deployable control remains A3.1+B4b. The selected candidate is
 A3.2+B4e plus the selective B6 bounded financial-reasoning layer; see

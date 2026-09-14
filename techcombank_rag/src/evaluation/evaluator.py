@@ -10,7 +10,7 @@ import sys
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from src.chat.chatbot import Chatbot
 from src.config import Settings, get_settings
@@ -400,6 +400,7 @@ def evaluate_questions(
     summary_path: Path | None = None,
     run_name: str = "evaluation",
     manual_reviews_path: Path | None = None,
+    on_result: Callable[[dict[str, Any]], None] | None = None,
 ) -> list[dict[str, Any]]:
     default_settings = get_settings()
     bot = chatbot or Chatbot(default_settings)
@@ -450,6 +451,8 @@ def evaluate_questions(
             output.write(json.dumps(row, ensure_ascii=False, allow_nan=False) + "\n")
             output.flush()
             results.append(row)
+            if on_result is not None:
+                on_result(row)
     summary = summarize(results, settings, run_name, questions_path)
     destination = summary_path or output_path.with_suffix(".summary.json")
     with destination.open("w", encoding="utf-8") as handle:
