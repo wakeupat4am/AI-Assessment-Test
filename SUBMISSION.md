@@ -4,40 +4,40 @@
 
 ## How to run
 
-Prerequisites: Python 3.11 or 3.12, `venv`, `make`, first-run network access for Python packages and the E5 query encoder, and an OpenAI-compatible, OpenAI, or Anthropic generation endpoint. OCR is **not** required: both production indexes are shipped in the repository.
+Prerequisites: Python 3.11 or 3.12 with `venv`, first-run network access for pinned Python packages and the E5 query encoder, and an OpenAI-compatible, OpenAI, or Anthropic generation endpoint. OCR and `make` are **not** required: both production indexes are shipped in the repository.
 
 From the repository root:
-
-```bash
-cp .env.example .env
-# Set LLM_PROVIDER, LLM_MODEL, LLM_BASE_URL and LLM_API_KEY in .env.
-make run-financial
-```
-
-The same configuration can be supplied without editing a file:
 
 ```bash
 LLM_PROVIDER=openai_compatible \
 LLM_BASE_URL=http://YOUR_HOST:PORT/v1 \
 LLM_MODEL=YOUR_MODEL LLM_API_KEY=YOUR_KEY \
-EMBEDDING_MODEL=intfloat/multilingual-e5-small \
-make run-financial
+./run.sh chat
 ```
 
-`LLM_PROVIDER=openai` and `LLM_PROVIDER=anthropic` are also supported. `LLM_MODEL_FAST` and `LLM_MODEL_STRONG` are optional; both fall back to `LLM_MODEL`. No model, credential, server address, or `/home/ubuntu/...` path is hard-coded.
+The launcher automatically creates `techcombank_rag/.venv`, installs the pinned dependencies, verifies both shipped indexes, validates provider configuration without transmitting the key, and starts the selected A3.2+B4e+B6 pipeline. The same variables may instead be placed in a root `.env` copied from `.env.example`.
+
+`LLM_PROVIDER=openai` accepts `OPENAI_API_KEY`; `LLM_PROVIDER=anthropic` accepts `ANTHROPIC_API_KEY`; `LLM_PROVIDER=openai_compatible` accepts any compatible `LLM_BASE_URL` and `LLM_API_KEY`. `LLM_MODEL_FAST` and `LLM_MODEL_STRONG` are optional and fall back to `LLM_MODEL`. No model, credential, server address, or `/home/ubuntu/...` path is hard-coded.
+
+```bash
+LLM_PROVIDER=openai LLM_MODEL=YOUR_OPENAI_MODEL OPENAI_API_KEY=YOUR_KEY ./run.sh demo
+LLM_PROVIDER=anthropic LLM_MODEL=YOUR_CLAUDE_MODEL ANTHROPIC_API_KEY=YOUR_KEY ./run.sh demo
+```
 
 Run the 10 published questions non-interactively with:
 
 ```bash
-make evaluate-financial QUESTIONS=techcombank_rag/data/evaluation/public.json
+./run.sh demo --questions techcombank_rag/data/evaluation/public.json
 ```
 
 The evaluator writes per-question JSONL and an adjacent summary with retrieval, answer, citation, refusal, latency, token, cost, and failure metrics. Useful checks are:
 
 ```bash
-make verify-financial-indexes   # hashes, dimensions, counts and BM25 alignment
-make test                       # 160 unit/integration tests
+./run.sh verify                 # hashes, dimensions, counts, BM25 and provider config
+./run.sh test                   # unit/integration/portable-runtime tests
 ```
+
+Equivalent `make run-financial`, `make demo-financial`, and `make test` targets remain available. `PYTHON_BIN=/path/to/python3.11 ./run.sh ...` selects a particular interpreter. All commands resolve repository artifacts from the launcher's own location, so they can be invoked from another working directory.
 
 The selected runtime reads the shipped `a32_metric_aware/all` index and uses the shipped `a31_semantic_multirepr/all` index as its conservative fallback. Each contains 3,658 aligned chunks, `index.faiss`, `chunks.jsonl`, `bm25.json.gz`, and checksummed metadata. Their repository sizes are approximately 22 MiB and 18 MiB respectively. The compact A0/B0 comparator is also shipped under `techcombank_rag/data/index/`. Graders never need to rerun PaddleOCR-VL or ingestion.
 
@@ -68,7 +68,7 @@ The final selection is **A3.2 + B4e + selective B6**:
 
 - **A3.2** distinguishes easily confused measures such as cash-flow service receipts, financial-note service income, and net fee income while retaining verbatim source text and page metadata.
 - **B4e** uses dense E5 + BM25 weighted reciprocal-rank fusion, with metric-aware routing only where identity risk is detected; generic questions use the frozen A3.1+B4b path.
-- **B6** recognizes a bounded set of financial intents, checks entity and required-fact coverage, permits at most one focused missing-fact retrieval, and uses typed arithmetic only when every operand is present in cited evidence.
+- **B6** recognizes a bounded set of financial intents, checks entity and required-fact coverage, permits at most one additional retrieval round containing up to four focused missing-fact queries, and uses typed arithmetic only when every operand is present in cited evidence.
 
 ## Architecture
 
@@ -88,7 +88,7 @@ flowchart TD
         PLAN -- "Yes" --> SCHEMA["Entity + metric + year<br/>required-fact plan"]
         SCHEMA --> RET["A3.2/B4e retrieval<br/>dense + BM25 weighted RRF"]
         RET --> ENOUGH{"All required facts grounded?"}
-        ENOUGH -- "No" --> FOLLOW["One focused missing-fact search"]
+        ENOUGH -- "No" --> FOLLOW["One bounded additional round<br/>up to four missing-fact queries"]
         FOLLOW --> ENOUGH
         ENOUGH -- "Yes" --> CALC{"Supported typed operation?"}
         CALC -- "Yes" --> SYN["Deterministic calculation / synthesis"]
@@ -96,7 +96,7 @@ flowchart TD
         FROZEN --> LLM
         SYN --> VALID["Number + citation + provenance validation"]
         LLM --> VALID
-        VALID --> OUT["Answer with all supporting printed pages<br/>or grounded refusal"]
+        VALID --> OUT["Answer with validated printed-page citations<br/>or grounded refusal"]
     end
 
     ART -. "shipped indexes" .-> FROZEN
@@ -111,10 +111,10 @@ flowchart TD
 | A3.2 identity fields | Similar labels can refer to different statements, scopes, or accounting meanings. | Preserves metric, statement, entity, year, and unit identity; OCR corrections are search-only, so citations remain verbatim. |
 | E5 dense retrieval | Users paraphrase concepts and ask qualitative questions. | Finds semantic matches in Vietnamese at low CPU cost. |
 | BM25 + weighted RRF | Dense retrieval can miss exact acronyms, years, numbers, and row labels; raw dense/BM25 scores are not calibrated. | Adds lexical recall and fuses ranks safely rather than mixing incomparable scores. |
-| Selective B6 plan | Multi-entity, multi-page, and arithmetic questions need complete operands, not merely a high similarity score. | Checks explicit fact coverage and performs no more than one targeted second search. |
+| Selective B6 plan | Multi-entity, multi-page, and arithmetic questions need complete operands, not merely a high similarity score. | Checks explicit fact coverage and performs no more than one additional round with a bounded set of missing-fact queries. |
 | Typed calculator/synthesis | Free-form generation can select the wrong operation or silently change units. | Executes only supported operations over literal retrieved operands and records operand pages. |
 | Grounded LLM | Narrative answers still require concise natural-language synthesis. | The provider is replaceable; the model receives retrieved evidence rather than report-specific memorized answers. |
-| Validators and refusal | A fluent answer may contain an unsupported number or incomplete citation set. | Allows citations only to retrieved printed pages, requires all supporting pages, repairs once when safe, otherwise refuses. |
+| Validators and refusal | A fluent answer may contain an unsupported number or invalid citation. | Allows citations only to retrieved printed pages, checks numeric claims against cited evidence, repairs once when safe, otherwise refuses. Multi-page completeness is scored separately against gold pages during evaluation. |
 
 History is used only to resolve follow-ups; it is never evidence. Hypothetical text and model memory can never become citations.
 
@@ -215,3 +215,5 @@ These figures are estimates, not invoices; provider prompt caching, tokenizer di
 8. **Calibrate a generation-aware retriever router.** Rerun routing only after sufficient labels exist, using both retrieval relevance and downstream answer utility rather than query keywords alone, following the motivation of Zhao et al., *R³AG* (ACL 2026) [paper](https://aclanthology.org/2026.acl-long.939/).
 
 ## Demo video
+
+[Google Drive demo folder](https://drive.google.com/drive/folders/1OJY62DxT7EyEVpXwyMkRKzi4Wh7_A2pJ?hl=vi)

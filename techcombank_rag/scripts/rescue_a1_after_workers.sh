@@ -4,11 +4,12 @@ set -euo pipefail
 # Wait for the sharded GGUF pass, then fill only any failed/missing checkpoints
 # with the official native Paddle backend. This makes an overnight author run
 # self-healing without changing the A1 representation or index settings.
-REPO_ROOT="${1:-/home/ubuntu/TCB_Test}"
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="${1:-$(cd "$SCRIPT_DIR/../.." && pwd)}"
 APP_ROOT="$REPO_ROOT/techcombank_rag"
 RAW_DIR="$APP_ROOT/data/processed/paddleocr_vl_1_6/raw"
 PDF="$APP_ROOT/data/raw/techcombank-bao-cao-thuong-nien-2025-vie-update.pdf"
-PADDLE_PYTHON="${PADDLE_PYTHON:-/home/ubuntu/paddleocr-vl-env/bin/python}"
+PADDLE_PYTHON="${PADDLE_PYTHON:-python3}"
 EXPECTED=393
 RESIDUES="2 10 3 11 18 26 19 27"
 

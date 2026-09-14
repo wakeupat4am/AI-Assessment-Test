@@ -3,7 +3,8 @@ set -euo pipefail
 
 # Author-side overnight helper. Graders never run ingestion; they consume the
 # two prebuilt indexes produced here.
-REPO_ROOT="${1:-/home/ubuntu/TCB_Test}"
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="${1:-$(cd "$SCRIPT_DIR/../.." && pwd)}"
 APP_ROOT="$REPO_ROOT/techcombank_rag"
 RAW_DIR="$APP_ROOT/data/processed/paddleocr_vl_1_6/raw"
 PDF="$APP_ROOT/data/raw/techcombank-bao-cao-thuong-nien-2025-vie-update.pdf"
@@ -21,7 +22,7 @@ while [ "$(raw_count)" -lt "$EXPECTED" ]; do
 done
 
 # Allow parse-only workers to finish their final manifest write.
-while pgrep -f '^/home/ubuntu/paddleocr-vl-env/bin/python .*ingest_paddleocr_vl.py.*--parse-only' >/dev/null; do
+while pgrep -f 'ingest_paddleocr_vl.py.*--parse-only' >/dev/null; do
   sleep 10
 done
 

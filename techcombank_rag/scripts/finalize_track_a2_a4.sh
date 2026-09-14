@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_ROOT="${1:-/home/ubuntu/TCB_Test}"
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="${1:-$(cd "$SCRIPT_DIR/../.." && pwd)}"
 APP_ROOT="$REPO_ROOT/techcombank_rag"
 PYTHON="$APP_ROOT/.venv/bin/python"
 BUILD_PID_FILE="$REPO_ROOT/a2-a4-build.pid"
