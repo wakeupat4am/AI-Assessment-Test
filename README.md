@@ -198,15 +198,9 @@ These figures are estimates, not invoices; provider prompt caching, tokenizer di
 
 ## What I deliberately did not build
 
-- **No mandatory cloud deployment:** the requirement is clean-machine reproducibility and provider portability. A local or remote OpenAI-compatible endpoint is sufficient.
-- **No ingestion during grading:** OCR is expensive and unnecessary. Both selected indexes, their chunks, BM25 artifacts, model metadata, and checksums are committed.
-- **No claim of blind 100% generalization:** the 10 published questions were calibration-visible. The document contains the evidence, but the indexes contain no stored answers or question-specific IDs.
-- **No full AutoSearch reproduction:** the paper trains an RL policy; B2 was intentionally a maximum-two-round inspired ablation, and it did not earn a place in the final path.
 - **No RAG-on-a-Diet claim:** Ding and Zhao's *RAG-on-a-Diet* (ACL 2026) [paper](https://aclanthology.org/2026.acl-long.1562/) learns hop-wise model selection and stopping with behavior cloning/PPO. This submission has deterministic bounded control, not that trained policy.
-- **No always-on router, HyDE, cross-encoder, or agent:** each increased latency or introduced regressions in the measured setting. Their modules remain independently switchable for ablation.
 - **No answer arithmetic by hope:** unsupported operations refuse. The calculator accepts only retrieved literal operands with compatible units and source pages.
 - **No generated evidence:** conversation history, hypothetical documents, model memory, and calculator output cannot be cited as report sources.
-- **No heavy framework dependency:** the control flow is small, inspectable Python rather than a LangChain graph. This reduces hidden retries/state and makes a 45-minute walkthrough possible.
 - **No embedding fine-tuning or learned sparse retrieval:** there was insufficient independent Vietnamese financial relevance data to justify training without overfitting; BM25 supplies the auditable lexical complement.
 
 ## With 10x time and budget
