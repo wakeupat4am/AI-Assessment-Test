@@ -188,6 +188,17 @@ def test_batch_runner_needs_no_keyboard_input(tmp_path: Path) -> None:
     assert rows[0]["financial_grounding"]["operation"] == "multiply"
 
 
+def test_fillable_batch_question_example_is_valid() -> None:
+    from src.evaluation.evaluator import load_questions
+
+    path = Path(__file__).resolve().parents[1] / "data/evaluation/questions.example.json"
+    rows = load_questions(path)
+    assert len(rows) == 3
+    assert [row["id"] for row in rows] == ["custom-001", "custom-002", "custom-003"]
+    assert all(row["question"].strip() for row in rows)
+    assert all(row["answerable"] is None for row in rows)
+
+
 def test_single_model_fallback_covers_fast_and_strong(tmp_path: Path) -> None:
     settings = Settings(index_dir=tmp_path, llm_model="one-model")
     assert settings.model_for_purpose("rewrite") == "one-model"

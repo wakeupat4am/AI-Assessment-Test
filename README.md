@@ -6,16 +6,20 @@
 
 Prerequisites: Python 3.11 or 3.12 with `venv`, first-run network access for pinned Python packages and the E5 query encoder, and an OpenAI-compatible, OpenAI, or Anthropic generation endpoint. OCR and `make` are **not** required: both production indexes are shipped in the repository.
 
-From the repository root:
+### Batch execution — primary grading path
+
+Copy or edit [`techcombank_rag/data/evaluation/questions.example.json`](techcombank_rag/data/evaluation/questions.example.json). Each item needs only an `id` and `question`; a plain JSON list of question strings is also accepted. Then run the entire file without keyboard input:
 
 ```bash
 LLM_PROVIDER=openai_compatible \
 LLM_BASE_URL=http://YOUR_HOST:PORT/v1 \
 LLM_MODEL=YOUR_MODEL LLM_API_KEY=YOUR_KEY \
-./run.sh chat
+./run.sh demo --questions techcombank_rag/data/evaluation/questions.example.json
 ```
 
-The launcher automatically creates `techcombank_rag/.venv`, installs the pinned dependencies, verifies both shipped indexes, validates provider configuration without transmitting the key, and starts the selected A3.2+B4e+B6 pipeline. The same variables may instead be placed in a root `.env` copied from `.env.example`.
+The command streams each answer, citations, refusal status, and end-to-end latency, then writes timestamped JSONL and summary files under `techcombank_rag/data/evaluation/results/`. It never calls `input()` or pauses between questions. The launcher automatically creates `techcombank_rag/.venv`, installs the pinned dependencies, verifies both shipped indexes, validates provider configuration without transmitting the key, and starts the selected A3.2+B4e+B6 pipeline.
+
+For interactive terminal chat with the same architecture, replace the final line with `./run.sh chat`. Configuration may also be placed in a root `.env` copied from `.env.example`.
 
 `LLM_PROVIDER=openai` accepts `OPENAI_API_KEY`; `LLM_PROVIDER=anthropic` accepts `ANTHROPIC_API_KEY`; `LLM_PROVIDER=openai_compatible` accepts any compatible `LLM_BASE_URL` and `LLM_API_KEY`. `LLM_MODEL_FAST` and `LLM_MODEL_STRONG` are optional and fall back to `LLM_MODEL`. No model, credential, server address, or `/home/ubuntu/...` path is hard-coded.
 
@@ -24,7 +28,7 @@ LLM_PROVIDER=openai LLM_MODEL=YOUR_OPENAI_MODEL OPENAI_API_KEY=YOUR_KEY ./run.sh
 LLM_PROVIDER=anthropic LLM_MODEL=YOUR_CLAUDE_MODEL ANTHROPIC_API_KEY=YOUR_KEY ./run.sh demo
 ```
 
-Run the 10 published questions non-interactively with:
+Run the organizer's 10 published questions non-interactively with:
 
 ```bash
 ./run.sh demo --questions techcombank_rag/data/evaluation/public.json
